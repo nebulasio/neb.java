@@ -33,7 +33,6 @@ public class PublicKeyImpl implements PublicKey {
 
     @Override
     public boolean Verify(byte[] data, byte[] signature) throws Exception {
-        // TODO:
-        return false;
+        return Secp256k1.Verify(data, signature, pubKey);
     }
 }

@@ -7,9 +7,9 @@ public interface Signature {
 
     byte[] Sign(byte[] data) throws Exception;
 
-    Key RecoverPublic(byte[] data, byte[] signature) throws Exception;
+    PublicKey RecoverPublic(byte[] data, byte[] signature) throws Exception;
 
-    void InitVerify(Key pubkey) throws Exception;
+    void InitVerify(PublicKey pubkey) throws Exception;
 
     boolean Verify(byte[] data, byte[] signature) throws Exception;
 

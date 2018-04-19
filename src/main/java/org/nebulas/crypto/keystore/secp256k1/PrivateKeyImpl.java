@@ -9,10 +9,8 @@ public class PrivateKeyImpl implements PrivateKey {
 
     byte[] seckey;
 
-
     public static PrivateKeyImpl GeneratePrivateKey() {
-     //TODO: seckKey
-     byte[] seckey = new byte[]{};
+     byte[] seckey = Secp256k1.GenerateECKey();
      return new PrivateKeyImpl(seckey);
     }
 
@@ -42,13 +40,12 @@ public class PrivateKeyImpl implements PrivateKey {
 
     @Override
     public PublicKey PublicKey() {
-        // TODO:
-        return null;
+        byte[] pub = Secp256k1.PublicFromPrivateKey(seckey);
+        return new PublicKeyImpl(pub);
     }
 
     @Override
     public byte[] Sign(byte[] data) throws Exception {
-        // TODO:
-        return new byte[0];
+        return Secp256k1.Sign(data, seckey);
     }
 }

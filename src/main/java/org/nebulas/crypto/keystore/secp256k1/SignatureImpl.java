@@ -1,15 +1,12 @@
 package org.nebulas.crypto.keystore.secp256k1;
 
-import org.nebulas.crypto.keystore.Algorithm;
-import org.nebulas.crypto.keystore.Key;
-import org.nebulas.crypto.keystore.PrivateKey;
-import org.nebulas.crypto.keystore.Signature;
+import org.nebulas.crypto.keystore.*;
 
 public class SignatureImpl implements Signature {
 
     PrivateKey privateKey;
 
-    Key pubKey;
+    PublicKey pubKey;
 
     @Override
     public Algorithm Algorithm() {
@@ -23,21 +20,22 @@ public class SignatureImpl implements Signature {
 
     @Override
     public byte[] Sign(byte[] data) throws Exception {
-        return new byte[0];
+        return Secp256k1.Sign(data, privateKey.Encoded());
     }
 
     @Override
-    public Key RecoverPublic(byte[] data, byte[] signature) throws Exception {
-        return null;
+    public PublicKey RecoverPublic(byte[] data, byte[] signature) throws Exception {
+        byte[] pub = Secp256k1.RecoverPubBytesFromSignature(data, signature);
+        return new PublicKeyImpl(pub);
     }
 
     @Override
-    public void InitVerify(Key pubkey) throws Exception {
+    public void InitVerify(PublicKey pubkey) throws Exception {
         this.pubKey = pubkey;
     }
 
     @Override
     public boolean Verify(byte[] data, byte[] signature) throws Exception {
-        return false;
+        return this.pubKey.Verify(data, signature);
     }
 }
