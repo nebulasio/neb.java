@@ -12,7 +12,7 @@ public class Hash {
             byte[] bytes = args[i];
             digest.update(bytes, 0, bytes.length);
         }
-        byte[] out = new byte[20];
+        byte[] out = new byte[256 / 8];
         digest.doFinal(out, 0);
         return out;
     }

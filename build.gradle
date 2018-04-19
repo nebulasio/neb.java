@@ -33,6 +33,7 @@ dependencies {
     compile group: 'com.lambdaworks', name: 'scrypt', version: '1.4.0'
 
 
+    compile group: 'com.google.protobuf', name: 'protobuf-java', version: '3.5.1'
 }
 
 // In this section you declare where to find the dependencies of your project

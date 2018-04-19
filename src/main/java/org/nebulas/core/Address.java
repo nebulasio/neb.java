@@ -103,7 +103,7 @@ public class Address {
 
     private static byte[] checkSum(byte[] data) {
         byte[] checkData = Hash.Sha3256(data);
-        return ByteUtils.SubBytes(checkData, checkData.length - AddressChecksumLength, AddressChecksumLength);
+        return ByteUtils.SubBytes(checkData, 0, AddressChecksumLength);
     }
 
     public static Address NewAddressFromPubKey(byte[] pub) throws Exception {
