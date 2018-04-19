@@ -1,6 +1,7 @@
 package org.nebulas.crypto.cipher;
 
 import org.nebulas.crypto.keystore.Algorithm;
+import org.nebulas.util.JSONUtils;
 
 public class Cipher {
 
@@ -16,11 +17,16 @@ public class Cipher {
         }
     }
 
-    public byte[] Encrypt(byte[] data, byte[] passphrase) throws Exception {
+    public CryptoJSON Encrypt(byte[] data, byte[] passphrase) throws Exception {
         return this.encrypt.Encrypt(data, passphrase);
     }
 
     public byte[] Decrypt(byte[] data, byte[] passphrase) throws Exception {
-        return this.encrypt.Decrypt(data, passphrase);
+        CryptoJSON cryptoJSON = JSONUtils.Parse(new String(data), CryptoJSON.class);
+        return this.encrypt.Decrypt(cryptoJSON, passphrase);
+    }
+
+    public byte[] Decrypt(CryptoJSON cryptoJSON, byte[] passphrase) throws Exception {
+        return this.encrypt.Decrypt(cryptoJSON, passphrase);
     }
 }

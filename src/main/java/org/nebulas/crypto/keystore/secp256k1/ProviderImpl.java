@@ -2,6 +2,7 @@ package org.nebulas.crypto.keystore.secp256k1;
 
 import com.google.common.collect.Maps;
 import org.nebulas.crypto.cipher.Cipher;
+import org.nebulas.crypto.cipher.CryptoJSON;
 import org.nebulas.crypto.keystore.Algorithm;
 import org.nebulas.crypto.keystore.Key;
 import org.nebulas.crypto.keystore.Provider;
@@ -19,9 +20,9 @@ public class ProviderImpl implements Provider {
     private class Entry {
 
         Key key;
-        byte[] data;
+        CryptoJSON data;
 
-        public Entry(Key key, byte[] data) {
+        public Entry(Key key, CryptoJSON data) {
             this.key = key;
             this.data = data;
         }
@@ -30,7 +31,7 @@ public class ProviderImpl implements Provider {
             return key;
         }
 
-        public byte[] getData() {
+        public CryptoJSON getData() {
             return data;
         }
     }
@@ -53,7 +54,7 @@ public class ProviderImpl implements Provider {
         if (passphrase.length == 0) {
             throw new Exception("invalid passphrase");
         }
-        byte[] data = this.cipher.Encrypt(v.Encoded(), passphrase);
+        CryptoJSON data = this.cipher.Encrypt(v.Encoded(), passphrase);
 
         Entry entry = new Entry(v, data);
 
