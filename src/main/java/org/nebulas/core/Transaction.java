@@ -264,6 +264,10 @@ public class Transaction {
     }
 
     public void sign(Signature signature) throws Exception {
+        if (ByteUtils.IsNullOrEmpty(this.hash)) {
+            throw new Exception("transaction must calculate hash first");
+        }
+
         byte[] sign = signature.sign(this.hash);
         this.alg = signature.algorithm();
         this.sign = sign;

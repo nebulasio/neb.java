@@ -3,6 +3,7 @@ package org.nebulas.account;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import org.nebulas.core.Address;
+import org.nebulas.core.Transaction;
 import org.nebulas.crypto.Crypto;
 import org.nebulas.crypto.cipher.Cipher;
 import org.nebulas.crypto.cipher.CryptoJSON;
@@ -120,6 +121,13 @@ public class AccountManager {
         Signature signature = Crypto.NewSignature(this.signatureAlg);
         signature.initSign((PrivateKey) key);
         return signature.sign(hash);
+    }
+
+    public void signTransaction(Transaction transaction, byte[] passphrase) throws Exception {
+        Key key = keystore.getKey(transaction.getFrom().string(), passphrase);
+        Signature signature = Crypto.NewSignature(this.signatureAlg);
+        signature.initSign((PrivateKey) key);
+        transaction.sign(signature);
     }
 
 }

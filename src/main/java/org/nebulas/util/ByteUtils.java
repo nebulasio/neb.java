@@ -169,9 +169,13 @@ public class ByteUtils {
             int f = (bytes[5] & 0xff) << 16;
             int g = (bytes[6] & 0xff) << 8;
             int h = (bytes[7] & 0xff);
-            result = a | b | c | d;
+            result = a | b | c | d | e | f | g | h;
         }
         return result;
+    }
+
+    public static boolean IsNullOrEmpty(byte[] bytes) {
+        return bytes == null || bytes.length == 0;
     }
 
 }
