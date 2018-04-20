@@ -11,7 +11,7 @@ import javax.crypto.spec.SecretKeySpec;
 public class Scrypt implements Encrypt {
 
     @Override
-    public CryptoJSON Encrypt(byte[] data, byte[] passphrase) throws Exception {
+    public CryptoJSON encrypt(byte[] data, byte[] passphrase) throws Exception {
         byte[] salt = Utils.RandomBytes(CryptoJSON.ScryptDKLen);
         byte[] derivedKey = SCrypt.scrypt(passphrase, salt, CryptoJSON.StandardScryptN, CryptoJSON.StandardScryptR, CryptoJSON.StandardScryptP, CryptoJSON.ScryptDKLen);
 
@@ -30,41 +30,41 @@ public class Scrypt implements Encrypt {
         byte[] mac = Hash.Sha3256(macDerivedKey, cipherText, iv, CryptoJSON.CIPHERNAME.getBytes());
 
         CryptoJSON.CipherParams cipherParams = new CryptoJSON.CipherParams();
-        cipherParams.setIv(ByteUtils.ToHexString(iv));
+        cipherParams.setIv(ByteUtils.ToHex(iv));
 
         CryptoJSON.ScryptParams scryptParams =  new CryptoJSON.ScryptParams();
         scryptParams.setN(CryptoJSON.StandardScryptN);
         scryptParams.setR(CryptoJSON.StandardScryptR);
         scryptParams.setP(CryptoJSON.StandardScryptP);
         scryptParams.setDklen(CryptoJSON.ScryptDKLen);
-        scryptParams.setSalt(ByteUtils.ToHexString(salt));
+        scryptParams.setSalt(ByteUtils.ToHex(salt));
 
         CryptoJSON cryptoJSON = new CryptoJSON();
         cryptoJSON.setCipher(CryptoJSON.CIPHERNAME);
-        cryptoJSON.setCiphertext(ByteUtils.ToHexString(cipherText));
+        cryptoJSON.setCiphertext(ByteUtils.ToHex(cipherText));
         cryptoJSON.setCipherparams(cipherParams);
         cryptoJSON.setKdf(CryptoJSON.ScryptKDF);
         cryptoJSON.setKdfparams(scryptParams);
-        cryptoJSON.setMac(ByteUtils.ToHexString(mac));
+        cryptoJSON.setMac(ByteUtils.ToHex(mac));
         cryptoJSON.setMachash(CryptoJSON.MACHASH);
 
         return cryptoJSON;
     }
 
     @Override
-    public byte[] Decrypt(CryptoJSON cryptoJSON, byte[] passphrase) throws Exception {
-        if (cryptoJSON.getCipher() != CryptoJSON.CIPHERNAME) {
+    public byte[] decrypt(CryptoJSON cryptoJSON, byte[] passphrase) throws Exception {
+        if (!CryptoJSON.CIPHERNAME.equalsIgnoreCase(cryptoJSON.getCipher())) {
             throw new Exception("invalid cipher");
         }
 
-        if (cryptoJSON.getKdf() != CryptoJSON.ScryptKDF) {
+        if (!CryptoJSON.ScryptKDF.equalsIgnoreCase(cryptoJSON.getKdf())) {
             throw new Exception("kdf not support");
         }
 
-        byte[] mac = ByteUtils.ToHexBytes(cryptoJSON.getMac());
-        byte[] iv = ByteUtils.ToHexBytes(cryptoJSON.getCipherparams().getIv());
-        byte[] cipherText = ByteUtils.ToHexBytes(cryptoJSON.getCiphertext());
-        byte[] salt = ByteUtils.ToHexBytes(cryptoJSON.getKdfparams().getSalt());
+        byte[] mac = ByteUtils.FromHex(cryptoJSON.getMac());
+        byte[] iv = ByteUtils.FromHex(cryptoJSON.getCipherparams().getIv());
+        byte[] cipherText = ByteUtils.FromHex(cryptoJSON.getCiphertext());
+        byte[] salt = ByteUtils.FromHex(cryptoJSON.getKdfparams().getSalt());
 
         int dklen = cryptoJSON.getKdfparams().getDklen();
         int n = cryptoJSON.getKdfparams().getN();

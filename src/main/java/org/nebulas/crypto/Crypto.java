@@ -3,8 +3,8 @@ package org.nebulas.crypto;
 import org.nebulas.crypto.keystore.Algorithm;
 import org.nebulas.crypto.keystore.PrivateKey;
 import org.nebulas.crypto.keystore.Signature;
-import org.nebulas.crypto.keystore.secp256k1.PrivateKeyImpl;
-import org.nebulas.crypto.keystore.secp256k1.SignatureImpl;
+import org.nebulas.crypto.keystore.secp256k1.ECPrivateKey;
+import org.nebulas.crypto.keystore.secp256k1.ECSignature;
 
 public class Crypto {
 
@@ -13,10 +13,10 @@ public class Crypto {
         switch (algorithm) {
             case SECP256K1:
             {
-                if (data.length != 0) {
-                    privateKey = new PrivateKeyImpl(data);
+                if (data != null && data.length != 0) {
+                    privateKey = new ECPrivateKey(data);
                 } else {
-                    privateKey = PrivateKeyImpl.GeneratePrivateKey();
+                    privateKey = ECPrivateKey.GeneratePrivateKey();
                 }
                 break;
             }
@@ -31,7 +31,7 @@ public class Crypto {
         switch (algorithm) {
             case SECP256K1:
             {
-                signature = new SignatureImpl();
+                signature = new ECSignature();
                 break;
             }
             default:

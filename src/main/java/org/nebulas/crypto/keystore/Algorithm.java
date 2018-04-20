@@ -13,4 +13,18 @@ public enum Algorithm {
     private Algorithm(int type) {
         this.type = type;
     }
+
+    public int getType() {
+        return type;
+    }
+
+    public static Algorithm FromType(int type) throws Exception {
+        if (SECP256K1.getType() == type) {
+            return SECP256K1;
+        } else if (SCRYPT.getType() == type) {
+            return SCRYPT;
+        } else {
+            throw new Exception("invalid algorithm");
+        }
+    }
 }

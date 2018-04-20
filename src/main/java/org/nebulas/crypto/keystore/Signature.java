@@ -1,16 +1,16 @@
 package org.nebulas.crypto.keystore;
 
 public interface Signature {
-    Algorithm Algorithm();
+    Algorithm algorithm();
 
-    void InitSign(PrivateKey key) throws Exception;
+    void initSign(PrivateKey key) throws Exception;
 
-    byte[] Sign(byte[] data) throws Exception;
+    byte[] sign(byte[] data) throws Exception;
 
-    PublicKey RecoverPublic(byte[] data, byte[] signature) throws Exception;
+    PublicKey recoverPublic(byte[] data, byte[] signature) throws Exception;
 
-    void InitVerify(PublicKey pubkey) throws Exception;
+    void initVerify(PublicKey pubkey) throws Exception;
 
-    boolean Verify(byte[] data, byte[] signature) throws Exception;
+    boolean verify(byte[] data, byte[] signature) throws Exception;
 
 }

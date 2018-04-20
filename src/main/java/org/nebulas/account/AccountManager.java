@@ -16,14 +16,14 @@ public class AccountManager {
 
     private static final String DEFAULTKEYDIR = "keydir";
 
-    Keystore keystore;
+    private Keystore keystore;
 
-    String keydir;
+    private String keydir;
 
-    Algorithm encryptAlg;
-    Algorithm signatureAlg;
+    private Algorithm encryptAlg;
+    private Algorithm signatureAlg;
 
-    Map<String, Account> accountMap;
+    private Map<String, Account> accountMap;
 
     public AccountManager() throws Exception {
         this.encryptAlg = Algorithm.SCRYPT;
@@ -34,26 +34,42 @@ public class AccountManager {
         this.accountMap = Maps.newConcurrentMap();
     }
 
-    public Address NewAccount(byte[] passphrase) throws Exception {
+    public Keystore getKeystore() {
+        return keystore;
+    }
+
+    public String getKeydir() {
+        return keydir;
+    }
+
+    public Algorithm getEncryptAlg() {
+        return encryptAlg;
+    }
+
+    public Algorithm getSignatureAlg() {
+        return signatureAlg;
+    }
+
+    public Address newAccount(byte[] passphrase) throws Exception {
         PrivateKey privateKey = Crypto.NewPrivateKey(this.signatureAlg, null);
         return updateAccount(privateKey, passphrase);
     }
 
    private Address updateAccount(PrivateKey privateKey, byte[] passphrase) throws Exception {
-       byte[] pub = privateKey.PublicKey().Encoded();
+       byte[] pub = privateKey.publickey().encode();
        Address address = Address.NewAddressFromPubKey(pub);
-       this.keystore.SetKey(address.String(), privateKey, passphrase);
-       privateKey.Clear();
+       this.keystore.setKey(address.string(), privateKey, passphrase);
+       privateKey.clear();
 
-       Account account = this.accountMap.get(address.String());
+       Account account = this.accountMap.get(address.string());
        if (account == null) {
            account = new Account(address);
-           this.accountMap.put(address.String(), account);
+           this.accountMap.put(address.string(), account);
        }
        return address;
    }
 
-   public List<Address> Accounts() {
+   public List<Address> accounts() {
         List<Address> addresses = Lists.newArrayList();
         for (Account account : this.accountMap.values()) {
             addresses.add(account.getAddress());
@@ -61,48 +77,49 @@ public class AccountManager {
         return addresses;
    }
 
-    public boolean Contains(Address address) {
+    public boolean contains(Address address) {
         for ( String addr : accountMap.keySet()) {
-            if (addr == address.String()) {
+            if (addr.equalsIgnoreCase(address.string())) {
                 return true;
             }
         }
         return false;
     }
 
-    public void Update(Address address, byte[] oldPassphrase, byte[] passphrase) throws Exception {
-        Key key = this.keystore.GetKey(address.String(), oldPassphrase);
+    public void update(Address address, byte[] oldPassphrase, byte[] passphrase) throws Exception {
+        Key key = this.keystore.getKey(address.string(), oldPassphrase);
         updateAccount((PrivateKey) key, passphrase);
     }
 
-    public Address Load(byte[] keyData, byte[] passphrase) throws Exception {
+    public Address load(byte[] keyData, byte[] passphrase) throws Exception {
         String keyStr = new String(keyData);
         KeyJSON keyJSON = JSONUtils.Parse(keyStr, KeyJSON.class);
 
         Cipher cipher = new Cipher(this.encryptAlg);
-        byte[] key = cipher.Decrypt(keyJSON.crypto, passphrase);
+        byte[] key = cipher.decrypt(keyJSON.crypto, passphrase);
         PrivateKey privateKey = Crypto.NewPrivateKey(this.signatureAlg, key);
         return updateAccount(privateKey, passphrase);
     }
 
-    public byte[] Export(Address address, byte[] passphrase) throws Exception {
-        Key key = keystore.GetKey(address.String(), passphrase);
+    public byte[] export(Address address, byte[] passphrase) throws Exception {
+        Key key = keystore.getKey(address.string(), passphrase);
         Cipher cipher = new Cipher(this.encryptAlg);
-        CryptoJSON cryptoJSON = cipher.Encrypt(key.Encoded(), passphrase);
+        CryptoJSON cryptoJSON = cipher.encrypt(key.encode(), passphrase);
 
-        KeyJSON keyJSON = new KeyJSON(address.String(), cryptoJSON);
+        KeyJSON keyJSON = new KeyJSON(address.string(), cryptoJSON);
         return JSONUtils.Stringify(keyJSON).getBytes();
     }
 
-    public void Delete(Address address, byte[] passphrase) throws Exception {
-        keystore.Delete(address.String(), passphrase);
+    public void delete(Address address, byte[] passphrase) throws Exception {
+        keystore.delete(address.string(), passphrase);
+        accountMap.remove(address.string());
     }
 
-    public byte[] SignHash(Address address, byte[] hash, byte[] passphrase) throws Exception {
-        Key key = keystore.GetKey(address.String(), passphrase);
+    public byte[] signHash(Address address, byte[] hash, byte[] passphrase) throws Exception {
+        Key key = keystore.getKey(address.string(), passphrase);
         Signature signature = Crypto.NewSignature(this.signatureAlg);
-        signature.InitSign((PrivateKey) key);
-        return signature.Sign(hash);
+        signature.initSign((PrivateKey) key);
+        return signature.sign(hash);
     }
 
 }

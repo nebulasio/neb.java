@@ -6,13 +6,13 @@ public interface Provider {
 
     List<String> keys();
 
-    void SetKey(String alias, Key v, byte[] passphrase) throws Exception;
+    void setKey(String alias, Key v, byte[] passphrase) throws Exception;
 
-    Key GetKey(String alias, byte[] passphrase) throws Exception;
+    Key getKey(String alias, byte[] passphrase) throws Exception;
 
-    void Delete(String alias);
+    void delete(String alias);
 
-    boolean ContainsKey(String alias);
+    boolean contains(String alias);
 
-    void Clear();
+    void clear();
 }

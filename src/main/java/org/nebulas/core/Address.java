@@ -59,15 +59,15 @@ public class Address {
         this.address = address;
     }
 
-    public byte[] Bytes() {
+    public byte[] bytes() {
         return address;
     }
 
-    public String String() {
+    public String string() {
         return Base58.encode(this.address);
     }
 
-    public AddressType Type() throws Exception {
+    public AddressType type() throws Exception {
         byte type = address[AddressTypeIndex];
         if (AddressType.ACCOUNT.Type() == type) {
             return AddressType.ACCOUNT;

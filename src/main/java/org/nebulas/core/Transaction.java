@@ -1,12 +1,38 @@
 package org.nebulas.core;
 
 import com.google.protobuf.ByteString;
+import org.nebulas.crypto.hash.Hash;
+import org.nebulas.crypto.keystore.Algorithm;
+import org.nebulas.crypto.keystore.Signature;
 import org.nebulas.proto.TransactionOuterClass;
+import org.nebulas.util.ByteUtils;
 
 import java.math.BigInteger;
 
 public class Transaction {
 
+    // TransactionMaxGasPrice max gasPrice:1 * 10 ** 12
+    public static final BigInteger TransactionMaxGasPrice = new BigInteger("1000000000000");
+
+    // TransactionMaxGas max gas:50 * 10 ** 9
+    public static final BigInteger TransactionMaxGas = new BigInteger("50000000000");
+
+    // TransactionGasPrice default gasPrice : 10**6
+    public static final BigInteger TransactionGasPrice = new BigInteger("1000000");
+
+    // MinGasCountPerTransaction default gas for normal transaction
+    public static final BigInteger MinGasCountPerTransaction = new BigInteger("20000");
+
+    // GasCountPerByte per byte of data attached to a transaction gas cost
+    public static final BigInteger GasCountPerByte = new BigInteger("1");
+
+    // MaxDataPayLoadLength Max data length in transaction
+    public static final int MaxDataPayLoadLength = 1024 * 1024;
+
+    // MaxDataBinPayloadLength Max data length in binary transaction
+    public static final int MaxDataBinPayloadLength = 64;
+
+    private int chainID;
     private byte[] hash;
 
     private Address from;
@@ -18,12 +44,58 @@ public class Transaction {
 
     private TransactionOuterClass.Data data;
 
-    private int chainID;
     private BigInteger gasPrice;
     private BigInteger gasLimit;
 
-    private int alg;
+    private Algorithm alg;
     private byte[] sign;
+
+    public enum PayloadType {
+        BINARY("binary"),
+        DEPLOY("deploy"),
+        CALL("call");
+
+        private String type;
+
+        PayloadType(String type) {
+            this.type = type;
+        }
+
+        public String getType() {
+            return type;
+        }
+    }
+
+    public static Transaction  NewTransaction(int chainID, Address from, Address to, BigInteger value, long nonce, PayloadType payloadType, byte[] payload, BigInteger gasPrice, BigInteger gasLimit) throws Exception {
+        if (gasPrice.compareTo(TransactionMaxGasPrice) > 0) {
+            throw new Exception("invalid gasPrice");
+        }
+        if (gasPrice.compareTo(TransactionMaxGas) > 0) {
+            throw new Exception("invalid gasLimit");
+        }
+
+        if ( payload != null && payload.length > MaxDataPayLoadLength) {
+            throw new Exception("payload data length is out of max length");
+        }
+
+        Transaction tx = new Transaction();
+
+        tx.chainID = chainID;
+        tx.from = from;
+        tx.to = to;
+        tx.value = value;
+        tx.nonce = nonce;
+        tx.gasPrice = gasPrice;
+        tx.gasLimit = gasLimit;
+        tx.timestamp = System.currentTimeMillis()/1000;
+
+        TransactionOuterClass.Data.Builder builder = TransactionOuterClass.Data.newBuilder();
+        builder.setPayloadType(payloadType.getType());
+        builder.setPayload(ByteString.copyFrom(payload));
+        tx.data = builder.build();
+
+        return tx;
+    }
 
     public byte[] getHash() {
         return hash;
@@ -98,11 +170,11 @@ public class Transaction {
         this.gasLimit = gasLimit;
     }
 
-    public int getAlg() {
+    public Algorithm getAlg() {
         return alg;
     }
 
-    public void setAlg(int alg) {
+    public void setAlg(Algorithm alg) {
         this.alg = alg;
     }
 
@@ -114,67 +186,86 @@ public class Transaction {
         this.sign = sign;
     }
 
-
-    public static Transaction fromProto(byte[] msg) throws Exception {
-        TransactionOuterClass.Transaction t = TransactionOuterClass.Transaction.parseFrom(msg);
-
-
-        Transaction transaction = new Transaction();
-        transaction.setHash(t.getHash().toByteArray());
-        transaction.setFrom(Address.ParseFromBytes(t.getFrom().toByteArray()));
-        transaction.setAlg(t.getAlg());
-        transaction.setChainID(t.getChainId());
-        transaction.setGasLimit(new BigInteger(1, t.getGasLimit().toByteArray()));
-        transaction.setGasPrice(new BigInteger(1, t.getGasPrice().toByteArray()));
-        transaction.setNonce(t.getNonce());
-        transaction.setSign(t.getSign().toByteArray());
-        transaction.setTimestamp(t.getTimestamp());
-        transaction.setTo(Address.ParseFromBytes(t.getTo().toByteArray()));
-        transaction.setValue(new BigInteger(1, t.getValue().toByteArray()));
-
-        if (t.getData() != null) {
-            transaction.setData(t.getData());
-        }
-
-
-        return transaction;
-    }
-
-    public static byte[] toProto(Transaction transaction) throws Exception {
-        TransactionOuterClass.Transaction.Builder builder = TransactionOuterClass.Transaction.newBuilder();
-        builder.setAlg(transaction.getAlg());
-        builder.setChainId(transaction.getChainID());
-        builder.setFrom(ByteString.copyFrom(transaction.getFrom().Bytes()));
-        builder.setTo(ByteString.copyFrom(transaction.getTo().Bytes()));
-        builder.setGasLimit(ByteString.copyFrom(ToFixedSizeBytes(transaction.getGasLimit().toByteArray())));
-        builder.setGasPrice(ByteString.copyFrom(ToFixedSizeBytes(transaction.getGasPrice().toByteArray())));
-        builder.setNonce(transaction.getNonce());
-        builder.setHash(ByteString.copyFrom(transaction.getHash()));
-        builder.setSign(ByteString.copyFrom(transaction.getSign()));
-        builder.setTimestamp(transaction.getTimestamp());
-        builder.setValue(ByteString.copyFrom(ToFixedSizeBytes(transaction.getValue().toByteArray())));
-        builder.setData(transaction.getData());
-
-        TransactionOuterClass.Transaction t = builder.build();
-
-        return t.toByteArray();
-
-    }
-
-    public static byte[] ToFixedSizeBytes(byte[] src) throws Exception {
-        if (src.length > 16) {
-            throw new Exception("invalid src byte");
-        }
-        byte[] res = new byte[16];
-        System.arraycopy(src,0,res,res.length-src.length,src.length);
-        return res;
-    }
-
     public TransactionOuterClass.Data getData() {
         return data;
     }
 
     public void setData(TransactionOuterClass.Data data) {
         this.data = data;
+    }
+
+    public void fromProto(byte[] msg) throws Exception {
+        TransactionOuterClass.Transaction t = TransactionOuterClass.Transaction.parseFrom(msg);
+        this.setHash(t.getHash().toByteArray());
+        this.setFrom(Address.ParseFromBytes(t.getFrom().toByteArray()));
+        this.setChainID(t.getChainId());
+
+        BigInteger gasPrice = new BigInteger(1, t.getGasPrice().toByteArray());
+        if (gasPrice.compareTo(TransactionMaxGasPrice) > 0) {
+            throw new Exception("invalid gasPrice");
+        }
+        this.setGasPrice(gasPrice);
+
+        BigInteger gasLimit = new BigInteger(1, t.getGasLimit().toByteArray());
+        if (gasPrice.compareTo(TransactionMaxGas) > 0) {
+            throw new Exception("invalid gasLimit");
+        }
+        this.setGasLimit(gasLimit);
+        this.setNonce(t.getNonce());
+        this.setAlg(Algorithm.FromType(t.getAlg()));
+        this.setSign(t.getSign().toByteArray());
+        this.setTimestamp(t.getTimestamp());
+        this.setTo(Address.ParseFromBytes(t.getTo().toByteArray()));
+        this.setValue(new BigInteger(1, t.getValue().toByteArray()));
+
+        if (t.getData() == null) {
+            throw new Exception("invalid transaction data");
+        }
+        if (t.getData().getPayload().toByteArray().length > MaxDataPayLoadLength) {
+            throw new Exception("payload data length is out of max length");
+        }
+
+        this.setData(t.getData());
+    }
+
+    public byte[] toProto() throws Exception {
+        TransactionOuterClass.Transaction.Builder builder = TransactionOuterClass.Transaction.newBuilder();
+        builder.setAlg(this.getAlg().getType());
+        builder.setChainId(this.getChainID());
+        builder.setFrom(ByteString.copyFrom(this.getFrom().bytes()));
+        builder.setTo(ByteString.copyFrom(this.getTo().bytes()));
+        builder.setValue(ByteString.copyFrom(ByteUtils.ToFixedSizeBytes(this.getValue().toByteArray(), 16)));
+        builder.setGasLimit(ByteString.copyFrom(ByteUtils.ToFixedSizeBytes(this.getGasLimit().toByteArray(), 16)));
+        builder.setGasPrice(ByteString.copyFrom(ByteUtils.ToFixedSizeBytes(this.getGasPrice().toByteArray(), 16)));
+        builder.setNonce(this.getNonce());
+        builder.setHash(ByteString.copyFrom(this.getHash()));
+        builder.setSign(ByteString.copyFrom(this.getSign()));
+        builder.setTimestamp(this.getTimestamp());
+        builder.setData(this.getData());
+
+        TransactionOuterClass.Transaction t = builder.build();
+        return t.toByteArray();
+    }
+
+    public byte[] calculateHash() {
+        byte[] hash = Hash.Sha3256(
+                this.from.bytes(),
+                this.to.bytes(),
+                ByteUtils.BigIntegerToBytes(this.value, 16),
+                ByteUtils.LongToBytes(this.nonce),
+                ByteUtils.LongToBytes(this.timestamp),
+                this.data.toByteArray(),
+                ByteUtils.IntToBytes(this.chainID),
+                ByteUtils.BigIntegerToBytes(this.gasPrice, 16),
+                ByteUtils.BigIntegerToBytes(this.gasLimit, 16)
+        );
+        this.hash = hash;
+        return this.hash;
+    }
+
+    public void sign(Signature signature) throws Exception {
+        byte[] sign = signature.sign(this.hash);
+        this.alg = signature.algorithm();
+        this.sign = sign;
     }
 }

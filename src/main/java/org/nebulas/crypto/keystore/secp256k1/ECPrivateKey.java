@@ -5,47 +5,47 @@ import org.nebulas.crypto.keystore.PrivateKey;
 import org.nebulas.crypto.keystore.PublicKey;
 import org.nebulas.crypto.util.Utils;
 
-public class PrivateKeyImpl implements PrivateKey {
+public class ECPrivateKey implements PrivateKey {
 
     byte[] seckey;
 
-    public static PrivateKeyImpl GeneratePrivateKey() {
+    public static ECPrivateKey GeneratePrivateKey() {
      byte[] seckey = Secp256k1.GenerateECKey();
-     return new PrivateKeyImpl(seckey);
+     return new ECPrivateKey(seckey);
     }
 
-    public PrivateKeyImpl(byte[] data) {
+    public ECPrivateKey(byte[] data) {
         this.seckey = data;
     }
 
     @Override
-    public Algorithm Algorithm() {
+    public Algorithm algorithm() {
         return Algorithm.SECP256K1;
     }
 
     @Override
-    public byte[] Encoded() throws Exception {
+    public byte[] encode() throws Exception {
         return this.seckey;
     }
 
     @Override
-    public void Decode(byte[] data) throws Exception {
+    public void decode(byte[] data) throws Exception {
         this.seckey = data;
     }
 
     @Override
-    public void Clear() {
+    public void clear() {
         Utils.ClearBytes(this.seckey);
     }
 
     @Override
-    public PublicKey PublicKey() {
+    public PublicKey publickey() {
         byte[] pub = Secp256k1.PublicFromPrivateKey(seckey);
-        return new PublicKeyImpl(pub);
+        return new ECPublicKey(pub);
     }
 
     @Override
-    public byte[] Sign(byte[] data) throws Exception {
+    public byte[] sign(byte[] data) throws Exception {
         return Secp256k1.Sign(data, seckey);
     }
 }

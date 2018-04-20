@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class ProviderImpl implements Provider {
+public class MemoryProvider implements Provider {
 
     Map<String, Entry> entries;
 
@@ -36,7 +36,7 @@ public class ProviderImpl implements Provider {
         }
     }
 
-    public ProviderImpl(Algorithm algorithm) throws Exception {
+    public MemoryProvider(Algorithm algorithm) throws Exception {
         this.cipher = new Cipher(algorithm);
         this.entries = Maps.newConcurrentMap();
     }
@@ -47,14 +47,14 @@ public class ProviderImpl implements Provider {
     }
 
     @Override
-    public void SetKey(String alias, Key v, byte[] passphrase) throws Exception {
+    public void setKey(String alias, Key v, byte[] passphrase) throws Exception {
         if (alias.length() == 0) {
             throw new Exception("invalid key alias");
         }
         if (passphrase.length == 0) {
             throw new Exception("invalid passphrase");
         }
-        CryptoJSON data = this.cipher.Encrypt(v.Encoded(), passphrase);
+        CryptoJSON data = this.cipher.encrypt(v.encode(), passphrase);
 
         Entry entry = new Entry(v, data);
 
@@ -62,7 +62,7 @@ public class ProviderImpl implements Provider {
     }
 
     @Override
-    public Key GetKey(String alias, byte[] passphrase) throws Exception {
+    public Key getKey(String alias, byte[] passphrase) throws Exception {
         if (alias.length() == 0) {
             throw new Exception("invalid key alias");
         }
@@ -74,23 +74,23 @@ public class ProviderImpl implements Provider {
         if (entry == null) {
             throw new Exception("key not found");
         }
-        byte[] data = this.cipher.Decrypt(entry.getData(), passphrase);
-        entry.getKey().Decode(data);
+        byte[] data = this.cipher.decrypt(entry.getData(), passphrase);
+        entry.getKey().decode(data);
         return entry.getKey();
     }
 
     @Override
-    public void Delete(String alias) {
+    public void delete(String alias) {
         this.entries.remove(alias);
     }
 
     @Override
-    public boolean ContainsKey(String alias) {
+    public boolean contains(String alias) {
         return this.entries.containsKey(alias);
     }
 
     @Override
-    public void Clear() {
+    public void clear() {
         this.entries.clear();
     }
 }

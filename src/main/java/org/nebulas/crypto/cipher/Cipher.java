@@ -17,16 +17,16 @@ public class Cipher {
         }
     }
 
-    public CryptoJSON Encrypt(byte[] data, byte[] passphrase) throws Exception {
-        return this.encrypt.Encrypt(data, passphrase);
+    public CryptoJSON encrypt(byte[] data, byte[] passphrase) throws Exception {
+        return this.encrypt.encrypt(data, passphrase);
     }
 
-    public byte[] Decrypt(byte[] data, byte[] passphrase) throws Exception {
+    public byte[] decrypt(byte[] data, byte[] passphrase) throws Exception {
         CryptoJSON cryptoJSON = JSONUtils.Parse(new String(data), CryptoJSON.class);
-        return this.encrypt.Decrypt(cryptoJSON, passphrase);
+        return this.encrypt.decrypt(cryptoJSON, passphrase);
     }
 
-    public byte[] Decrypt(CryptoJSON cryptoJSON, byte[] passphrase) throws Exception {
-        return this.encrypt.Decrypt(cryptoJSON, passphrase);
+    public byte[] decrypt(CryptoJSON cryptoJSON, byte[] passphrase) throws Exception {
+        return this.encrypt.decrypt(cryptoJSON, passphrase);
     }
 }

@@ -17,7 +17,11 @@ import org.spongycastle.crypto.params.ECPrivateKeyParameters;
 import org.spongycastle.crypto.params.ECPublicKeyParameters;
 import org.spongycastle.crypto.signers.ECDSASigner;
 import org.spongycastle.crypto.signers.HMacDSAKCalculator;
-import org.spongycastle.math.ec.*;
+import org.spongycastle.math.ec.ECAlgorithms;
+import org.spongycastle.math.ec.ECPoint;
+import org.spongycastle.math.ec.FixedPointCombMultiplier;
+import org.spongycastle.math.ec.FixedPointUtil;
+import org.spongycastle.math.ec.custom.sec.SecP256K1Curve;
 import org.spongycastle.util.encoders.Base64;
 import org.spongycastle.util.encoders.Hex;
 
@@ -57,7 +61,8 @@ public class Secp256k1 {
         generator.init(keygenParams);
         AsymmetricCipherKeyPair keypair = generator.generateKeyPair();
         ECPrivateKeyParameters privParams = (ECPrivateKeyParameters) keypair.getPrivate();
-        return privParams.getD().toByteArray();
+        BigInteger privKey = privParams.getD();
+        return ByteUtils.BigIntegerToBytes(privKey, 32);
     }
 
     public static byte[] PublicFromPrivateKey(byte[] privateKey) {
@@ -72,7 +77,10 @@ public class Secp256k1 {
 
     public static byte[] RecoverPubBytesFromSignature(byte[] data, byte[] sign) {
         if (data.length != 32) {
-            throw new IllegalArgumentException("Expected 32 byte input to ECDSA signature, not " + data.length);
+            throw new IllegalArgumentException("Expected 32 byte input to ECDSA recover, not " + data.length);
+        }
+        if (sign.length != 65) {
+            throw new IllegalArgumentException("Expected 65 byte input of signature to ECDSA recover, not " + sign.length);
         }
 
         ECDSASignature signature = ECDSASignature.fromBytes(sign);
@@ -114,14 +122,13 @@ public class Secp256k1 {
         //        do another iteration of Step 1.
         //
         // More concisely, what these points mean is to use X as a compressed public key.
-        ECCurve.Fp curve = (ECCurve.Fp) CURVE.getCurve();
-        BigInteger prime = curve.getQ();  // Bouncy Castle is not consistent about the letter it uses for the prime.
+        BigInteger prime = SecP256K1Curve.q;
         if (x.compareTo(prime) >= 0) {
             // Cannot have point co-ordinates larger than this as everything takes place modulo Q.
             return null;
         }
         // Compressed keys require you to know an extra bit of data about the y-coord as there are two possibilities.
-        // So it's encoded in the recId.
+        // So it's encode in the recId.
         ECPoint R = decompressKey(x, (recId & 1) == 1);
         //   1.4. If nR != point at infinity, then do another iteration of Step 1 (callers responsibility).
         if (!R.multiply(n).isInfinity())
@@ -143,7 +150,7 @@ public class Secp256k1 {
         BigInteger rInv = sig.r.modInverse(n);
         BigInteger srInv = rInv.multiply(sig.s).mod(n);
         BigInteger eInvrInv = rInv.multiply(eInv).mod(n);
-        ECPoint.Fp q = (ECPoint.Fp) ECAlgorithms.sumOfTwoMultiplies(CURVE.getG(), eInvrInv, R, srInv);
+        ECPoint q = ECAlgorithms.sumOfTwoMultiplies(CURVE.getG(), eInvrInv, R, srInv);
         return q.getEncoded(/* compressed */ false);
     }
 
@@ -172,7 +179,7 @@ public class Secp256k1 {
         if (recId == -1) {
             throw new RuntimeException("Could not construct a recoverable key. This should never happen.");
         }
-//        signature.v = (byte) (recId + 27);
+        signature.v = (byte) (recId + 27);
 
         return signature.toByteArray();
 
@@ -180,7 +187,10 @@ public class Secp256k1 {
 
     public static boolean Verify(byte[] data, byte[] sign, byte[] pub) {
         if (data.length != 32) {
-            throw new IllegalArgumentException("Expected 32 byte input to ECDSA signature, not " + data.length);
+            throw new IllegalArgumentException("Expected 32 byte input to ECDSA verify, not " + data.length);
+        }
+        if (sign.length != 65) {
+            throw new IllegalArgumentException("Expected 65 byte input of signature to ECDSA verify, not " + sign.length);
         }
 
         ECDSASignature signature = ECDSASignature.fromBytes(sign);
@@ -242,7 +252,7 @@ public class Secp256k1 {
             return ECDSASignature.fromComponents(
                     Arrays.copyOfRange(sign, 0, 32),
                     Arrays.copyOfRange(sign, 32, 64),
-                    (byte) (sign[65] & 0xFF));
+                    (byte) (sign[64] & 0xFF));
         }
 
         /**
@@ -333,8 +343,8 @@ public class Secp256k1 {
         public String toBase64() {
             byte[] sigData = new byte[65];  // 1 header + 32 bytes for R + 32 bytes for S
             sigData[0] = v;
-            System.arraycopy(ByteUtils.bigIntegerToBytes(this.r, 32), 0, sigData, 1, 32);
-            System.arraycopy(ByteUtils.bigIntegerToBytes(this.s, 32), 0, sigData, 33, 32);
+            System.arraycopy(ByteUtils.BigIntegerToBytes(this.r, 32), 0, sigData, 1, 32);
+            System.arraycopy(ByteUtils.BigIntegerToBytes(this.s, 32), 0, sigData, 33, 32);
             return new String(Base64.encode(sigData), Charset.forName("UTF-8"));
         }
 
@@ -343,9 +353,9 @@ public class Secp256k1 {
                     ? (byte) (this.v - 27)
                     :this.v;
 
-            return ByteUtils.merge(
-                    ByteUtils.bigIntegerToBytes(this.r),
-                    ByteUtils.bigIntegerToBytes(this.s),
+            return ByteUtils.Append(
+                    ByteUtils.BigIntegerToBytes(this.r),
+                    ByteUtils.BigIntegerToBytes(this.s),
                     new byte[]{fixedV});
         }
 

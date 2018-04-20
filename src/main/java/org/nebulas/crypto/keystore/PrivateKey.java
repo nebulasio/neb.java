@@ -2,15 +2,15 @@ package org.nebulas.crypto.keystore;
 
 public interface PrivateKey extends Key {
 
-    Algorithm Algorithm();
+    Algorithm algorithm();
 
-    byte[] Encoded() throws Exception;
+    byte[] encode() throws Exception;
 
-    void Decode(byte[] data) throws Exception;
+    void decode(byte[] data) throws Exception;
 
-    void Clear();
+    void clear();
 
-    PublicKey PublicKey();
+    PublicKey publickey();
 
-    byte[] Sign(byte[] data) throws Exception;
+    byte[] sign(byte[] data) throws Exception;
 }

@@ -2,7 +2,7 @@ package org.nebulas.crypto.cipher;
 
 public interface Encrypt {
 
-    CryptoJSON Encrypt(byte[] data, byte[] passphrase) throws Exception;
+    CryptoJSON encrypt(byte[] data, byte[] passphrase) throws Exception;
 
-    byte[] Decrypt(CryptoJSON data, byte[] passphrase) throws Exception;
+    byte[] decrypt(CryptoJSON data, byte[] passphrase) throws Exception;
 }

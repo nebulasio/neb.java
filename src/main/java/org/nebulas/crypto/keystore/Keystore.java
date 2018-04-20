@@ -1,6 +1,6 @@
 package org.nebulas.crypto.keystore;
 
-import org.nebulas.crypto.keystore.secp256k1.ProviderImpl;
+import org.nebulas.crypto.keystore.secp256k1.MemoryProvider;
 
 import java.util.List;
 
@@ -9,41 +9,41 @@ public class Keystore {
     Provider provider;
 
     public Keystore(Algorithm algorithm) throws Exception {
-        this.provider = new ProviderImpl(algorithm);
+        this.provider = new MemoryProvider(algorithm);
     }
 
     public List<String> keys() {
         return this.provider.keys();
     }
 
-    public boolean Contains(String alias) {
-        return this.provider.ContainsKey(alias);
+    public boolean contains(String alias) {
+        return this.provider.contains(alias);
     }
 
-    public void SetKey(String alias, Key key, byte[] passphrase) throws Exception {
+    public void setKey(String alias, Key key, byte[] passphrase) throws Exception {
         if (this.provider == null) {
             throw new Exception("invalid provider");
         }
 
-        this.provider.SetKey(alias, key, passphrase);
+        this.provider.setKey(alias, key, passphrase);
     }
 
-    public Key GetKey(String alias, byte[] passphrase) throws Exception {
+    public Key getKey(String alias, byte[] passphrase) throws Exception {
         if (this.provider == null) {
             throw new Exception("invalid provider");
         }
 
-        return this.provider.GetKey(alias, passphrase);
+        return this.provider.getKey(alias, passphrase);
     }
 
-    public void Delete(String alias, byte[] passphrase) throws Exception {
+    public void delete(String alias, byte[] passphrase) throws Exception {
         if (this.provider == null) {
             throw new Exception("invalid provider");
         }
 
-        Key key = this.provider.GetKey(alias, passphrase);
-        key.Clear();
+        Key key = this.provider.getKey(alias, passphrase);
+        key.clear();
 
-        this.provider.Delete(alias);
+        this.provider.delete(alias);
     }
 }

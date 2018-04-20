@@ -2,13 +2,13 @@ package org.nebulas.crypto.keystore;
 
 public interface PublicKey extends Key {
 
-    Algorithm Algorithm();
+    Algorithm algorithm();
 
-    byte[] Encoded() throws Exception;
+    byte[] encode() throws Exception;
 
-    void Decode(byte[] data) throws Exception;
+    void decode(byte[] data) throws Exception;
 
-    void Clear();
+    void clear();
 
-    boolean Verify(byte[] data, byte[] signature) throws Exception;
+    boolean verify(byte[] data, byte[] signature) throws Exception;
 }

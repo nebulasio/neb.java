@@ -56,7 +56,7 @@ public class Base58 {
      * Encodes the given bytes as a base58 string (no checksum is appended).
      *
      * @param input the bytes to encode
-     * @return the base58-encoded string
+     * @return the base58-encode string
      */
     public static String encode(byte[] input) {
         if (input.length == 0) {
@@ -77,21 +77,21 @@ public class Base58 {
                 ++inputStart; // optimization - skip leading zeros
             }
         }
-        // Preserve exactly as many leading encoded zeros in output as there were leading zeros in input.
+        // Preserve exactly as many leading encode zeros in output as there were leading zeros in input.
         while (outputStart < encoded.length && encoded[outputStart] == ENCODED_ZERO) {
             ++outputStart;
         }
         while (--zeros >= 0) {
             encoded[--outputStart] = ENCODED_ZERO;
         }
-        // Return encoded string (including encoded leading zeros).
+        // Return encode string (including encode leading zeros).
         return new String(encoded, outputStart, encoded.length - outputStart);
     }
 
     /**
      * Decodes the given base58 string into the original data bytes.
      *
-     * @param input the base58-encoded string to decode
+     * @param input the base58-encode string to decode
      * @return the decoded data bytes
      * @throws Exception if the given string is not a valid base58 string
      */
@@ -99,7 +99,7 @@ public class Base58 {
         if (input.length() == 0) {
             return new byte[0];
         }
-        // Convert the base58-encoded ASCII chars to a base58 byte sequence (base58 digits).
+        // Convert the base58-encode ASCII chars to a base58 byte sequence (base58 digits).
         byte[] input58 = new byte[input.length()];
         for (int i = 0; i < input.length(); ++i) {
             char c = input.charAt(i);

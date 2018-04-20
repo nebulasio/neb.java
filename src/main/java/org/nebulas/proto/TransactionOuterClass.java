@@ -1949,7 +1949,7 @@ public final class TransactionOuterClass {
     internal_static_org_nebulas_proto_Transaction_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_org_nebulas_proto_Transaction_descriptor,
-        new java.lang.String[] { "Hash", "From", "To", "Value", "Nonce", "Timestamp", "Data", "ChainId", "GasPrice", "GasLimit", "Alg", "Sign", });
+        new java.lang.String[] { "Hash", "From", "To", "Value", "Nonce", "Timestamp", "Data", "ChainId", "GasPrice", "GasLimit", "Alg", "sign", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

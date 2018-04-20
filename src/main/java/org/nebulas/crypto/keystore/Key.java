@@ -2,12 +2,12 @@ package org.nebulas.crypto.keystore;
 
 public interface Key {
 
-    Algorithm Algorithm();
+    Algorithm algorithm();
 
-    byte[] Encoded() throws Exception;
+    byte[] encode() throws Exception;
 
-    void Decode(byte[] data) throws Exception;
+    void decode(byte[] data) throws Exception;
 
-    void Clear();
+    void clear();
 
 }

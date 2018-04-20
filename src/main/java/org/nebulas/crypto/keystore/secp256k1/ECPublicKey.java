@@ -4,35 +4,35 @@ import org.nebulas.crypto.keystore.Algorithm;
 import org.nebulas.crypto.keystore.PublicKey;
 import org.nebulas.crypto.util.Utils;
 
-public class PublicKeyImpl implements PublicKey {
+public class ECPublicKey implements PublicKey {
     byte[] pubKey;
 
-    public PublicKeyImpl(byte[] pub) {
+    public ECPublicKey(byte[] pub) {
         this.pubKey = pub;
     }
 
     @Override
-    public Algorithm Algorithm() {
+    public Algorithm algorithm() {
         return Algorithm.SECP256K1;
     }
 
     @Override
-    public byte[] Encoded() throws Exception {
+    public byte[] encode() throws Exception {
         return this.pubKey;
     }
 
     @Override
-    public void Decode(byte[] data) throws Exception {
+    public void decode(byte[] data) throws Exception {
         this.pubKey = data;
     }
 
     @Override
-    public void Clear() {
+    public void clear() {
         Utils.ClearBytes(this.pubKey);
     }
 
     @Override
-    public boolean Verify(byte[] data, byte[] signature) throws Exception {
+    public boolean verify(byte[] data, byte[] signature) throws Exception {
         return Secp256k1.Verify(data, signature, pubKey);
     }
 }
