@@ -1,5 +1,5 @@
 syntax = "proto3";
-package org.nebulas.core.proto;
+package corepb;
 
 message Data {
     string payload_type = 1;
