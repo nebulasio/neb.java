@@ -4,7 +4,7 @@ import com.google.protobuf.ByteString;
 import org.nebulas.crypto.hash.Hash;
 import org.nebulas.crypto.keystore.Algorithm;
 import org.nebulas.crypto.keystore.Signature;
-import org.nebulas.proto.TransactionOuterClass;
+import org.nebulas.core.proto.TransactionOuterClass;
 import org.nebulas.util.ByteUtils;
 
 import java.math.BigInteger;
