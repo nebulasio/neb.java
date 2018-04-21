@@ -6,9 +6,48 @@
  * user guide available at https://docs.gradle.org/4.6/userguide/java_library_plugin.html
  */
 
+buildscript {
+    ext {
+        projectVersion = '0.0.1-SNAPSHOT'
+        grpcVersion = '1.11.0'
+        protobufVersion = '3.5.1-1'
+        protobufGradlePluginVersion = '0.8.5'
+    }
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        // ASSUMES GRADLE 2.12 OR HIGHER. Use plugin version 0.7.5 with earlier
+        // gradle versions
+        classpath "com.google.protobuf:protobuf-gradle-plugin:${protobufGradlePluginVersion}"
+    }
+}
+
 plugins {
     // Apply the java-library plugin to add support for Java Library
     id 'java-library'
+}
+
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'com.google.protobuf'
+
+//sourceSets {
+//    main {
+//        proto {
+//            // In addition to the default 'src/main/proto'
+//            srcDir 'src/main/proto'
+//            // In addition to the default '**/*.proto' (use with caution).
+//            include '**/*.proto'
+//        }
+//        java {
+//        }
+//    }
+//}
+
+jar {
+    baseName = 'nebulas'
+    version = "${projectVersion}"
 }
 
 dependencies {
@@ -33,9 +72,12 @@ dependencies {
 
     // https://mvnrepository.com/artifact/com.lambdaworks/scrypt
     compile group: 'com.lambdaworks', name: 'scrypt', version: '1.4.0'
+}
 
-
-    compile group: 'com.google.protobuf', name: 'protobuf-java', version: '3.5.1'
+dependencies {
+    compile "io.grpc:grpc-netty:${grpcVersion}"
+    compile "io.grpc:grpc-protobuf:${grpcVersion}"
+    compile "io.grpc:grpc-stub:${grpcVersion}"
 }
 
 // In this section you declare where to find the dependencies of your project
@@ -43,4 +85,24 @@ repositories {
     // Use jcenter for resolving your dependencies.
     // You can declare any Maven/Ivy/file repository here.
     jcenter()
+}
+
+protobuf {
+    protoc {
+        artifact = "com.google.protobuf:protoc:${protobufVersion}"
+    }
+    generatedFilesBaseDir = "src/main/proto/generated"
+    clean {
+        delete generatedFilesBaseDir
+    }
+    plugins {
+        grpc {
+            artifact = "io.grpc:protoc-gen-grpc-java:${grpcVersion}"
+        }
+    }
+    generateProtoTasks {
+        all()*.plugins {
+            grpc {}
+        }
+    }
 }

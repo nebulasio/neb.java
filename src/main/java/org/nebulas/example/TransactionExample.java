@@ -28,6 +28,7 @@ public class TransactionExample {
         // senrawTransaction with @rawData
         // https://github.com/nebulasio/wiki/blob/master/rpc.md#sendrawtransaction
 
+
         // deploy tx
         payloadType = Transaction.PayloadType.DEPLOY;
         payload = new TransactionDeployPayload("js", "var demo = 1;", "").toBytes();
