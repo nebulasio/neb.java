@@ -18,9 +18,9 @@ public class ECSignatureTest {
     @Before
     public void Before() {
         signature = new ECSignature();
-        privateKey = ByteUtils.FromHex("e07c7b293b2907474d7a9d431eea0138c2734b2865804dc2ebb6e8f9a40ac0e0");
-        signData = ByteUtils.FromHex("ff0d7b40123af5813b6add3de99369cbf029a464f5b3b7bb2e1523d0862e1812");
-        signedData = ByteUtils.FromHex("d5f47ac3c2883adfc46bc252de7550465469ab1d958adc0249653e0cb0eaca1e2aaf3e951b3585864fbd85834b34966e12acf43e31a390e045bbddaf97d199e901");
+        privateKey = ByteUtils.HexToBytes("e07c7b293b2907474d7a9d431eea0138c2734b2865804dc2ebb6e8f9a40ac0e0");
+        signData = ByteUtils.HexToBytes("ff0d7b40123af5813b6add3de99369cbf029a464f5b3b7bb2e1523d0862e1812");
+        signedData = ByteUtils.HexToBytes("d5f47ac3c2883adfc46bc252de7550465469ab1d958adc0249653e0cb0eaca1e2aaf3e951b3585864fbd85834b34966e12acf43e31a390e045bbddaf97d199e901");
     }
 
     @Test

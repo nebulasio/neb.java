@@ -128,6 +128,7 @@ public class AccountManager {
         Signature signature = Crypto.NewSignature(this.signatureAlg);
         signature.initSign((PrivateKey) key);
         transaction.sign(signature);
+        key.clear();
     }
 
 }

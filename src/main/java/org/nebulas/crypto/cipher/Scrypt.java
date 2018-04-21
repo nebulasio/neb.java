@@ -30,22 +30,22 @@ public class Scrypt implements Encrypt {
         byte[] mac = Hash.Sha3256(macDerivedKey, cipherText, iv, CryptoJSON.CIPHERNAME.getBytes());
 
         CryptoJSON.CipherParams cipherParams = new CryptoJSON.CipherParams();
-        cipherParams.setIv(ByteUtils.ToHex(iv));
+        cipherParams.setIv(ByteUtils.HexToString(iv));
 
         CryptoJSON.ScryptParams scryptParams =  new CryptoJSON.ScryptParams();
         scryptParams.setN(CryptoJSON.StandardScryptN);
         scryptParams.setR(CryptoJSON.StandardScryptR);
         scryptParams.setP(CryptoJSON.StandardScryptP);
         scryptParams.setDklen(CryptoJSON.ScryptDKLen);
-        scryptParams.setSalt(ByteUtils.ToHex(salt));
+        scryptParams.setSalt(ByteUtils.HexToString(salt));
 
         CryptoJSON cryptoJSON = new CryptoJSON();
         cryptoJSON.setCipher(CryptoJSON.CIPHERNAME);
-        cryptoJSON.setCiphertext(ByteUtils.ToHex(cipherText));
+        cryptoJSON.setCiphertext(ByteUtils.HexToString(cipherText));
         cryptoJSON.setCipherparams(cipherParams);
         cryptoJSON.setKdf(CryptoJSON.ScryptKDF);
         cryptoJSON.setKdfparams(scryptParams);
-        cryptoJSON.setMac(ByteUtils.ToHex(mac));
+        cryptoJSON.setMac(ByteUtils.HexToString(mac));
         cryptoJSON.setMachash(CryptoJSON.MACHASH);
 
         return cryptoJSON;
@@ -61,10 +61,10 @@ public class Scrypt implements Encrypt {
             throw new Exception("kdf not support");
         }
 
-        byte[] mac = ByteUtils.FromHex(cryptoJSON.getMac());
-        byte[] iv = ByteUtils.FromHex(cryptoJSON.getCipherparams().getIv());
-        byte[] cipherText = ByteUtils.FromHex(cryptoJSON.getCiphertext());
-        byte[] salt = ByteUtils.FromHex(cryptoJSON.getKdfparams().getSalt());
+        byte[] mac = ByteUtils.HexToBytes(cryptoJSON.getMac());
+        byte[] iv = ByteUtils.HexToBytes(cryptoJSON.getCipherparams().getIv());
+        byte[] cipherText = ByteUtils.HexToBytes(cryptoJSON.getCiphertext());
+        byte[] salt = ByteUtils.HexToBytes(cryptoJSON.getKdfparams().getSalt());
 
         int dklen = cryptoJSON.getKdfparams().getDklen();
         int n = cryptoJSON.getKdfparams().getN();

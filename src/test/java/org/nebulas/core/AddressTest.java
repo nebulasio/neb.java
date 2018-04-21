@@ -12,7 +12,7 @@ public class AddressTest {
 
     @Before
     public void Before() {
-        pub = ByteUtils.FromHex("04be110ae3154924b93881cba7ea9cfcb6d4866d2becac5ccb79bab5d7e22309796ed60effbe6990320e7d8a0cc19e6e8b235aa17fe467c4c6ae7f469dcbf65609");
+        pub = ByteUtils.HexToBytes("04be110ae3154924b93881cba7ea9cfcb6d4866d2becac5ccb79bab5d7e22309796ed60effbe6990320e7d8a0cc19e6e8b235aa17fe467c4c6ae7f469dcbf65609");
         addr = "n1TjT3XYnHSSAkESFvGXeoN9bdjY8o6tyCm";
     }
 

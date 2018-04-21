@@ -66,7 +66,7 @@ public class Transaction {
         }
     }
 
-    public static Transaction  NewTransaction(int chainID, Address from, Address to, BigInteger value, long nonce, PayloadType payloadType, byte[] payload, BigInteger gasPrice, BigInteger gasLimit) throws Exception {
+    public Transaction(int chainID, Address from, Address to, BigInteger value, long nonce, PayloadType payloadType, byte[] payload, BigInteger gasPrice, BigInteger gasLimit) throws Exception {
         if (gasPrice.compareTo(TransactionMaxGasPrice) > 0) {
             throw new Exception("invalid gasPrice");
         }
@@ -78,23 +78,25 @@ public class Transaction {
             throw new Exception("payload data length is out of max length");
         }
 
-        Transaction tx = new Transaction();
-
-        tx.chainID = chainID;
-        tx.from = from;
-        tx.to = to;
-        tx.value = value;
-        tx.nonce = nonce;
-        tx.gasPrice = gasPrice;
-        tx.gasLimit = gasLimit;
-        tx.timestamp = System.currentTimeMillis()/1000;
+        this.chainID = chainID;
+        this.from = from;
+        this.to = to;
+        this.value = value;
+        this.nonce = nonce;
+        this.gasPrice = gasPrice;
+        this.gasLimit = gasLimit;
+        this.timestamp = System.currentTimeMillis()/1000;
 
         TransactionOuterClass.Data.Builder builder = TransactionOuterClass.Data.newBuilder();
         builder.setPayloadType(payloadType.getType());
-        builder.setPayload(ByteString.copyFrom(payload));
-        tx.data = builder.build();
+        if (payload != null && payload.length > 0) {
+            builder.setPayload(ByteString.copyFrom(payload));
+        }
+        this.data = builder.build();
+    }
 
-        return tx;
+    private Transaction() {
+        // local constructor
     }
 
     public byte[] getHash() {
@@ -194,6 +196,12 @@ public class Transaction {
         this.data = data;
     }
 
+    public static Transaction FromProto(byte[] msg) throws Exception {
+        Transaction tx = new Transaction();
+        tx.fromProto(msg);
+        return tx;
+    }
+
     public void fromProto(byte[] msg) throws Exception {
         TransactionOuterClass.Transaction t = TransactionOuterClass.Transaction.parseFrom(msg);
         this.setHash(t.getHash().toByteArray());
@@ -264,9 +272,8 @@ public class Transaction {
     }
 
     public void sign(Signature signature) throws Exception {
-        if (ByteUtils.IsNullOrEmpty(this.hash)) {
-            throw new Exception("transaction must calculate hash first");
-        }
+        // calculate hash
+        this.calculateHash();
 
         byte[] sign = signature.sign(this.hash);
         this.alg = signature.algorithm();

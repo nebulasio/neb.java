@@ -28,19 +28,19 @@ public class ByteUtils {
         return bs;
     }
 
-    public static byte[] FromHex(String str) {
+    public static byte[] HexToBytes(String str) {
         return HEX.decode(str);
     }
 
-    public static String ToHex(byte[] data) {
+    public static String HexToString(byte[] data) {
         return HEX.encode(data);
     }
 
-    public static byte[] FromBase64(String data) {
+    public static byte[] Base64ToBytes(String data) {
         return Base64.decode(data);
     }
 
-    public static String ToBase64(byte[] data) {
+    public static String Base64ToString(byte[] data) {
         return Base64.toBase64String(data);
     }
 
