@@ -1,4 +1,4 @@
-package org.nebulas.rpc.proto;
+package rpcpb;
 
 import static io.grpc.MethodDescriptor.generateFullMethodName;
 import static io.grpc.stub.ClientCalls.asyncBidiStreamingCall;
@@ -27,39 +27,39 @@ public final class ApiServiceGrpc {
 
   private ApiServiceGrpc() {}
 
-  public static final String SERVICE_NAME = "org.nebulas.rpc.proto.ApiService";
+  public static final String SERVICE_NAME = "rpcpb.ApiService";
 
   // Static method descriptors that strictly reflect the proto.
   @io.grpc.ExperimentalApi("https://github.com/grpc/grpc-java/issues/1901")
   @java.lang.Deprecated // Use {@link #getGetNebStateMethod()} instead. 
-  public static final io.grpc.MethodDescriptor<org.nebulas.rpc.proto.Rpc.NonParamsRequest,
-      org.nebulas.rpc.proto.Rpc.GetNebStateResponse> METHOD_GET_NEB_STATE = getGetNebStateMethodHelper();
+  public static final io.grpc.MethodDescriptor<rpcpb.Rpc.NonParamsRequest,
+      rpcpb.Rpc.GetNebStateResponse> METHOD_GET_NEB_STATE = getGetNebStateMethodHelper();
 
-  private static volatile io.grpc.MethodDescriptor<org.nebulas.rpc.proto.Rpc.NonParamsRequest,
-      org.nebulas.rpc.proto.Rpc.GetNebStateResponse> getGetNebStateMethod;
+  private static volatile io.grpc.MethodDescriptor<rpcpb.Rpc.NonParamsRequest,
+      rpcpb.Rpc.GetNebStateResponse> getGetNebStateMethod;
 
   @io.grpc.ExperimentalApi("https://github.com/grpc/grpc-java/issues/1901")
-  public static io.grpc.MethodDescriptor<org.nebulas.rpc.proto.Rpc.NonParamsRequest,
-      org.nebulas.rpc.proto.Rpc.GetNebStateResponse> getGetNebStateMethod() {
+  public static io.grpc.MethodDescriptor<rpcpb.Rpc.NonParamsRequest,
+      rpcpb.Rpc.GetNebStateResponse> getGetNebStateMethod() {
     return getGetNebStateMethodHelper();
   }
 
-  private static io.grpc.MethodDescriptor<org.nebulas.rpc.proto.Rpc.NonParamsRequest,
-      org.nebulas.rpc.proto.Rpc.GetNebStateResponse> getGetNebStateMethodHelper() {
-    io.grpc.MethodDescriptor<org.nebulas.rpc.proto.Rpc.NonParamsRequest, org.nebulas.rpc.proto.Rpc.GetNebStateResponse> getGetNebStateMethod;
+  private static io.grpc.MethodDescriptor<rpcpb.Rpc.NonParamsRequest,
+      rpcpb.Rpc.GetNebStateResponse> getGetNebStateMethodHelper() {
+    io.grpc.MethodDescriptor<rpcpb.Rpc.NonParamsRequest, rpcpb.Rpc.GetNebStateResponse> getGetNebStateMethod;
     if ((getGetNebStateMethod = ApiServiceGrpc.getGetNebStateMethod) == null) {
       synchronized (ApiServiceGrpc.class) {
         if ((getGetNebStateMethod = ApiServiceGrpc.getGetNebStateMethod) == null) {
           ApiServiceGrpc.getGetNebStateMethod = getGetNebStateMethod = 
-              io.grpc.MethodDescriptor.<org.nebulas.rpc.proto.Rpc.NonParamsRequest, org.nebulas.rpc.proto.Rpc.GetNebStateResponse>newBuilder()
+              io.grpc.MethodDescriptor.<rpcpb.Rpc.NonParamsRequest, rpcpb.Rpc.GetNebStateResponse>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(
-                  "org.nebulas.rpc.proto.ApiService", "GetNebState"))
+                  "rpcpb.ApiService", "GetNebState"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  org.nebulas.rpc.proto.Rpc.NonParamsRequest.getDefaultInstance()))
+                  rpcpb.Rpc.NonParamsRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  org.nebulas.rpc.proto.Rpc.GetNebStateResponse.getDefaultInstance()))
+                  rpcpb.Rpc.GetNebStateResponse.getDefaultInstance()))
                   .setSchemaDescriptor(new ApiServiceMethodDescriptorSupplier("GetNebState"))
                   .build();
           }
@@ -69,34 +69,34 @@ public final class ApiServiceGrpc {
   }
   @io.grpc.ExperimentalApi("https://github.com/grpc/grpc-java/issues/1901")
   @java.lang.Deprecated // Use {@link #getLatestIrreversibleBlockMethod()} instead. 
-  public static final io.grpc.MethodDescriptor<org.nebulas.rpc.proto.Rpc.NonParamsRequest,
-      org.nebulas.rpc.proto.Rpc.BlockResponse> METHOD_LATEST_IRREVERSIBLE_BLOCK = getLatestIrreversibleBlockMethodHelper();
+  public static final io.grpc.MethodDescriptor<rpcpb.Rpc.NonParamsRequest,
+      rpcpb.Rpc.BlockResponse> METHOD_LATEST_IRREVERSIBLE_BLOCK = getLatestIrreversibleBlockMethodHelper();
 
-  private static volatile io.grpc.MethodDescriptor<org.nebulas.rpc.proto.Rpc.NonParamsRequest,
-      org.nebulas.rpc.proto.Rpc.BlockResponse> getLatestIrreversibleBlockMethod;
+  private static volatile io.grpc.MethodDescriptor<rpcpb.Rpc.NonParamsRequest,
+      rpcpb.Rpc.BlockResponse> getLatestIrreversibleBlockMethod;
 
   @io.grpc.ExperimentalApi("https://github.com/grpc/grpc-java/issues/1901")
-  public static io.grpc.MethodDescriptor<org.nebulas.rpc.proto.Rpc.NonParamsRequest,
-      org.nebulas.rpc.proto.Rpc.BlockResponse> getLatestIrreversibleBlockMethod() {
+  public static io.grpc.MethodDescriptor<rpcpb.Rpc.NonParamsRequest,
+      rpcpb.Rpc.BlockResponse> getLatestIrreversibleBlockMethod() {
     return getLatestIrreversibleBlockMethodHelper();
   }
 
-  private static io.grpc.MethodDescriptor<org.nebulas.rpc.proto.Rpc.NonParamsRequest,
-      org.nebulas.rpc.proto.Rpc.BlockResponse> getLatestIrreversibleBlockMethodHelper() {
-    io.grpc.MethodDescriptor<org.nebulas.rpc.proto.Rpc.NonParamsRequest, org.nebulas.rpc.proto.Rpc.BlockResponse> getLatestIrreversibleBlockMethod;
+  private static io.grpc.MethodDescriptor<rpcpb.Rpc.NonParamsRequest,
+      rpcpb.Rpc.BlockResponse> getLatestIrreversibleBlockMethodHelper() {
+    io.grpc.MethodDescriptor<rpcpb.Rpc.NonParamsRequest, rpcpb.Rpc.BlockResponse> getLatestIrreversibleBlockMethod;
     if ((getLatestIrreversibleBlockMethod = ApiServiceGrpc.getLatestIrreversibleBlockMethod) == null) {
       synchronized (ApiServiceGrpc.class) {
         if ((getLatestIrreversibleBlockMethod = ApiServiceGrpc.getLatestIrreversibleBlockMethod) == null) {
           ApiServiceGrpc.getLatestIrreversibleBlockMethod = getLatestIrreversibleBlockMethod = 
-              io.grpc.MethodDescriptor.<org.nebulas.rpc.proto.Rpc.NonParamsRequest, org.nebulas.rpc.proto.Rpc.BlockResponse>newBuilder()
+              io.grpc.MethodDescriptor.<rpcpb.Rpc.NonParamsRequest, rpcpb.Rpc.BlockResponse>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(
-                  "org.nebulas.rpc.proto.ApiService", "LatestIrreversibleBlock"))
+                  "rpcpb.ApiService", "LatestIrreversibleBlock"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  org.nebulas.rpc.proto.Rpc.NonParamsRequest.getDefaultInstance()))
+                  rpcpb.Rpc.NonParamsRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  org.nebulas.rpc.proto.Rpc.BlockResponse.getDefaultInstance()))
+                  rpcpb.Rpc.BlockResponse.getDefaultInstance()))
                   .setSchemaDescriptor(new ApiServiceMethodDescriptorSupplier("LatestIrreversibleBlock"))
                   .build();
           }
@@ -106,34 +106,34 @@ public final class ApiServiceGrpc {
   }
   @io.grpc.ExperimentalApi("https://github.com/grpc/grpc-java/issues/1901")
   @java.lang.Deprecated // Use {@link #getGetAccountStateMethod()} instead. 
-  public static final io.grpc.MethodDescriptor<org.nebulas.rpc.proto.Rpc.GetAccountStateRequest,
-      org.nebulas.rpc.proto.Rpc.GetAccountStateResponse> METHOD_GET_ACCOUNT_STATE = getGetAccountStateMethodHelper();
+  public static final io.grpc.MethodDescriptor<rpcpb.Rpc.GetAccountStateRequest,
+      rpcpb.Rpc.GetAccountStateResponse> METHOD_GET_ACCOUNT_STATE = getGetAccountStateMethodHelper();
 
-  private static volatile io.grpc.MethodDescriptor<org.nebulas.rpc.proto.Rpc.GetAccountStateRequest,
-      org.nebulas.rpc.proto.Rpc.GetAccountStateResponse> getGetAccountStateMethod;
+  private static volatile io.grpc.MethodDescriptor<rpcpb.Rpc.GetAccountStateRequest,
+      rpcpb.Rpc.GetAccountStateResponse> getGetAccountStateMethod;
 
   @io.grpc.ExperimentalApi("https://github.com/grpc/grpc-java/issues/1901")
-  public static io.grpc.MethodDescriptor<org.nebulas.rpc.proto.Rpc.GetAccountStateRequest,
-      org.nebulas.rpc.proto.Rpc.GetAccountStateResponse> getGetAccountStateMethod() {
+  public static io.grpc.MethodDescriptor<rpcpb.Rpc.GetAccountStateRequest,
+      rpcpb.Rpc.GetAccountStateResponse> getGetAccountStateMethod() {
     return getGetAccountStateMethodHelper();
   }
 
-  private static io.grpc.MethodDescriptor<org.nebulas.rpc.proto.Rpc.GetAccountStateRequest,
-      org.nebulas.rpc.proto.Rpc.GetAccountStateResponse> getGetAccountStateMethodHelper() {
-    io.grpc.MethodDescriptor<org.nebulas.rpc.proto.Rpc.GetAccountStateRequest, org.nebulas.rpc.proto.Rpc.GetAccountStateResponse> getGetAccountStateMethod;
+  private static io.grpc.MethodDescriptor<rpcpb.Rpc.GetAccountStateRequest,
+      rpcpb.Rpc.GetAccountStateResponse> getGetAccountStateMethodHelper() {
+    io.grpc.MethodDescriptor<rpcpb.Rpc.GetAccountStateRequest, rpcpb.Rpc.GetAccountStateResponse> getGetAccountStateMethod;
     if ((getGetAccountStateMethod = ApiServiceGrpc.getGetAccountStateMethod) == null) {
       synchronized (ApiServiceGrpc.class) {
         if ((getGetAccountStateMethod = ApiServiceGrpc.getGetAccountStateMethod) == null) {
           ApiServiceGrpc.getGetAccountStateMethod = getGetAccountStateMethod = 
-              io.grpc.MethodDescriptor.<org.nebulas.rpc.proto.Rpc.GetAccountStateRequest, org.nebulas.rpc.proto.Rpc.GetAccountStateResponse>newBuilder()
+              io.grpc.MethodDescriptor.<rpcpb.Rpc.GetAccountStateRequest, rpcpb.Rpc.GetAccountStateResponse>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(
-                  "org.nebulas.rpc.proto.ApiService", "GetAccountState"))
+                  "rpcpb.ApiService", "GetAccountState"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  org.nebulas.rpc.proto.Rpc.GetAccountStateRequest.getDefaultInstance()))
+                  rpcpb.Rpc.GetAccountStateRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  org.nebulas.rpc.proto.Rpc.GetAccountStateResponse.getDefaultInstance()))
+                  rpcpb.Rpc.GetAccountStateResponse.getDefaultInstance()))
                   .setSchemaDescriptor(new ApiServiceMethodDescriptorSupplier("GetAccountState"))
                   .build();
           }
@@ -143,34 +143,34 @@ public final class ApiServiceGrpc {
   }
   @io.grpc.ExperimentalApi("https://github.com/grpc/grpc-java/issues/1901")
   @java.lang.Deprecated // Use {@link #getCallMethod()} instead. 
-  public static final io.grpc.MethodDescriptor<org.nebulas.rpc.proto.Rpc.TransactionRequest,
-      org.nebulas.rpc.proto.Rpc.CallResponse> METHOD_CALL = getCallMethodHelper();
+  public static final io.grpc.MethodDescriptor<rpcpb.Rpc.TransactionRequest,
+      rpcpb.Rpc.CallResponse> METHOD_CALL = getCallMethodHelper();
 
-  private static volatile io.grpc.MethodDescriptor<org.nebulas.rpc.proto.Rpc.TransactionRequest,
-      org.nebulas.rpc.proto.Rpc.CallResponse> getCallMethod;
+  private static volatile io.grpc.MethodDescriptor<rpcpb.Rpc.TransactionRequest,
+      rpcpb.Rpc.CallResponse> getCallMethod;
 
   @io.grpc.ExperimentalApi("https://github.com/grpc/grpc-java/issues/1901")
-  public static io.grpc.MethodDescriptor<org.nebulas.rpc.proto.Rpc.TransactionRequest,
-      org.nebulas.rpc.proto.Rpc.CallResponse> getCallMethod() {
+  public static io.grpc.MethodDescriptor<rpcpb.Rpc.TransactionRequest,
+      rpcpb.Rpc.CallResponse> getCallMethod() {
     return getCallMethodHelper();
   }
 
-  private static io.grpc.MethodDescriptor<org.nebulas.rpc.proto.Rpc.TransactionRequest,
-      org.nebulas.rpc.proto.Rpc.CallResponse> getCallMethodHelper() {
-    io.grpc.MethodDescriptor<org.nebulas.rpc.proto.Rpc.TransactionRequest, org.nebulas.rpc.proto.Rpc.CallResponse> getCallMethod;
+  private static io.grpc.MethodDescriptor<rpcpb.Rpc.TransactionRequest,
+      rpcpb.Rpc.CallResponse> getCallMethodHelper() {
+    io.grpc.MethodDescriptor<rpcpb.Rpc.TransactionRequest, rpcpb.Rpc.CallResponse> getCallMethod;
     if ((getCallMethod = ApiServiceGrpc.getCallMethod) == null) {
       synchronized (ApiServiceGrpc.class) {
         if ((getCallMethod = ApiServiceGrpc.getCallMethod) == null) {
           ApiServiceGrpc.getCallMethod = getCallMethod = 
-              io.grpc.MethodDescriptor.<org.nebulas.rpc.proto.Rpc.TransactionRequest, org.nebulas.rpc.proto.Rpc.CallResponse>newBuilder()
+              io.grpc.MethodDescriptor.<rpcpb.Rpc.TransactionRequest, rpcpb.Rpc.CallResponse>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(
-                  "org.nebulas.rpc.proto.ApiService", "Call"))
+                  "rpcpb.ApiService", "Call"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  org.nebulas.rpc.proto.Rpc.TransactionRequest.getDefaultInstance()))
+                  rpcpb.Rpc.TransactionRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  org.nebulas.rpc.proto.Rpc.CallResponse.getDefaultInstance()))
+                  rpcpb.Rpc.CallResponse.getDefaultInstance()))
                   .setSchemaDescriptor(new ApiServiceMethodDescriptorSupplier("Call"))
                   .build();
           }
@@ -180,34 +180,34 @@ public final class ApiServiceGrpc {
   }
   @io.grpc.ExperimentalApi("https://github.com/grpc/grpc-java/issues/1901")
   @java.lang.Deprecated // Use {@link #getSendRawTransactionMethod()} instead. 
-  public static final io.grpc.MethodDescriptor<org.nebulas.rpc.proto.Rpc.SendRawTransactionRequest,
-      org.nebulas.rpc.proto.Rpc.SendTransactionResponse> METHOD_SEND_RAW_TRANSACTION = getSendRawTransactionMethodHelper();
+  public static final io.grpc.MethodDescriptor<rpcpb.Rpc.SendRawTransactionRequest,
+      rpcpb.Rpc.SendTransactionResponse> METHOD_SEND_RAW_TRANSACTION = getSendRawTransactionMethodHelper();
 
-  private static volatile io.grpc.MethodDescriptor<org.nebulas.rpc.proto.Rpc.SendRawTransactionRequest,
-      org.nebulas.rpc.proto.Rpc.SendTransactionResponse> getSendRawTransactionMethod;
+  private static volatile io.grpc.MethodDescriptor<rpcpb.Rpc.SendRawTransactionRequest,
+      rpcpb.Rpc.SendTransactionResponse> getSendRawTransactionMethod;
 
   @io.grpc.ExperimentalApi("https://github.com/grpc/grpc-java/issues/1901")
-  public static io.grpc.MethodDescriptor<org.nebulas.rpc.proto.Rpc.SendRawTransactionRequest,
-      org.nebulas.rpc.proto.Rpc.SendTransactionResponse> getSendRawTransactionMethod() {
+  public static io.grpc.MethodDescriptor<rpcpb.Rpc.SendRawTransactionRequest,
+      rpcpb.Rpc.SendTransactionResponse> getSendRawTransactionMethod() {
     return getSendRawTransactionMethodHelper();
   }
 
-  private static io.grpc.MethodDescriptor<org.nebulas.rpc.proto.Rpc.SendRawTransactionRequest,
-      org.nebulas.rpc.proto.Rpc.SendTransactionResponse> getSendRawTransactionMethodHelper() {
-    io.grpc.MethodDescriptor<org.nebulas.rpc.proto.Rpc.SendRawTransactionRequest, org.nebulas.rpc.proto.Rpc.SendTransactionResponse> getSendRawTransactionMethod;
+  private static io.grpc.MethodDescriptor<rpcpb.Rpc.SendRawTransactionRequest,
+      rpcpb.Rpc.SendTransactionResponse> getSendRawTransactionMethodHelper() {
+    io.grpc.MethodDescriptor<rpcpb.Rpc.SendRawTransactionRequest, rpcpb.Rpc.SendTransactionResponse> getSendRawTransactionMethod;
     if ((getSendRawTransactionMethod = ApiServiceGrpc.getSendRawTransactionMethod) == null) {
       synchronized (ApiServiceGrpc.class) {
         if ((getSendRawTransactionMethod = ApiServiceGrpc.getSendRawTransactionMethod) == null) {
           ApiServiceGrpc.getSendRawTransactionMethod = getSendRawTransactionMethod = 
-              io.grpc.MethodDescriptor.<org.nebulas.rpc.proto.Rpc.SendRawTransactionRequest, org.nebulas.rpc.proto.Rpc.SendTransactionResponse>newBuilder()
+              io.grpc.MethodDescriptor.<rpcpb.Rpc.SendRawTransactionRequest, rpcpb.Rpc.SendTransactionResponse>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(
-                  "org.nebulas.rpc.proto.ApiService", "SendRawTransaction"))
+                  "rpcpb.ApiService", "SendRawTransaction"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  org.nebulas.rpc.proto.Rpc.SendRawTransactionRequest.getDefaultInstance()))
+                  rpcpb.Rpc.SendRawTransactionRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  org.nebulas.rpc.proto.Rpc.SendTransactionResponse.getDefaultInstance()))
+                  rpcpb.Rpc.SendTransactionResponse.getDefaultInstance()))
                   .setSchemaDescriptor(new ApiServiceMethodDescriptorSupplier("SendRawTransaction"))
                   .build();
           }
@@ -217,34 +217,34 @@ public final class ApiServiceGrpc {
   }
   @io.grpc.ExperimentalApi("https://github.com/grpc/grpc-java/issues/1901")
   @java.lang.Deprecated // Use {@link #getGetBlockByHashMethod()} instead. 
-  public static final io.grpc.MethodDescriptor<org.nebulas.rpc.proto.Rpc.GetBlockByHashRequest,
-      org.nebulas.rpc.proto.Rpc.BlockResponse> METHOD_GET_BLOCK_BY_HASH = getGetBlockByHashMethodHelper();
+  public static final io.grpc.MethodDescriptor<rpcpb.Rpc.GetBlockByHashRequest,
+      rpcpb.Rpc.BlockResponse> METHOD_GET_BLOCK_BY_HASH = getGetBlockByHashMethodHelper();
 
-  private static volatile io.grpc.MethodDescriptor<org.nebulas.rpc.proto.Rpc.GetBlockByHashRequest,
-      org.nebulas.rpc.proto.Rpc.BlockResponse> getGetBlockByHashMethod;
+  private static volatile io.grpc.MethodDescriptor<rpcpb.Rpc.GetBlockByHashRequest,
+      rpcpb.Rpc.BlockResponse> getGetBlockByHashMethod;
 
   @io.grpc.ExperimentalApi("https://github.com/grpc/grpc-java/issues/1901")
-  public static io.grpc.MethodDescriptor<org.nebulas.rpc.proto.Rpc.GetBlockByHashRequest,
-      org.nebulas.rpc.proto.Rpc.BlockResponse> getGetBlockByHashMethod() {
+  public static io.grpc.MethodDescriptor<rpcpb.Rpc.GetBlockByHashRequest,
+      rpcpb.Rpc.BlockResponse> getGetBlockByHashMethod() {
     return getGetBlockByHashMethodHelper();
   }
 
-  private static io.grpc.MethodDescriptor<org.nebulas.rpc.proto.Rpc.GetBlockByHashRequest,
-      org.nebulas.rpc.proto.Rpc.BlockResponse> getGetBlockByHashMethodHelper() {
-    io.grpc.MethodDescriptor<org.nebulas.rpc.proto.Rpc.GetBlockByHashRequest, org.nebulas.rpc.proto.Rpc.BlockResponse> getGetBlockByHashMethod;
+  private static io.grpc.MethodDescriptor<rpcpb.Rpc.GetBlockByHashRequest,
+      rpcpb.Rpc.BlockResponse> getGetBlockByHashMethodHelper() {
+    io.grpc.MethodDescriptor<rpcpb.Rpc.GetBlockByHashRequest, rpcpb.Rpc.BlockResponse> getGetBlockByHashMethod;
     if ((getGetBlockByHashMethod = ApiServiceGrpc.getGetBlockByHashMethod) == null) {
       synchronized (ApiServiceGrpc.class) {
         if ((getGetBlockByHashMethod = ApiServiceGrpc.getGetBlockByHashMethod) == null) {
           ApiServiceGrpc.getGetBlockByHashMethod = getGetBlockByHashMethod = 
-              io.grpc.MethodDescriptor.<org.nebulas.rpc.proto.Rpc.GetBlockByHashRequest, org.nebulas.rpc.proto.Rpc.BlockResponse>newBuilder()
+              io.grpc.MethodDescriptor.<rpcpb.Rpc.GetBlockByHashRequest, rpcpb.Rpc.BlockResponse>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(
-                  "org.nebulas.rpc.proto.ApiService", "GetBlockByHash"))
+                  "rpcpb.ApiService", "GetBlockByHash"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  org.nebulas.rpc.proto.Rpc.GetBlockByHashRequest.getDefaultInstance()))
+                  rpcpb.Rpc.GetBlockByHashRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  org.nebulas.rpc.proto.Rpc.BlockResponse.getDefaultInstance()))
+                  rpcpb.Rpc.BlockResponse.getDefaultInstance()))
                   .setSchemaDescriptor(new ApiServiceMethodDescriptorSupplier("GetBlockByHash"))
                   .build();
           }
@@ -254,34 +254,34 @@ public final class ApiServiceGrpc {
   }
   @io.grpc.ExperimentalApi("https://github.com/grpc/grpc-java/issues/1901")
   @java.lang.Deprecated // Use {@link #getGetBlockByHeightMethod()} instead. 
-  public static final io.grpc.MethodDescriptor<org.nebulas.rpc.proto.Rpc.GetBlockByHeightRequest,
-      org.nebulas.rpc.proto.Rpc.BlockResponse> METHOD_GET_BLOCK_BY_HEIGHT = getGetBlockByHeightMethodHelper();
+  public static final io.grpc.MethodDescriptor<rpcpb.Rpc.GetBlockByHeightRequest,
+      rpcpb.Rpc.BlockResponse> METHOD_GET_BLOCK_BY_HEIGHT = getGetBlockByHeightMethodHelper();
 
-  private static volatile io.grpc.MethodDescriptor<org.nebulas.rpc.proto.Rpc.GetBlockByHeightRequest,
-      org.nebulas.rpc.proto.Rpc.BlockResponse> getGetBlockByHeightMethod;
+  private static volatile io.grpc.MethodDescriptor<rpcpb.Rpc.GetBlockByHeightRequest,
+      rpcpb.Rpc.BlockResponse> getGetBlockByHeightMethod;
 
   @io.grpc.ExperimentalApi("https://github.com/grpc/grpc-java/issues/1901")
-  public static io.grpc.MethodDescriptor<org.nebulas.rpc.proto.Rpc.GetBlockByHeightRequest,
-      org.nebulas.rpc.proto.Rpc.BlockResponse> getGetBlockByHeightMethod() {
+  public static io.grpc.MethodDescriptor<rpcpb.Rpc.GetBlockByHeightRequest,
+      rpcpb.Rpc.BlockResponse> getGetBlockByHeightMethod() {
     return getGetBlockByHeightMethodHelper();
   }
 
-  private static io.grpc.MethodDescriptor<org.nebulas.rpc.proto.Rpc.GetBlockByHeightRequest,
-      org.nebulas.rpc.proto.Rpc.BlockResponse> getGetBlockByHeightMethodHelper() {
-    io.grpc.MethodDescriptor<org.nebulas.rpc.proto.Rpc.GetBlockByHeightRequest, org.nebulas.rpc.proto.Rpc.BlockResponse> getGetBlockByHeightMethod;
+  private static io.grpc.MethodDescriptor<rpcpb.Rpc.GetBlockByHeightRequest,
+      rpcpb.Rpc.BlockResponse> getGetBlockByHeightMethodHelper() {
+    io.grpc.MethodDescriptor<rpcpb.Rpc.GetBlockByHeightRequest, rpcpb.Rpc.BlockResponse> getGetBlockByHeightMethod;
     if ((getGetBlockByHeightMethod = ApiServiceGrpc.getGetBlockByHeightMethod) == null) {
       synchronized (ApiServiceGrpc.class) {
         if ((getGetBlockByHeightMethod = ApiServiceGrpc.getGetBlockByHeightMethod) == null) {
           ApiServiceGrpc.getGetBlockByHeightMethod = getGetBlockByHeightMethod = 
-              io.grpc.MethodDescriptor.<org.nebulas.rpc.proto.Rpc.GetBlockByHeightRequest, org.nebulas.rpc.proto.Rpc.BlockResponse>newBuilder()
+              io.grpc.MethodDescriptor.<rpcpb.Rpc.GetBlockByHeightRequest, rpcpb.Rpc.BlockResponse>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(
-                  "org.nebulas.rpc.proto.ApiService", "GetBlockByHeight"))
+                  "rpcpb.ApiService", "GetBlockByHeight"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  org.nebulas.rpc.proto.Rpc.GetBlockByHeightRequest.getDefaultInstance()))
+                  rpcpb.Rpc.GetBlockByHeightRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  org.nebulas.rpc.proto.Rpc.BlockResponse.getDefaultInstance()))
+                  rpcpb.Rpc.BlockResponse.getDefaultInstance()))
                   .setSchemaDescriptor(new ApiServiceMethodDescriptorSupplier("GetBlockByHeight"))
                   .build();
           }
@@ -291,34 +291,34 @@ public final class ApiServiceGrpc {
   }
   @io.grpc.ExperimentalApi("https://github.com/grpc/grpc-java/issues/1901")
   @java.lang.Deprecated // Use {@link #getGetTransactionReceiptMethod()} instead. 
-  public static final io.grpc.MethodDescriptor<org.nebulas.rpc.proto.Rpc.GetTransactionByHashRequest,
-      org.nebulas.rpc.proto.Rpc.TransactionResponse> METHOD_GET_TRANSACTION_RECEIPT = getGetTransactionReceiptMethodHelper();
+  public static final io.grpc.MethodDescriptor<rpcpb.Rpc.GetTransactionByHashRequest,
+      rpcpb.Rpc.TransactionResponse> METHOD_GET_TRANSACTION_RECEIPT = getGetTransactionReceiptMethodHelper();
 
-  private static volatile io.grpc.MethodDescriptor<org.nebulas.rpc.proto.Rpc.GetTransactionByHashRequest,
-      org.nebulas.rpc.proto.Rpc.TransactionResponse> getGetTransactionReceiptMethod;
+  private static volatile io.grpc.MethodDescriptor<rpcpb.Rpc.GetTransactionByHashRequest,
+      rpcpb.Rpc.TransactionResponse> getGetTransactionReceiptMethod;
 
   @io.grpc.ExperimentalApi("https://github.com/grpc/grpc-java/issues/1901")
-  public static io.grpc.MethodDescriptor<org.nebulas.rpc.proto.Rpc.GetTransactionByHashRequest,
-      org.nebulas.rpc.proto.Rpc.TransactionResponse> getGetTransactionReceiptMethod() {
+  public static io.grpc.MethodDescriptor<rpcpb.Rpc.GetTransactionByHashRequest,
+      rpcpb.Rpc.TransactionResponse> getGetTransactionReceiptMethod() {
     return getGetTransactionReceiptMethodHelper();
   }
 
-  private static io.grpc.MethodDescriptor<org.nebulas.rpc.proto.Rpc.GetTransactionByHashRequest,
-      org.nebulas.rpc.proto.Rpc.TransactionResponse> getGetTransactionReceiptMethodHelper() {
-    io.grpc.MethodDescriptor<org.nebulas.rpc.proto.Rpc.GetTransactionByHashRequest, org.nebulas.rpc.proto.Rpc.TransactionResponse> getGetTransactionReceiptMethod;
+  private static io.grpc.MethodDescriptor<rpcpb.Rpc.GetTransactionByHashRequest,
+      rpcpb.Rpc.TransactionResponse> getGetTransactionReceiptMethodHelper() {
+    io.grpc.MethodDescriptor<rpcpb.Rpc.GetTransactionByHashRequest, rpcpb.Rpc.TransactionResponse> getGetTransactionReceiptMethod;
     if ((getGetTransactionReceiptMethod = ApiServiceGrpc.getGetTransactionReceiptMethod) == null) {
       synchronized (ApiServiceGrpc.class) {
         if ((getGetTransactionReceiptMethod = ApiServiceGrpc.getGetTransactionReceiptMethod) == null) {
           ApiServiceGrpc.getGetTransactionReceiptMethod = getGetTransactionReceiptMethod = 
-              io.grpc.MethodDescriptor.<org.nebulas.rpc.proto.Rpc.GetTransactionByHashRequest, org.nebulas.rpc.proto.Rpc.TransactionResponse>newBuilder()
+              io.grpc.MethodDescriptor.<rpcpb.Rpc.GetTransactionByHashRequest, rpcpb.Rpc.TransactionResponse>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(
-                  "org.nebulas.rpc.proto.ApiService", "GetTransactionReceipt"))
+                  "rpcpb.ApiService", "GetTransactionReceipt"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  org.nebulas.rpc.proto.Rpc.GetTransactionByHashRequest.getDefaultInstance()))
+                  rpcpb.Rpc.GetTransactionByHashRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  org.nebulas.rpc.proto.Rpc.TransactionResponse.getDefaultInstance()))
+                  rpcpb.Rpc.TransactionResponse.getDefaultInstance()))
                   .setSchemaDescriptor(new ApiServiceMethodDescriptorSupplier("GetTransactionReceipt"))
                   .build();
           }
@@ -328,34 +328,34 @@ public final class ApiServiceGrpc {
   }
   @io.grpc.ExperimentalApi("https://github.com/grpc/grpc-java/issues/1901")
   @java.lang.Deprecated // Use {@link #getSubscribeMethod()} instead. 
-  public static final io.grpc.MethodDescriptor<org.nebulas.rpc.proto.Rpc.SubscribeRequest,
-      org.nebulas.rpc.proto.Rpc.SubscribeResponse> METHOD_SUBSCRIBE = getSubscribeMethodHelper();
+  public static final io.grpc.MethodDescriptor<rpcpb.Rpc.SubscribeRequest,
+      rpcpb.Rpc.SubscribeResponse> METHOD_SUBSCRIBE = getSubscribeMethodHelper();
 
-  private static volatile io.grpc.MethodDescriptor<org.nebulas.rpc.proto.Rpc.SubscribeRequest,
-      org.nebulas.rpc.proto.Rpc.SubscribeResponse> getSubscribeMethod;
+  private static volatile io.grpc.MethodDescriptor<rpcpb.Rpc.SubscribeRequest,
+      rpcpb.Rpc.SubscribeResponse> getSubscribeMethod;
 
   @io.grpc.ExperimentalApi("https://github.com/grpc/grpc-java/issues/1901")
-  public static io.grpc.MethodDescriptor<org.nebulas.rpc.proto.Rpc.SubscribeRequest,
-      org.nebulas.rpc.proto.Rpc.SubscribeResponse> getSubscribeMethod() {
+  public static io.grpc.MethodDescriptor<rpcpb.Rpc.SubscribeRequest,
+      rpcpb.Rpc.SubscribeResponse> getSubscribeMethod() {
     return getSubscribeMethodHelper();
   }
 
-  private static io.grpc.MethodDescriptor<org.nebulas.rpc.proto.Rpc.SubscribeRequest,
-      org.nebulas.rpc.proto.Rpc.SubscribeResponse> getSubscribeMethodHelper() {
-    io.grpc.MethodDescriptor<org.nebulas.rpc.proto.Rpc.SubscribeRequest, org.nebulas.rpc.proto.Rpc.SubscribeResponse> getSubscribeMethod;
+  private static io.grpc.MethodDescriptor<rpcpb.Rpc.SubscribeRequest,
+      rpcpb.Rpc.SubscribeResponse> getSubscribeMethodHelper() {
+    io.grpc.MethodDescriptor<rpcpb.Rpc.SubscribeRequest, rpcpb.Rpc.SubscribeResponse> getSubscribeMethod;
     if ((getSubscribeMethod = ApiServiceGrpc.getSubscribeMethod) == null) {
       synchronized (ApiServiceGrpc.class) {
         if ((getSubscribeMethod = ApiServiceGrpc.getSubscribeMethod) == null) {
           ApiServiceGrpc.getSubscribeMethod = getSubscribeMethod = 
-              io.grpc.MethodDescriptor.<org.nebulas.rpc.proto.Rpc.SubscribeRequest, org.nebulas.rpc.proto.Rpc.SubscribeResponse>newBuilder()
+              io.grpc.MethodDescriptor.<rpcpb.Rpc.SubscribeRequest, rpcpb.Rpc.SubscribeResponse>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
               .setFullMethodName(generateFullMethodName(
-                  "org.nebulas.rpc.proto.ApiService", "Subscribe"))
+                  "rpcpb.ApiService", "Subscribe"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  org.nebulas.rpc.proto.Rpc.SubscribeRequest.getDefaultInstance()))
+                  rpcpb.Rpc.SubscribeRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  org.nebulas.rpc.proto.Rpc.SubscribeResponse.getDefaultInstance()))
+                  rpcpb.Rpc.SubscribeResponse.getDefaultInstance()))
                   .setSchemaDescriptor(new ApiServiceMethodDescriptorSupplier("Subscribe"))
                   .build();
           }
@@ -365,34 +365,34 @@ public final class ApiServiceGrpc {
   }
   @io.grpc.ExperimentalApi("https://github.com/grpc/grpc-java/issues/1901")
   @java.lang.Deprecated // Use {@link #getGetGasPriceMethod()} instead. 
-  public static final io.grpc.MethodDescriptor<org.nebulas.rpc.proto.Rpc.NonParamsRequest,
-      org.nebulas.rpc.proto.Rpc.GasPriceResponse> METHOD_GET_GAS_PRICE = getGetGasPriceMethodHelper();
+  public static final io.grpc.MethodDescriptor<rpcpb.Rpc.NonParamsRequest,
+      rpcpb.Rpc.GasPriceResponse> METHOD_GET_GAS_PRICE = getGetGasPriceMethodHelper();
 
-  private static volatile io.grpc.MethodDescriptor<org.nebulas.rpc.proto.Rpc.NonParamsRequest,
-      org.nebulas.rpc.proto.Rpc.GasPriceResponse> getGetGasPriceMethod;
+  private static volatile io.grpc.MethodDescriptor<rpcpb.Rpc.NonParamsRequest,
+      rpcpb.Rpc.GasPriceResponse> getGetGasPriceMethod;
 
   @io.grpc.ExperimentalApi("https://github.com/grpc/grpc-java/issues/1901")
-  public static io.grpc.MethodDescriptor<org.nebulas.rpc.proto.Rpc.NonParamsRequest,
-      org.nebulas.rpc.proto.Rpc.GasPriceResponse> getGetGasPriceMethod() {
+  public static io.grpc.MethodDescriptor<rpcpb.Rpc.NonParamsRequest,
+      rpcpb.Rpc.GasPriceResponse> getGetGasPriceMethod() {
     return getGetGasPriceMethodHelper();
   }
 
-  private static io.grpc.MethodDescriptor<org.nebulas.rpc.proto.Rpc.NonParamsRequest,
-      org.nebulas.rpc.proto.Rpc.GasPriceResponse> getGetGasPriceMethodHelper() {
-    io.grpc.MethodDescriptor<org.nebulas.rpc.proto.Rpc.NonParamsRequest, org.nebulas.rpc.proto.Rpc.GasPriceResponse> getGetGasPriceMethod;
+  private static io.grpc.MethodDescriptor<rpcpb.Rpc.NonParamsRequest,
+      rpcpb.Rpc.GasPriceResponse> getGetGasPriceMethodHelper() {
+    io.grpc.MethodDescriptor<rpcpb.Rpc.NonParamsRequest, rpcpb.Rpc.GasPriceResponse> getGetGasPriceMethod;
     if ((getGetGasPriceMethod = ApiServiceGrpc.getGetGasPriceMethod) == null) {
       synchronized (ApiServiceGrpc.class) {
         if ((getGetGasPriceMethod = ApiServiceGrpc.getGetGasPriceMethod) == null) {
           ApiServiceGrpc.getGetGasPriceMethod = getGetGasPriceMethod = 
-              io.grpc.MethodDescriptor.<org.nebulas.rpc.proto.Rpc.NonParamsRequest, org.nebulas.rpc.proto.Rpc.GasPriceResponse>newBuilder()
+              io.grpc.MethodDescriptor.<rpcpb.Rpc.NonParamsRequest, rpcpb.Rpc.GasPriceResponse>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(
-                  "org.nebulas.rpc.proto.ApiService", "GetGasPrice"))
+                  "rpcpb.ApiService", "GetGasPrice"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  org.nebulas.rpc.proto.Rpc.NonParamsRequest.getDefaultInstance()))
+                  rpcpb.Rpc.NonParamsRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  org.nebulas.rpc.proto.Rpc.GasPriceResponse.getDefaultInstance()))
+                  rpcpb.Rpc.GasPriceResponse.getDefaultInstance()))
                   .setSchemaDescriptor(new ApiServiceMethodDescriptorSupplier("GetGasPrice"))
                   .build();
           }
@@ -402,34 +402,34 @@ public final class ApiServiceGrpc {
   }
   @io.grpc.ExperimentalApi("https://github.com/grpc/grpc-java/issues/1901")
   @java.lang.Deprecated // Use {@link #getEstimateGasMethod()} instead. 
-  public static final io.grpc.MethodDescriptor<org.nebulas.rpc.proto.Rpc.TransactionRequest,
-      org.nebulas.rpc.proto.Rpc.GasResponse> METHOD_ESTIMATE_GAS = getEstimateGasMethodHelper();
+  public static final io.grpc.MethodDescriptor<rpcpb.Rpc.TransactionRequest,
+      rpcpb.Rpc.GasResponse> METHOD_ESTIMATE_GAS = getEstimateGasMethodHelper();
 
-  private static volatile io.grpc.MethodDescriptor<org.nebulas.rpc.proto.Rpc.TransactionRequest,
-      org.nebulas.rpc.proto.Rpc.GasResponse> getEstimateGasMethod;
+  private static volatile io.grpc.MethodDescriptor<rpcpb.Rpc.TransactionRequest,
+      rpcpb.Rpc.GasResponse> getEstimateGasMethod;
 
   @io.grpc.ExperimentalApi("https://github.com/grpc/grpc-java/issues/1901")
-  public static io.grpc.MethodDescriptor<org.nebulas.rpc.proto.Rpc.TransactionRequest,
-      org.nebulas.rpc.proto.Rpc.GasResponse> getEstimateGasMethod() {
+  public static io.grpc.MethodDescriptor<rpcpb.Rpc.TransactionRequest,
+      rpcpb.Rpc.GasResponse> getEstimateGasMethod() {
     return getEstimateGasMethodHelper();
   }
 
-  private static io.grpc.MethodDescriptor<org.nebulas.rpc.proto.Rpc.TransactionRequest,
-      org.nebulas.rpc.proto.Rpc.GasResponse> getEstimateGasMethodHelper() {
-    io.grpc.MethodDescriptor<org.nebulas.rpc.proto.Rpc.TransactionRequest, org.nebulas.rpc.proto.Rpc.GasResponse> getEstimateGasMethod;
+  private static io.grpc.MethodDescriptor<rpcpb.Rpc.TransactionRequest,
+      rpcpb.Rpc.GasResponse> getEstimateGasMethodHelper() {
+    io.grpc.MethodDescriptor<rpcpb.Rpc.TransactionRequest, rpcpb.Rpc.GasResponse> getEstimateGasMethod;
     if ((getEstimateGasMethod = ApiServiceGrpc.getEstimateGasMethod) == null) {
       synchronized (ApiServiceGrpc.class) {
         if ((getEstimateGasMethod = ApiServiceGrpc.getEstimateGasMethod) == null) {
           ApiServiceGrpc.getEstimateGasMethod = getEstimateGasMethod = 
-              io.grpc.MethodDescriptor.<org.nebulas.rpc.proto.Rpc.TransactionRequest, org.nebulas.rpc.proto.Rpc.GasResponse>newBuilder()
+              io.grpc.MethodDescriptor.<rpcpb.Rpc.TransactionRequest, rpcpb.Rpc.GasResponse>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(
-                  "org.nebulas.rpc.proto.ApiService", "EstimateGas"))
+                  "rpcpb.ApiService", "EstimateGas"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  org.nebulas.rpc.proto.Rpc.TransactionRequest.getDefaultInstance()))
+                  rpcpb.Rpc.TransactionRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  org.nebulas.rpc.proto.Rpc.GasResponse.getDefaultInstance()))
+                  rpcpb.Rpc.GasResponse.getDefaultInstance()))
                   .setSchemaDescriptor(new ApiServiceMethodDescriptorSupplier("EstimateGas"))
                   .build();
           }
@@ -439,34 +439,34 @@ public final class ApiServiceGrpc {
   }
   @io.grpc.ExperimentalApi("https://github.com/grpc/grpc-java/issues/1901")
   @java.lang.Deprecated // Use {@link #getGetEventsByHashMethod()} instead. 
-  public static final io.grpc.MethodDescriptor<org.nebulas.rpc.proto.Rpc.HashRequest,
-      org.nebulas.rpc.proto.Rpc.EventsResponse> METHOD_GET_EVENTS_BY_HASH = getGetEventsByHashMethodHelper();
+  public static final io.grpc.MethodDescriptor<rpcpb.Rpc.HashRequest,
+      rpcpb.Rpc.EventsResponse> METHOD_GET_EVENTS_BY_HASH = getGetEventsByHashMethodHelper();
 
-  private static volatile io.grpc.MethodDescriptor<org.nebulas.rpc.proto.Rpc.HashRequest,
-      org.nebulas.rpc.proto.Rpc.EventsResponse> getGetEventsByHashMethod;
+  private static volatile io.grpc.MethodDescriptor<rpcpb.Rpc.HashRequest,
+      rpcpb.Rpc.EventsResponse> getGetEventsByHashMethod;
 
   @io.grpc.ExperimentalApi("https://github.com/grpc/grpc-java/issues/1901")
-  public static io.grpc.MethodDescriptor<org.nebulas.rpc.proto.Rpc.HashRequest,
-      org.nebulas.rpc.proto.Rpc.EventsResponse> getGetEventsByHashMethod() {
+  public static io.grpc.MethodDescriptor<rpcpb.Rpc.HashRequest,
+      rpcpb.Rpc.EventsResponse> getGetEventsByHashMethod() {
     return getGetEventsByHashMethodHelper();
   }
 
-  private static io.grpc.MethodDescriptor<org.nebulas.rpc.proto.Rpc.HashRequest,
-      org.nebulas.rpc.proto.Rpc.EventsResponse> getGetEventsByHashMethodHelper() {
-    io.grpc.MethodDescriptor<org.nebulas.rpc.proto.Rpc.HashRequest, org.nebulas.rpc.proto.Rpc.EventsResponse> getGetEventsByHashMethod;
+  private static io.grpc.MethodDescriptor<rpcpb.Rpc.HashRequest,
+      rpcpb.Rpc.EventsResponse> getGetEventsByHashMethodHelper() {
+    io.grpc.MethodDescriptor<rpcpb.Rpc.HashRequest, rpcpb.Rpc.EventsResponse> getGetEventsByHashMethod;
     if ((getGetEventsByHashMethod = ApiServiceGrpc.getGetEventsByHashMethod) == null) {
       synchronized (ApiServiceGrpc.class) {
         if ((getGetEventsByHashMethod = ApiServiceGrpc.getGetEventsByHashMethod) == null) {
           ApiServiceGrpc.getGetEventsByHashMethod = getGetEventsByHashMethod = 
-              io.grpc.MethodDescriptor.<org.nebulas.rpc.proto.Rpc.HashRequest, org.nebulas.rpc.proto.Rpc.EventsResponse>newBuilder()
+              io.grpc.MethodDescriptor.<rpcpb.Rpc.HashRequest, rpcpb.Rpc.EventsResponse>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(
-                  "org.nebulas.rpc.proto.ApiService", "GetEventsByHash"))
+                  "rpcpb.ApiService", "GetEventsByHash"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  org.nebulas.rpc.proto.Rpc.HashRequest.getDefaultInstance()))
+                  rpcpb.Rpc.HashRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  org.nebulas.rpc.proto.Rpc.EventsResponse.getDefaultInstance()))
+                  rpcpb.Rpc.EventsResponse.getDefaultInstance()))
                   .setSchemaDescriptor(new ApiServiceMethodDescriptorSupplier("GetEventsByHash"))
                   .build();
           }
@@ -476,34 +476,34 @@ public final class ApiServiceGrpc {
   }
   @io.grpc.ExperimentalApi("https://github.com/grpc/grpc-java/issues/1901")
   @java.lang.Deprecated // Use {@link #getGetDynastyMethod()} instead. 
-  public static final io.grpc.MethodDescriptor<org.nebulas.rpc.proto.Rpc.ByBlockHeightRequest,
-      org.nebulas.rpc.proto.Rpc.GetDynastyResponse> METHOD_GET_DYNASTY = getGetDynastyMethodHelper();
+  public static final io.grpc.MethodDescriptor<rpcpb.Rpc.ByBlockHeightRequest,
+      rpcpb.Rpc.GetDynastyResponse> METHOD_GET_DYNASTY = getGetDynastyMethodHelper();
 
-  private static volatile io.grpc.MethodDescriptor<org.nebulas.rpc.proto.Rpc.ByBlockHeightRequest,
-      org.nebulas.rpc.proto.Rpc.GetDynastyResponse> getGetDynastyMethod;
+  private static volatile io.grpc.MethodDescriptor<rpcpb.Rpc.ByBlockHeightRequest,
+      rpcpb.Rpc.GetDynastyResponse> getGetDynastyMethod;
 
   @io.grpc.ExperimentalApi("https://github.com/grpc/grpc-java/issues/1901")
-  public static io.grpc.MethodDescriptor<org.nebulas.rpc.proto.Rpc.ByBlockHeightRequest,
-      org.nebulas.rpc.proto.Rpc.GetDynastyResponse> getGetDynastyMethod() {
+  public static io.grpc.MethodDescriptor<rpcpb.Rpc.ByBlockHeightRequest,
+      rpcpb.Rpc.GetDynastyResponse> getGetDynastyMethod() {
     return getGetDynastyMethodHelper();
   }
 
-  private static io.grpc.MethodDescriptor<org.nebulas.rpc.proto.Rpc.ByBlockHeightRequest,
-      org.nebulas.rpc.proto.Rpc.GetDynastyResponse> getGetDynastyMethodHelper() {
-    io.grpc.MethodDescriptor<org.nebulas.rpc.proto.Rpc.ByBlockHeightRequest, org.nebulas.rpc.proto.Rpc.GetDynastyResponse> getGetDynastyMethod;
+  private static io.grpc.MethodDescriptor<rpcpb.Rpc.ByBlockHeightRequest,
+      rpcpb.Rpc.GetDynastyResponse> getGetDynastyMethodHelper() {
+    io.grpc.MethodDescriptor<rpcpb.Rpc.ByBlockHeightRequest, rpcpb.Rpc.GetDynastyResponse> getGetDynastyMethod;
     if ((getGetDynastyMethod = ApiServiceGrpc.getGetDynastyMethod) == null) {
       synchronized (ApiServiceGrpc.class) {
         if ((getGetDynastyMethod = ApiServiceGrpc.getGetDynastyMethod) == null) {
           ApiServiceGrpc.getGetDynastyMethod = getGetDynastyMethod = 
-              io.grpc.MethodDescriptor.<org.nebulas.rpc.proto.Rpc.ByBlockHeightRequest, org.nebulas.rpc.proto.Rpc.GetDynastyResponse>newBuilder()
+              io.grpc.MethodDescriptor.<rpcpb.Rpc.ByBlockHeightRequest, rpcpb.Rpc.GetDynastyResponse>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(
-                  "org.nebulas.rpc.proto.ApiService", "GetDynasty"))
+                  "rpcpb.ApiService", "GetDynasty"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  org.nebulas.rpc.proto.Rpc.ByBlockHeightRequest.getDefaultInstance()))
+                  rpcpb.Rpc.ByBlockHeightRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  org.nebulas.rpc.proto.Rpc.GetDynastyResponse.getDefaultInstance()))
+                  rpcpb.Rpc.GetDynastyResponse.getDefaultInstance()))
                   .setSchemaDescriptor(new ApiServiceMethodDescriptorSupplier("GetDynasty"))
                   .build();
           }
@@ -547,8 +547,8 @@ public final class ApiServiceGrpc {
      * Return the state of the neb.
      * </pre>
      */
-    public void getNebState(org.nebulas.rpc.proto.Rpc.NonParamsRequest request,
-        io.grpc.stub.StreamObserver<org.nebulas.rpc.proto.Rpc.GetNebStateResponse> responseObserver) {
+    public void getNebState(rpcpb.Rpc.NonParamsRequest request,
+        io.grpc.stub.StreamObserver<rpcpb.Rpc.GetNebStateResponse> responseObserver) {
       asyncUnimplementedUnaryCall(getGetNebStateMethodHelper(), responseObserver);
     }
 
@@ -557,8 +557,8 @@ public final class ApiServiceGrpc {
      * Return the latest irreversible block.
      * </pre>
      */
-    public void latestIrreversibleBlock(org.nebulas.rpc.proto.Rpc.NonParamsRequest request,
-        io.grpc.stub.StreamObserver<org.nebulas.rpc.proto.Rpc.BlockResponse> responseObserver) {
+    public void latestIrreversibleBlock(rpcpb.Rpc.NonParamsRequest request,
+        io.grpc.stub.StreamObserver<rpcpb.Rpc.BlockResponse> responseObserver) {
       asyncUnimplementedUnaryCall(getLatestIrreversibleBlockMethodHelper(), responseObserver);
     }
 
@@ -567,8 +567,8 @@ public final class ApiServiceGrpc {
      * Return the state of the account.
      * </pre>
      */
-    public void getAccountState(org.nebulas.rpc.proto.Rpc.GetAccountStateRequest request,
-        io.grpc.stub.StreamObserver<org.nebulas.rpc.proto.Rpc.GetAccountStateResponse> responseObserver) {
+    public void getAccountState(rpcpb.Rpc.GetAccountStateRequest request,
+        io.grpc.stub.StreamObserver<rpcpb.Rpc.GetAccountStateResponse> responseObserver) {
       asyncUnimplementedUnaryCall(getGetAccountStateMethodHelper(), responseObserver);
     }
 
@@ -577,8 +577,8 @@ public final class ApiServiceGrpc {
      * Call transaction
      * </pre>
      */
-    public void call(org.nebulas.rpc.proto.Rpc.TransactionRequest request,
-        io.grpc.stub.StreamObserver<org.nebulas.rpc.proto.Rpc.CallResponse> responseObserver) {
+    public void call(rpcpb.Rpc.TransactionRequest request,
+        io.grpc.stub.StreamObserver<rpcpb.Rpc.CallResponse> responseObserver) {
       asyncUnimplementedUnaryCall(getCallMethodHelper(), responseObserver);
     }
 
@@ -587,8 +587,8 @@ public final class ApiServiceGrpc {
      * Submit the signed transaction.
      * </pre>
      */
-    public void sendRawTransaction(org.nebulas.rpc.proto.Rpc.SendRawTransactionRequest request,
-        io.grpc.stub.StreamObserver<org.nebulas.rpc.proto.Rpc.SendTransactionResponse> responseObserver) {
+    public void sendRawTransaction(rpcpb.Rpc.SendRawTransactionRequest request,
+        io.grpc.stub.StreamObserver<rpcpb.Rpc.SendTransactionResponse> responseObserver) {
       asyncUnimplementedUnaryCall(getSendRawTransactionMethodHelper(), responseObserver);
     }
 
@@ -597,8 +597,8 @@ public final class ApiServiceGrpc {
      * Get block info by the block hash.
      * </pre>
      */
-    public void getBlockByHash(org.nebulas.rpc.proto.Rpc.GetBlockByHashRequest request,
-        io.grpc.stub.StreamObserver<org.nebulas.rpc.proto.Rpc.BlockResponse> responseObserver) {
+    public void getBlockByHash(rpcpb.Rpc.GetBlockByHashRequest request,
+        io.grpc.stub.StreamObserver<rpcpb.Rpc.BlockResponse> responseObserver) {
       asyncUnimplementedUnaryCall(getGetBlockByHashMethodHelper(), responseObserver);
     }
 
@@ -607,8 +607,8 @@ public final class ApiServiceGrpc {
      * Get block info by the block height.
      * </pre>
      */
-    public void getBlockByHeight(org.nebulas.rpc.proto.Rpc.GetBlockByHeightRequest request,
-        io.grpc.stub.StreamObserver<org.nebulas.rpc.proto.Rpc.BlockResponse> responseObserver) {
+    public void getBlockByHeight(rpcpb.Rpc.GetBlockByHeightRequest request,
+        io.grpc.stub.StreamObserver<rpcpb.Rpc.BlockResponse> responseObserver) {
       asyncUnimplementedUnaryCall(getGetBlockByHeightMethodHelper(), responseObserver);
     }
 
@@ -617,8 +617,8 @@ public final class ApiServiceGrpc {
      * Get transactionReceipt info by tansaction hash.
      * </pre>
      */
-    public void getTransactionReceipt(org.nebulas.rpc.proto.Rpc.GetTransactionByHashRequest request,
-        io.grpc.stub.StreamObserver<org.nebulas.rpc.proto.Rpc.TransactionResponse> responseObserver) {
+    public void getTransactionReceipt(rpcpb.Rpc.GetTransactionByHashRequest request,
+        io.grpc.stub.StreamObserver<rpcpb.Rpc.TransactionResponse> responseObserver) {
       asyncUnimplementedUnaryCall(getGetTransactionReceiptMethodHelper(), responseObserver);
     }
 
@@ -627,8 +627,8 @@ public final class ApiServiceGrpc {
      * Subscribe message
      * </pre>
      */
-    public void subscribe(org.nebulas.rpc.proto.Rpc.SubscribeRequest request,
-        io.grpc.stub.StreamObserver<org.nebulas.rpc.proto.Rpc.SubscribeResponse> responseObserver) {
+    public void subscribe(rpcpb.Rpc.SubscribeRequest request,
+        io.grpc.stub.StreamObserver<rpcpb.Rpc.SubscribeResponse> responseObserver) {
       asyncUnimplementedUnaryCall(getSubscribeMethodHelper(), responseObserver);
     }
 
@@ -637,8 +637,8 @@ public final class ApiServiceGrpc {
      * Get GasPrice
      * </pre>
      */
-    public void getGasPrice(org.nebulas.rpc.proto.Rpc.NonParamsRequest request,
-        io.grpc.stub.StreamObserver<org.nebulas.rpc.proto.Rpc.GasPriceResponse> responseObserver) {
+    public void getGasPrice(rpcpb.Rpc.NonParamsRequest request,
+        io.grpc.stub.StreamObserver<rpcpb.Rpc.GasPriceResponse> responseObserver) {
       asyncUnimplementedUnaryCall(getGetGasPriceMethodHelper(), responseObserver);
     }
 
@@ -647,22 +647,22 @@ public final class ApiServiceGrpc {
      * EstimateGas
      * </pre>
      */
-    public void estimateGas(org.nebulas.rpc.proto.Rpc.TransactionRequest request,
-        io.grpc.stub.StreamObserver<org.nebulas.rpc.proto.Rpc.GasResponse> responseObserver) {
+    public void estimateGas(rpcpb.Rpc.TransactionRequest request,
+        io.grpc.stub.StreamObserver<rpcpb.Rpc.GasResponse> responseObserver) {
       asyncUnimplementedUnaryCall(getEstimateGasMethodHelper(), responseObserver);
     }
 
     /**
      */
-    public void getEventsByHash(org.nebulas.rpc.proto.Rpc.HashRequest request,
-        io.grpc.stub.StreamObserver<org.nebulas.rpc.proto.Rpc.EventsResponse> responseObserver) {
+    public void getEventsByHash(rpcpb.Rpc.HashRequest request,
+        io.grpc.stub.StreamObserver<rpcpb.Rpc.EventsResponse> responseObserver) {
       asyncUnimplementedUnaryCall(getGetEventsByHashMethodHelper(), responseObserver);
     }
 
     /**
      */
-    public void getDynasty(org.nebulas.rpc.proto.Rpc.ByBlockHeightRequest request,
-        io.grpc.stub.StreamObserver<org.nebulas.rpc.proto.Rpc.GetDynastyResponse> responseObserver) {
+    public void getDynasty(rpcpb.Rpc.ByBlockHeightRequest request,
+        io.grpc.stub.StreamObserver<rpcpb.Rpc.GetDynastyResponse> responseObserver) {
       asyncUnimplementedUnaryCall(getGetDynastyMethodHelper(), responseObserver);
     }
 
@@ -672,92 +672,92 @@ public final class ApiServiceGrpc {
             getGetNebStateMethodHelper(),
             asyncUnaryCall(
               new MethodHandlers<
-                org.nebulas.rpc.proto.Rpc.NonParamsRequest,
-                org.nebulas.rpc.proto.Rpc.GetNebStateResponse>(
+                rpcpb.Rpc.NonParamsRequest,
+                rpcpb.Rpc.GetNebStateResponse>(
                   this, METHODID_GET_NEB_STATE)))
           .addMethod(
             getLatestIrreversibleBlockMethodHelper(),
             asyncUnaryCall(
               new MethodHandlers<
-                org.nebulas.rpc.proto.Rpc.NonParamsRequest,
-                org.nebulas.rpc.proto.Rpc.BlockResponse>(
+                rpcpb.Rpc.NonParamsRequest,
+                rpcpb.Rpc.BlockResponse>(
                   this, METHODID_LATEST_IRREVERSIBLE_BLOCK)))
           .addMethod(
             getGetAccountStateMethodHelper(),
             asyncUnaryCall(
               new MethodHandlers<
-                org.nebulas.rpc.proto.Rpc.GetAccountStateRequest,
-                org.nebulas.rpc.proto.Rpc.GetAccountStateResponse>(
+                rpcpb.Rpc.GetAccountStateRequest,
+                rpcpb.Rpc.GetAccountStateResponse>(
                   this, METHODID_GET_ACCOUNT_STATE)))
           .addMethod(
             getCallMethodHelper(),
             asyncUnaryCall(
               new MethodHandlers<
-                org.nebulas.rpc.proto.Rpc.TransactionRequest,
-                org.nebulas.rpc.proto.Rpc.CallResponse>(
+                rpcpb.Rpc.TransactionRequest,
+                rpcpb.Rpc.CallResponse>(
                   this, METHODID_CALL)))
           .addMethod(
             getSendRawTransactionMethodHelper(),
             asyncUnaryCall(
               new MethodHandlers<
-                org.nebulas.rpc.proto.Rpc.SendRawTransactionRequest,
-                org.nebulas.rpc.proto.Rpc.SendTransactionResponse>(
+                rpcpb.Rpc.SendRawTransactionRequest,
+                rpcpb.Rpc.SendTransactionResponse>(
                   this, METHODID_SEND_RAW_TRANSACTION)))
           .addMethod(
             getGetBlockByHashMethodHelper(),
             asyncUnaryCall(
               new MethodHandlers<
-                org.nebulas.rpc.proto.Rpc.GetBlockByHashRequest,
-                org.nebulas.rpc.proto.Rpc.BlockResponse>(
+                rpcpb.Rpc.GetBlockByHashRequest,
+                rpcpb.Rpc.BlockResponse>(
                   this, METHODID_GET_BLOCK_BY_HASH)))
           .addMethod(
             getGetBlockByHeightMethodHelper(),
             asyncUnaryCall(
               new MethodHandlers<
-                org.nebulas.rpc.proto.Rpc.GetBlockByHeightRequest,
-                org.nebulas.rpc.proto.Rpc.BlockResponse>(
+                rpcpb.Rpc.GetBlockByHeightRequest,
+                rpcpb.Rpc.BlockResponse>(
                   this, METHODID_GET_BLOCK_BY_HEIGHT)))
           .addMethod(
             getGetTransactionReceiptMethodHelper(),
             asyncUnaryCall(
               new MethodHandlers<
-                org.nebulas.rpc.proto.Rpc.GetTransactionByHashRequest,
-                org.nebulas.rpc.proto.Rpc.TransactionResponse>(
+                rpcpb.Rpc.GetTransactionByHashRequest,
+                rpcpb.Rpc.TransactionResponse>(
                   this, METHODID_GET_TRANSACTION_RECEIPT)))
           .addMethod(
             getSubscribeMethodHelper(),
             asyncServerStreamingCall(
               new MethodHandlers<
-                org.nebulas.rpc.proto.Rpc.SubscribeRequest,
-                org.nebulas.rpc.proto.Rpc.SubscribeResponse>(
+                rpcpb.Rpc.SubscribeRequest,
+                rpcpb.Rpc.SubscribeResponse>(
                   this, METHODID_SUBSCRIBE)))
           .addMethod(
             getGetGasPriceMethodHelper(),
             asyncUnaryCall(
               new MethodHandlers<
-                org.nebulas.rpc.proto.Rpc.NonParamsRequest,
-                org.nebulas.rpc.proto.Rpc.GasPriceResponse>(
+                rpcpb.Rpc.NonParamsRequest,
+                rpcpb.Rpc.GasPriceResponse>(
                   this, METHODID_GET_GAS_PRICE)))
           .addMethod(
             getEstimateGasMethodHelper(),
             asyncUnaryCall(
               new MethodHandlers<
-                org.nebulas.rpc.proto.Rpc.TransactionRequest,
-                org.nebulas.rpc.proto.Rpc.GasResponse>(
+                rpcpb.Rpc.TransactionRequest,
+                rpcpb.Rpc.GasResponse>(
                   this, METHODID_ESTIMATE_GAS)))
           .addMethod(
             getGetEventsByHashMethodHelper(),
             asyncUnaryCall(
               new MethodHandlers<
-                org.nebulas.rpc.proto.Rpc.HashRequest,
-                org.nebulas.rpc.proto.Rpc.EventsResponse>(
+                rpcpb.Rpc.HashRequest,
+                rpcpb.Rpc.EventsResponse>(
                   this, METHODID_GET_EVENTS_BY_HASH)))
           .addMethod(
             getGetDynastyMethodHelper(),
             asyncUnaryCall(
               new MethodHandlers<
-                org.nebulas.rpc.proto.Rpc.ByBlockHeightRequest,
-                org.nebulas.rpc.proto.Rpc.GetDynastyResponse>(
+                rpcpb.Rpc.ByBlockHeightRequest,
+                rpcpb.Rpc.GetDynastyResponse>(
                   this, METHODID_GET_DYNASTY)))
           .build();
     }
@@ -789,8 +789,8 @@ public final class ApiServiceGrpc {
      * Return the state of the neb.
      * </pre>
      */
-    public void getNebState(org.nebulas.rpc.proto.Rpc.NonParamsRequest request,
-        io.grpc.stub.StreamObserver<org.nebulas.rpc.proto.Rpc.GetNebStateResponse> responseObserver) {
+    public void getNebState(rpcpb.Rpc.NonParamsRequest request,
+        io.grpc.stub.StreamObserver<rpcpb.Rpc.GetNebStateResponse> responseObserver) {
       asyncUnaryCall(
           getChannel().newCall(getGetNebStateMethodHelper(), getCallOptions()), request, responseObserver);
     }
@@ -800,8 +800,8 @@ public final class ApiServiceGrpc {
      * Return the latest irreversible block.
      * </pre>
      */
-    public void latestIrreversibleBlock(org.nebulas.rpc.proto.Rpc.NonParamsRequest request,
-        io.grpc.stub.StreamObserver<org.nebulas.rpc.proto.Rpc.BlockResponse> responseObserver) {
+    public void latestIrreversibleBlock(rpcpb.Rpc.NonParamsRequest request,
+        io.grpc.stub.StreamObserver<rpcpb.Rpc.BlockResponse> responseObserver) {
       asyncUnaryCall(
           getChannel().newCall(getLatestIrreversibleBlockMethodHelper(), getCallOptions()), request, responseObserver);
     }
@@ -811,8 +811,8 @@ public final class ApiServiceGrpc {
      * Return the state of the account.
      * </pre>
      */
-    public void getAccountState(org.nebulas.rpc.proto.Rpc.GetAccountStateRequest request,
-        io.grpc.stub.StreamObserver<org.nebulas.rpc.proto.Rpc.GetAccountStateResponse> responseObserver) {
+    public void getAccountState(rpcpb.Rpc.GetAccountStateRequest request,
+        io.grpc.stub.StreamObserver<rpcpb.Rpc.GetAccountStateResponse> responseObserver) {
       asyncUnaryCall(
           getChannel().newCall(getGetAccountStateMethodHelper(), getCallOptions()), request, responseObserver);
     }
@@ -822,8 +822,8 @@ public final class ApiServiceGrpc {
      * Call transaction
      * </pre>
      */
-    public void call(org.nebulas.rpc.proto.Rpc.TransactionRequest request,
-        io.grpc.stub.StreamObserver<org.nebulas.rpc.proto.Rpc.CallResponse> responseObserver) {
+    public void call(rpcpb.Rpc.TransactionRequest request,
+        io.grpc.stub.StreamObserver<rpcpb.Rpc.CallResponse> responseObserver) {
       asyncUnaryCall(
           getChannel().newCall(getCallMethodHelper(), getCallOptions()), request, responseObserver);
     }
@@ -833,8 +833,8 @@ public final class ApiServiceGrpc {
      * Submit the signed transaction.
      * </pre>
      */
-    public void sendRawTransaction(org.nebulas.rpc.proto.Rpc.SendRawTransactionRequest request,
-        io.grpc.stub.StreamObserver<org.nebulas.rpc.proto.Rpc.SendTransactionResponse> responseObserver) {
+    public void sendRawTransaction(rpcpb.Rpc.SendRawTransactionRequest request,
+        io.grpc.stub.StreamObserver<rpcpb.Rpc.SendTransactionResponse> responseObserver) {
       asyncUnaryCall(
           getChannel().newCall(getSendRawTransactionMethodHelper(), getCallOptions()), request, responseObserver);
     }
@@ -844,8 +844,8 @@ public final class ApiServiceGrpc {
      * Get block info by the block hash.
      * </pre>
      */
-    public void getBlockByHash(org.nebulas.rpc.proto.Rpc.GetBlockByHashRequest request,
-        io.grpc.stub.StreamObserver<org.nebulas.rpc.proto.Rpc.BlockResponse> responseObserver) {
+    public void getBlockByHash(rpcpb.Rpc.GetBlockByHashRequest request,
+        io.grpc.stub.StreamObserver<rpcpb.Rpc.BlockResponse> responseObserver) {
       asyncUnaryCall(
           getChannel().newCall(getGetBlockByHashMethodHelper(), getCallOptions()), request, responseObserver);
     }
@@ -855,8 +855,8 @@ public final class ApiServiceGrpc {
      * Get block info by the block height.
      * </pre>
      */
-    public void getBlockByHeight(org.nebulas.rpc.proto.Rpc.GetBlockByHeightRequest request,
-        io.grpc.stub.StreamObserver<org.nebulas.rpc.proto.Rpc.BlockResponse> responseObserver) {
+    public void getBlockByHeight(rpcpb.Rpc.GetBlockByHeightRequest request,
+        io.grpc.stub.StreamObserver<rpcpb.Rpc.BlockResponse> responseObserver) {
       asyncUnaryCall(
           getChannel().newCall(getGetBlockByHeightMethodHelper(), getCallOptions()), request, responseObserver);
     }
@@ -866,8 +866,8 @@ public final class ApiServiceGrpc {
      * Get transactionReceipt info by tansaction hash.
      * </pre>
      */
-    public void getTransactionReceipt(org.nebulas.rpc.proto.Rpc.GetTransactionByHashRequest request,
-        io.grpc.stub.StreamObserver<org.nebulas.rpc.proto.Rpc.TransactionResponse> responseObserver) {
+    public void getTransactionReceipt(rpcpb.Rpc.GetTransactionByHashRequest request,
+        io.grpc.stub.StreamObserver<rpcpb.Rpc.TransactionResponse> responseObserver) {
       asyncUnaryCall(
           getChannel().newCall(getGetTransactionReceiptMethodHelper(), getCallOptions()), request, responseObserver);
     }
@@ -877,8 +877,8 @@ public final class ApiServiceGrpc {
      * Subscribe message
      * </pre>
      */
-    public void subscribe(org.nebulas.rpc.proto.Rpc.SubscribeRequest request,
-        io.grpc.stub.StreamObserver<org.nebulas.rpc.proto.Rpc.SubscribeResponse> responseObserver) {
+    public void subscribe(rpcpb.Rpc.SubscribeRequest request,
+        io.grpc.stub.StreamObserver<rpcpb.Rpc.SubscribeResponse> responseObserver) {
       asyncServerStreamingCall(
           getChannel().newCall(getSubscribeMethodHelper(), getCallOptions()), request, responseObserver);
     }
@@ -888,8 +888,8 @@ public final class ApiServiceGrpc {
      * Get GasPrice
      * </pre>
      */
-    public void getGasPrice(org.nebulas.rpc.proto.Rpc.NonParamsRequest request,
-        io.grpc.stub.StreamObserver<org.nebulas.rpc.proto.Rpc.GasPriceResponse> responseObserver) {
+    public void getGasPrice(rpcpb.Rpc.NonParamsRequest request,
+        io.grpc.stub.StreamObserver<rpcpb.Rpc.GasPriceResponse> responseObserver) {
       asyncUnaryCall(
           getChannel().newCall(getGetGasPriceMethodHelper(), getCallOptions()), request, responseObserver);
     }
@@ -899,24 +899,24 @@ public final class ApiServiceGrpc {
      * EstimateGas
      * </pre>
      */
-    public void estimateGas(org.nebulas.rpc.proto.Rpc.TransactionRequest request,
-        io.grpc.stub.StreamObserver<org.nebulas.rpc.proto.Rpc.GasResponse> responseObserver) {
+    public void estimateGas(rpcpb.Rpc.TransactionRequest request,
+        io.grpc.stub.StreamObserver<rpcpb.Rpc.GasResponse> responseObserver) {
       asyncUnaryCall(
           getChannel().newCall(getEstimateGasMethodHelper(), getCallOptions()), request, responseObserver);
     }
 
     /**
      */
-    public void getEventsByHash(org.nebulas.rpc.proto.Rpc.HashRequest request,
-        io.grpc.stub.StreamObserver<org.nebulas.rpc.proto.Rpc.EventsResponse> responseObserver) {
+    public void getEventsByHash(rpcpb.Rpc.HashRequest request,
+        io.grpc.stub.StreamObserver<rpcpb.Rpc.EventsResponse> responseObserver) {
       asyncUnaryCall(
           getChannel().newCall(getGetEventsByHashMethodHelper(), getCallOptions()), request, responseObserver);
     }
 
     /**
      */
-    public void getDynasty(org.nebulas.rpc.proto.Rpc.ByBlockHeightRequest request,
-        io.grpc.stub.StreamObserver<org.nebulas.rpc.proto.Rpc.GetDynastyResponse> responseObserver) {
+    public void getDynasty(rpcpb.Rpc.ByBlockHeightRequest request,
+        io.grpc.stub.StreamObserver<rpcpb.Rpc.GetDynastyResponse> responseObserver) {
       asyncUnaryCall(
           getChannel().newCall(getGetDynastyMethodHelper(), getCallOptions()), request, responseObserver);
     }
@@ -948,7 +948,7 @@ public final class ApiServiceGrpc {
      * Return the state of the neb.
      * </pre>
      */
-    public org.nebulas.rpc.proto.Rpc.GetNebStateResponse getNebState(org.nebulas.rpc.proto.Rpc.NonParamsRequest request) {
+    public rpcpb.Rpc.GetNebStateResponse getNebState(rpcpb.Rpc.NonParamsRequest request) {
       return blockingUnaryCall(
           getChannel(), getGetNebStateMethodHelper(), getCallOptions(), request);
     }
@@ -958,7 +958,7 @@ public final class ApiServiceGrpc {
      * Return the latest irreversible block.
      * </pre>
      */
-    public org.nebulas.rpc.proto.Rpc.BlockResponse latestIrreversibleBlock(org.nebulas.rpc.proto.Rpc.NonParamsRequest request) {
+    public rpcpb.Rpc.BlockResponse latestIrreversibleBlock(rpcpb.Rpc.NonParamsRequest request) {
       return blockingUnaryCall(
           getChannel(), getLatestIrreversibleBlockMethodHelper(), getCallOptions(), request);
     }
@@ -968,7 +968,7 @@ public final class ApiServiceGrpc {
      * Return the state of the account.
      * </pre>
      */
-    public org.nebulas.rpc.proto.Rpc.GetAccountStateResponse getAccountState(org.nebulas.rpc.proto.Rpc.GetAccountStateRequest request) {
+    public rpcpb.Rpc.GetAccountStateResponse getAccountState(rpcpb.Rpc.GetAccountStateRequest request) {
       return blockingUnaryCall(
           getChannel(), getGetAccountStateMethodHelper(), getCallOptions(), request);
     }
@@ -978,7 +978,7 @@ public final class ApiServiceGrpc {
      * Call transaction
      * </pre>
      */
-    public org.nebulas.rpc.proto.Rpc.CallResponse call(org.nebulas.rpc.proto.Rpc.TransactionRequest request) {
+    public rpcpb.Rpc.CallResponse call(rpcpb.Rpc.TransactionRequest request) {
       return blockingUnaryCall(
           getChannel(), getCallMethodHelper(), getCallOptions(), request);
     }
@@ -988,7 +988,7 @@ public final class ApiServiceGrpc {
      * Submit the signed transaction.
      * </pre>
      */
-    public org.nebulas.rpc.proto.Rpc.SendTransactionResponse sendRawTransaction(org.nebulas.rpc.proto.Rpc.SendRawTransactionRequest request) {
+    public rpcpb.Rpc.SendTransactionResponse sendRawTransaction(rpcpb.Rpc.SendRawTransactionRequest request) {
       return blockingUnaryCall(
           getChannel(), getSendRawTransactionMethodHelper(), getCallOptions(), request);
     }
@@ -998,7 +998,7 @@ public final class ApiServiceGrpc {
      * Get block info by the block hash.
      * </pre>
      */
-    public org.nebulas.rpc.proto.Rpc.BlockResponse getBlockByHash(org.nebulas.rpc.proto.Rpc.GetBlockByHashRequest request) {
+    public rpcpb.Rpc.BlockResponse getBlockByHash(rpcpb.Rpc.GetBlockByHashRequest request) {
       return blockingUnaryCall(
           getChannel(), getGetBlockByHashMethodHelper(), getCallOptions(), request);
     }
@@ -1008,7 +1008,7 @@ public final class ApiServiceGrpc {
      * Get block info by the block height.
      * </pre>
      */
-    public org.nebulas.rpc.proto.Rpc.BlockResponse getBlockByHeight(org.nebulas.rpc.proto.Rpc.GetBlockByHeightRequest request) {
+    public rpcpb.Rpc.BlockResponse getBlockByHeight(rpcpb.Rpc.GetBlockByHeightRequest request) {
       return blockingUnaryCall(
           getChannel(), getGetBlockByHeightMethodHelper(), getCallOptions(), request);
     }
@@ -1018,7 +1018,7 @@ public final class ApiServiceGrpc {
      * Get transactionReceipt info by tansaction hash.
      * </pre>
      */
-    public org.nebulas.rpc.proto.Rpc.TransactionResponse getTransactionReceipt(org.nebulas.rpc.proto.Rpc.GetTransactionByHashRequest request) {
+    public rpcpb.Rpc.TransactionResponse getTransactionReceipt(rpcpb.Rpc.GetTransactionByHashRequest request) {
       return blockingUnaryCall(
           getChannel(), getGetTransactionReceiptMethodHelper(), getCallOptions(), request);
     }
@@ -1028,8 +1028,8 @@ public final class ApiServiceGrpc {
      * Subscribe message
      * </pre>
      */
-    public java.util.Iterator<org.nebulas.rpc.proto.Rpc.SubscribeResponse> subscribe(
-        org.nebulas.rpc.proto.Rpc.SubscribeRequest request) {
+    public java.util.Iterator<rpcpb.Rpc.SubscribeResponse> subscribe(
+        rpcpb.Rpc.SubscribeRequest request) {
       return blockingServerStreamingCall(
           getChannel(), getSubscribeMethodHelper(), getCallOptions(), request);
     }
@@ -1039,7 +1039,7 @@ public final class ApiServiceGrpc {
      * Get GasPrice
      * </pre>
      */
-    public org.nebulas.rpc.proto.Rpc.GasPriceResponse getGasPrice(org.nebulas.rpc.proto.Rpc.NonParamsRequest request) {
+    public rpcpb.Rpc.GasPriceResponse getGasPrice(rpcpb.Rpc.NonParamsRequest request) {
       return blockingUnaryCall(
           getChannel(), getGetGasPriceMethodHelper(), getCallOptions(), request);
     }
@@ -1049,21 +1049,21 @@ public final class ApiServiceGrpc {
      * EstimateGas
      * </pre>
      */
-    public org.nebulas.rpc.proto.Rpc.GasResponse estimateGas(org.nebulas.rpc.proto.Rpc.TransactionRequest request) {
+    public rpcpb.Rpc.GasResponse estimateGas(rpcpb.Rpc.TransactionRequest request) {
       return blockingUnaryCall(
           getChannel(), getEstimateGasMethodHelper(), getCallOptions(), request);
     }
 
     /**
      */
-    public org.nebulas.rpc.proto.Rpc.EventsResponse getEventsByHash(org.nebulas.rpc.proto.Rpc.HashRequest request) {
+    public rpcpb.Rpc.EventsResponse getEventsByHash(rpcpb.Rpc.HashRequest request) {
       return blockingUnaryCall(
           getChannel(), getGetEventsByHashMethodHelper(), getCallOptions(), request);
     }
 
     /**
      */
-    public org.nebulas.rpc.proto.Rpc.GetDynastyResponse getDynasty(org.nebulas.rpc.proto.Rpc.ByBlockHeightRequest request) {
+    public rpcpb.Rpc.GetDynastyResponse getDynasty(rpcpb.Rpc.ByBlockHeightRequest request) {
       return blockingUnaryCall(
           getChannel(), getGetDynastyMethodHelper(), getCallOptions(), request);
     }
@@ -1095,8 +1095,8 @@ public final class ApiServiceGrpc {
      * Return the state of the neb.
      * </pre>
      */
-    public com.google.common.util.concurrent.ListenableFuture<org.nebulas.rpc.proto.Rpc.GetNebStateResponse> getNebState(
-        org.nebulas.rpc.proto.Rpc.NonParamsRequest request) {
+    public com.google.common.util.concurrent.ListenableFuture<rpcpb.Rpc.GetNebStateResponse> getNebState(
+        rpcpb.Rpc.NonParamsRequest request) {
       return futureUnaryCall(
           getChannel().newCall(getGetNebStateMethodHelper(), getCallOptions()), request);
     }
@@ -1106,8 +1106,8 @@ public final class ApiServiceGrpc {
      * Return the latest irreversible block.
      * </pre>
      */
-    public com.google.common.util.concurrent.ListenableFuture<org.nebulas.rpc.proto.Rpc.BlockResponse> latestIrreversibleBlock(
-        org.nebulas.rpc.proto.Rpc.NonParamsRequest request) {
+    public com.google.common.util.concurrent.ListenableFuture<rpcpb.Rpc.BlockResponse> latestIrreversibleBlock(
+        rpcpb.Rpc.NonParamsRequest request) {
       return futureUnaryCall(
           getChannel().newCall(getLatestIrreversibleBlockMethodHelper(), getCallOptions()), request);
     }
@@ -1117,8 +1117,8 @@ public final class ApiServiceGrpc {
      * Return the state of the account.
      * </pre>
      */
-    public com.google.common.util.concurrent.ListenableFuture<org.nebulas.rpc.proto.Rpc.GetAccountStateResponse> getAccountState(
-        org.nebulas.rpc.proto.Rpc.GetAccountStateRequest request) {
+    public com.google.common.util.concurrent.ListenableFuture<rpcpb.Rpc.GetAccountStateResponse> getAccountState(
+        rpcpb.Rpc.GetAccountStateRequest request) {
       return futureUnaryCall(
           getChannel().newCall(getGetAccountStateMethodHelper(), getCallOptions()), request);
     }
@@ -1128,8 +1128,8 @@ public final class ApiServiceGrpc {
      * Call transaction
      * </pre>
      */
-    public com.google.common.util.concurrent.ListenableFuture<org.nebulas.rpc.proto.Rpc.CallResponse> call(
-        org.nebulas.rpc.proto.Rpc.TransactionRequest request) {
+    public com.google.common.util.concurrent.ListenableFuture<rpcpb.Rpc.CallResponse> call(
+        rpcpb.Rpc.TransactionRequest request) {
       return futureUnaryCall(
           getChannel().newCall(getCallMethodHelper(), getCallOptions()), request);
     }
@@ -1139,8 +1139,8 @@ public final class ApiServiceGrpc {
      * Submit the signed transaction.
      * </pre>
      */
-    public com.google.common.util.concurrent.ListenableFuture<org.nebulas.rpc.proto.Rpc.SendTransactionResponse> sendRawTransaction(
-        org.nebulas.rpc.proto.Rpc.SendRawTransactionRequest request) {
+    public com.google.common.util.concurrent.ListenableFuture<rpcpb.Rpc.SendTransactionResponse> sendRawTransaction(
+        rpcpb.Rpc.SendRawTransactionRequest request) {
       return futureUnaryCall(
           getChannel().newCall(getSendRawTransactionMethodHelper(), getCallOptions()), request);
     }
@@ -1150,8 +1150,8 @@ public final class ApiServiceGrpc {
      * Get block info by the block hash.
      * </pre>
      */
-    public com.google.common.util.concurrent.ListenableFuture<org.nebulas.rpc.proto.Rpc.BlockResponse> getBlockByHash(
-        org.nebulas.rpc.proto.Rpc.GetBlockByHashRequest request) {
+    public com.google.common.util.concurrent.ListenableFuture<rpcpb.Rpc.BlockResponse> getBlockByHash(
+        rpcpb.Rpc.GetBlockByHashRequest request) {
       return futureUnaryCall(
           getChannel().newCall(getGetBlockByHashMethodHelper(), getCallOptions()), request);
     }
@@ -1161,8 +1161,8 @@ public final class ApiServiceGrpc {
      * Get block info by the block height.
      * </pre>
      */
-    public com.google.common.util.concurrent.ListenableFuture<org.nebulas.rpc.proto.Rpc.BlockResponse> getBlockByHeight(
-        org.nebulas.rpc.proto.Rpc.GetBlockByHeightRequest request) {
+    public com.google.common.util.concurrent.ListenableFuture<rpcpb.Rpc.BlockResponse> getBlockByHeight(
+        rpcpb.Rpc.GetBlockByHeightRequest request) {
       return futureUnaryCall(
           getChannel().newCall(getGetBlockByHeightMethodHelper(), getCallOptions()), request);
     }
@@ -1172,8 +1172,8 @@ public final class ApiServiceGrpc {
      * Get transactionReceipt info by tansaction hash.
      * </pre>
      */
-    public com.google.common.util.concurrent.ListenableFuture<org.nebulas.rpc.proto.Rpc.TransactionResponse> getTransactionReceipt(
-        org.nebulas.rpc.proto.Rpc.GetTransactionByHashRequest request) {
+    public com.google.common.util.concurrent.ListenableFuture<rpcpb.Rpc.TransactionResponse> getTransactionReceipt(
+        rpcpb.Rpc.GetTransactionByHashRequest request) {
       return futureUnaryCall(
           getChannel().newCall(getGetTransactionReceiptMethodHelper(), getCallOptions()), request);
     }
@@ -1183,8 +1183,8 @@ public final class ApiServiceGrpc {
      * Get GasPrice
      * </pre>
      */
-    public com.google.common.util.concurrent.ListenableFuture<org.nebulas.rpc.proto.Rpc.GasPriceResponse> getGasPrice(
-        org.nebulas.rpc.proto.Rpc.NonParamsRequest request) {
+    public com.google.common.util.concurrent.ListenableFuture<rpcpb.Rpc.GasPriceResponse> getGasPrice(
+        rpcpb.Rpc.NonParamsRequest request) {
       return futureUnaryCall(
           getChannel().newCall(getGetGasPriceMethodHelper(), getCallOptions()), request);
     }
@@ -1194,24 +1194,24 @@ public final class ApiServiceGrpc {
      * EstimateGas
      * </pre>
      */
-    public com.google.common.util.concurrent.ListenableFuture<org.nebulas.rpc.proto.Rpc.GasResponse> estimateGas(
-        org.nebulas.rpc.proto.Rpc.TransactionRequest request) {
+    public com.google.common.util.concurrent.ListenableFuture<rpcpb.Rpc.GasResponse> estimateGas(
+        rpcpb.Rpc.TransactionRequest request) {
       return futureUnaryCall(
           getChannel().newCall(getEstimateGasMethodHelper(), getCallOptions()), request);
     }
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<org.nebulas.rpc.proto.Rpc.EventsResponse> getEventsByHash(
-        org.nebulas.rpc.proto.Rpc.HashRequest request) {
+    public com.google.common.util.concurrent.ListenableFuture<rpcpb.Rpc.EventsResponse> getEventsByHash(
+        rpcpb.Rpc.HashRequest request) {
       return futureUnaryCall(
           getChannel().newCall(getGetEventsByHashMethodHelper(), getCallOptions()), request);
     }
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<org.nebulas.rpc.proto.Rpc.GetDynastyResponse> getDynasty(
-        org.nebulas.rpc.proto.Rpc.ByBlockHeightRequest request) {
+    public com.google.common.util.concurrent.ListenableFuture<rpcpb.Rpc.GetDynastyResponse> getDynasty(
+        rpcpb.Rpc.ByBlockHeightRequest request) {
       return futureUnaryCall(
           getChannel().newCall(getGetDynastyMethodHelper(), getCallOptions()), request);
     }
@@ -1249,56 +1249,56 @@ public final class ApiServiceGrpc {
     public void invoke(Req request, io.grpc.stub.StreamObserver<Resp> responseObserver) {
       switch (methodId) {
         case METHODID_GET_NEB_STATE:
-          serviceImpl.getNebState((org.nebulas.rpc.proto.Rpc.NonParamsRequest) request,
-              (io.grpc.stub.StreamObserver<org.nebulas.rpc.proto.Rpc.GetNebStateResponse>) responseObserver);
+          serviceImpl.getNebState((rpcpb.Rpc.NonParamsRequest) request,
+              (io.grpc.stub.StreamObserver<rpcpb.Rpc.GetNebStateResponse>) responseObserver);
           break;
         case METHODID_LATEST_IRREVERSIBLE_BLOCK:
-          serviceImpl.latestIrreversibleBlock((org.nebulas.rpc.proto.Rpc.NonParamsRequest) request,
-              (io.grpc.stub.StreamObserver<org.nebulas.rpc.proto.Rpc.BlockResponse>) responseObserver);
+          serviceImpl.latestIrreversibleBlock((rpcpb.Rpc.NonParamsRequest) request,
+              (io.grpc.stub.StreamObserver<rpcpb.Rpc.BlockResponse>) responseObserver);
           break;
         case METHODID_GET_ACCOUNT_STATE:
-          serviceImpl.getAccountState((org.nebulas.rpc.proto.Rpc.GetAccountStateRequest) request,
-              (io.grpc.stub.StreamObserver<org.nebulas.rpc.proto.Rpc.GetAccountStateResponse>) responseObserver);
+          serviceImpl.getAccountState((rpcpb.Rpc.GetAccountStateRequest) request,
+              (io.grpc.stub.StreamObserver<rpcpb.Rpc.GetAccountStateResponse>) responseObserver);
           break;
         case METHODID_CALL:
-          serviceImpl.call((org.nebulas.rpc.proto.Rpc.TransactionRequest) request,
-              (io.grpc.stub.StreamObserver<org.nebulas.rpc.proto.Rpc.CallResponse>) responseObserver);
+          serviceImpl.call((rpcpb.Rpc.TransactionRequest) request,
+              (io.grpc.stub.StreamObserver<rpcpb.Rpc.CallResponse>) responseObserver);
           break;
         case METHODID_SEND_RAW_TRANSACTION:
-          serviceImpl.sendRawTransaction((org.nebulas.rpc.proto.Rpc.SendRawTransactionRequest) request,
-              (io.grpc.stub.StreamObserver<org.nebulas.rpc.proto.Rpc.SendTransactionResponse>) responseObserver);
+          serviceImpl.sendRawTransaction((rpcpb.Rpc.SendRawTransactionRequest) request,
+              (io.grpc.stub.StreamObserver<rpcpb.Rpc.SendTransactionResponse>) responseObserver);
           break;
         case METHODID_GET_BLOCK_BY_HASH:
-          serviceImpl.getBlockByHash((org.nebulas.rpc.proto.Rpc.GetBlockByHashRequest) request,
-              (io.grpc.stub.StreamObserver<org.nebulas.rpc.proto.Rpc.BlockResponse>) responseObserver);
+          serviceImpl.getBlockByHash((rpcpb.Rpc.GetBlockByHashRequest) request,
+              (io.grpc.stub.StreamObserver<rpcpb.Rpc.BlockResponse>) responseObserver);
           break;
         case METHODID_GET_BLOCK_BY_HEIGHT:
-          serviceImpl.getBlockByHeight((org.nebulas.rpc.proto.Rpc.GetBlockByHeightRequest) request,
-              (io.grpc.stub.StreamObserver<org.nebulas.rpc.proto.Rpc.BlockResponse>) responseObserver);
+          serviceImpl.getBlockByHeight((rpcpb.Rpc.GetBlockByHeightRequest) request,
+              (io.grpc.stub.StreamObserver<rpcpb.Rpc.BlockResponse>) responseObserver);
           break;
         case METHODID_GET_TRANSACTION_RECEIPT:
-          serviceImpl.getTransactionReceipt((org.nebulas.rpc.proto.Rpc.GetTransactionByHashRequest) request,
-              (io.grpc.stub.StreamObserver<org.nebulas.rpc.proto.Rpc.TransactionResponse>) responseObserver);
+          serviceImpl.getTransactionReceipt((rpcpb.Rpc.GetTransactionByHashRequest) request,
+              (io.grpc.stub.StreamObserver<rpcpb.Rpc.TransactionResponse>) responseObserver);
           break;
         case METHODID_SUBSCRIBE:
-          serviceImpl.subscribe((org.nebulas.rpc.proto.Rpc.SubscribeRequest) request,
-              (io.grpc.stub.StreamObserver<org.nebulas.rpc.proto.Rpc.SubscribeResponse>) responseObserver);
+          serviceImpl.subscribe((rpcpb.Rpc.SubscribeRequest) request,
+              (io.grpc.stub.StreamObserver<rpcpb.Rpc.SubscribeResponse>) responseObserver);
           break;
         case METHODID_GET_GAS_PRICE:
-          serviceImpl.getGasPrice((org.nebulas.rpc.proto.Rpc.NonParamsRequest) request,
-              (io.grpc.stub.StreamObserver<org.nebulas.rpc.proto.Rpc.GasPriceResponse>) responseObserver);
+          serviceImpl.getGasPrice((rpcpb.Rpc.NonParamsRequest) request,
+              (io.grpc.stub.StreamObserver<rpcpb.Rpc.GasPriceResponse>) responseObserver);
           break;
         case METHODID_ESTIMATE_GAS:
-          serviceImpl.estimateGas((org.nebulas.rpc.proto.Rpc.TransactionRequest) request,
-              (io.grpc.stub.StreamObserver<org.nebulas.rpc.proto.Rpc.GasResponse>) responseObserver);
+          serviceImpl.estimateGas((rpcpb.Rpc.TransactionRequest) request,
+              (io.grpc.stub.StreamObserver<rpcpb.Rpc.GasResponse>) responseObserver);
           break;
         case METHODID_GET_EVENTS_BY_HASH:
-          serviceImpl.getEventsByHash((org.nebulas.rpc.proto.Rpc.HashRequest) request,
-              (io.grpc.stub.StreamObserver<org.nebulas.rpc.proto.Rpc.EventsResponse>) responseObserver);
+          serviceImpl.getEventsByHash((rpcpb.Rpc.HashRequest) request,
+              (io.grpc.stub.StreamObserver<rpcpb.Rpc.EventsResponse>) responseObserver);
           break;
         case METHODID_GET_DYNASTY:
-          serviceImpl.getDynasty((org.nebulas.rpc.proto.Rpc.ByBlockHeightRequest) request,
-              (io.grpc.stub.StreamObserver<org.nebulas.rpc.proto.Rpc.GetDynastyResponse>) responseObserver);
+          serviceImpl.getDynasty((rpcpb.Rpc.ByBlockHeightRequest) request,
+              (io.grpc.stub.StreamObserver<rpcpb.Rpc.GetDynastyResponse>) responseObserver);
           break;
         default:
           throw new AssertionError();
@@ -1322,7 +1322,7 @@ public final class ApiServiceGrpc {
 
     @java.lang.Override
     public com.google.protobuf.Descriptors.FileDescriptor getFileDescriptor() {
-      return org.nebulas.rpc.proto.Rpc.getDescriptor();
+      return rpcpb.Rpc.getDescriptor();
     }
 
     @java.lang.Override

@@ -2,7 +2,7 @@ syntax = "proto3";
 
 import "google/api/annotations.proto";
 
-package org.nebulas.rpc.proto;
+package rpcpb;
 
 // RPC API interface.
 service ApiService {

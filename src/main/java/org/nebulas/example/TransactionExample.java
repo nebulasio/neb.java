@@ -1,7 +1,12 @@
 package org.nebulas.example;
 
+import com.google.protobuf.ByteString;
+import io.grpc.ManagedChannel;
+import io.grpc.ManagedChannelBuilder;
 import org.nebulas.account.AccountManager;
 import org.nebulas.core.*;
+import rpcpb.ApiServiceGrpc;
+import rpcpb.Rpc;
 
 import java.math.BigInteger;
 
@@ -27,7 +32,7 @@ public class TransactionExample {
         byte[] rawData = tx.toProto();
         // senrawTransaction with @rawData
         // https://github.com/nebulasio/wiki/blob/master/rpc.md#sendrawtransaction
-
+        SendRawTransaction(rawData);
 
         // deploy tx
         payloadType = Transaction.PayloadType.DEPLOY;
@@ -38,6 +43,7 @@ public class TransactionExample {
         rawData = tx.toProto();
         // senrawTransaction with @rawData
         // https://github.com/nebulasio/wiki/blob/master/rpc.md#sendrawtransaction
+        SendRawTransaction(rawData);
 
         // call tx
         payloadType = Transaction.PayloadType.CALL;
@@ -49,5 +55,41 @@ public class TransactionExample {
         rawData = tx.toProto();
         // senrawTransaction with @rawData
         // https://github.com/nebulasio/wiki/blob/master/rpc.md#sendrawtransaction
+        SendRawTransaction(rawData);
+    }
+
+    private static void SendRawTransaction(byte[] data) throws Exception {
+        // Channels are secure by default (via SSL/TLS). For the example we disable TLS to avoid
+        // needing certificates.
+        ManagedChannel channel = ManagedChannelBuilder.forAddress("127.0.0.1", 8684).usePlaintext().build();
+        Rpc.SendRawTransactionRequest request = Rpc.SendRawTransactionRequest
+                .newBuilder()
+                .setData(ByteString.copyFrom(data))
+                .build();
+
+        ApiServiceGrpc.ApiServiceBlockingStub apiServiceStub = ApiServiceGrpc.newBlockingStub(channel);
+        Rpc.SendTransactionResponse response = apiServiceStub.sendRawTransaction(request);
+        System.out.println(response);
+
+//        ApiServiceGrpc.ApiServiceStub serviceStub = ApiServiceGrpc.newStub(channel);
+//        final CountDownLatch finishLatch = new CountDownLatch(1);
+//        StreamObserver<Rpc.SendTransactionResponse> observer = new StreamObserver<Rpc.SendTransactionResponse>() {
+//            @Override
+//            public void onNext(Rpc.SendTransactionResponse value) {
+//                System.out.println(value);
+//            }
+//
+//            @Override
+//            public void onError(Throwable t) {
+//                finishLatch.countDown();
+//            }
+//
+//            @Override
+//            public void onCompleted() {
+//                finishLatch.countDown();
+//            }
+//        };
+//
+//        serviceStub.sendRawTransaction(request,observer);
     }
 }
