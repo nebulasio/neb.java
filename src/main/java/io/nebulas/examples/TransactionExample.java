@@ -1,4 +1,4 @@
-package io.nebulas.example;
+package io.nebulas.examples;
 
 import com.google.protobuf.ByteString;
 import io.grpc.ManagedChannel;
