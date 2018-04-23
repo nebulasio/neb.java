@@ -8,18 +8,20 @@
 
 buildscript {
     ext {
-        projectVersion = '0.0.1-SNAPSHOT'
+        projectVersion = '0.1'
         grpcVersion = '1.11.0'
         protobufVersion = '3.5.1-1'
         protobufGradlePluginVersion = '0.8.5'
     }
     repositories {
         mavenCentral()
+        jcenter()
     }
     dependencies {
         // ASSUMES GRADLE 2.12 OR HIGHER. Use plugin version 0.7.5 with earlier
         // gradle versions
         classpath "com.google.protobuf:protobuf-gradle-plugin:${protobufGradlePluginVersion}"
+        classpath "com.bmuschko:gradle-nexus-plugin:2.3.1"
     }
 }
 
@@ -31,6 +33,56 @@ plugins {
 apply plugin: 'java'
 apply plugin: 'idea'
 apply plugin: 'com.google.protobuf'
+apply plugin: 'com.bmuschko.nexus'
+
+archivesBaseName = 'nebulas'
+group = "io.nebulas"
+version = "0.1"
+
+modifyPom {
+    project {
+        name 'nebulasj'
+        description 'The nebulasj library is a Java implementation of the Nebulas protocol, which allows it to maintain a wallet and send/receive transactions without needing a local copy of go-nebulas.'
+        url 'https://nebulas.io'
+        inceptionYear '2018'
+        scm {
+            url 'https://nebulas.io'
+            connection 'scm:https://github.com/nebulasio/nebulasj.git'
+            developerConnection 'scm:git@github.com:nebulasio/nebulasj.git'
+        }
+        licenses {
+            license {
+                name 'GNU LESSER GENERAL PUBLIC LICENSE'
+                url 'http://fsf.org'
+                distribution 'repo'
+            }
+        }
+        developers {
+            developer {
+                id 'qywang2012'
+                name 'Larry Wang'
+                email 'larry@nebulas.io'
+            }
+            developer {
+                id 'ideaalloc'
+                name 'Bill Lv'
+                email 'bill@nebulas.io'
+            }
+        }
+    }
+}
+
+extraArchive {
+    sources = true
+    tests = true
+    javadoc = true
+}
+
+nexus {
+    sign = true
+    repositoryUrl = 'https://oss.sonatype.org/service/local/staging/deploy/maven2/'
+    snapshotRepositoryUrl = 'https://oss.sonatype.org/content/repositories/snapshots/'
+}
 
 //sourceSets {
 //    main {

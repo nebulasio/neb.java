@@ -16,3 +16,5 @@ gradle-app.setting
 
 .idea
 *.iml
+gradle.properties
+secret-keys.gpg

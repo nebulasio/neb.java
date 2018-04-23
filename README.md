@@ -2,12 +2,36 @@
 
 The nebulasj library is a Java implementation of the Nebulas protocol, which allows it to maintain a wallet and send/receive transactions without needing a local copy of go-nebulas.
 
+## Add as dependency
+
+Gradle
+
+```
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile "io.nebulas:nebulas:0.1"
+}
+```
+
+Maven
+
+```
+<dependency>
+    <groupId>io.nebulas</groupId>
+    <artifactId>nebulas</artifactId>
+    <version>0.1</version>
+</dependency>
+```
+
 ## Building from source
 
 ### Prerequisites
 
 | Components | Version | Description |
-|----------|-------------|-------------|
+|----------|:-------------:|-------------:|
 |[Java](http://www.oracle.com/technetwork/java/javase/overview/java8-2100321.html) | >= 1.8.0_171| Java8 |
 [Gradle](https://gradle.org/) | >= 4.6 | Gradle is a dependency management tool for Java. |
 
