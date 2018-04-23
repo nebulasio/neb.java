@@ -87,7 +87,6 @@ nexus {
 
 nexusStaging {
     packageGroup = "io.nebulas"
-    stagingProfileId = "stagingNebulas"
 }
 
 //sourceSets {
