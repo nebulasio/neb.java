@@ -28,6 +28,7 @@ buildscript {
 plugins {
     // Apply the java-library plugin to add support for Java Library
     id 'java-library'
+    id 'io.codearte.nexus-staging' version '0.11.0'
 }
 
 apply plugin: 'java'
@@ -82,6 +83,11 @@ nexus {
     sign = true
     repositoryUrl = 'https://oss.sonatype.org/service/local/staging/deploy/maven2/'
     snapshotRepositoryUrl = 'https://oss.sonatype.org/content/repositories/snapshots/'
+}
+
+nexusStaging {
+    packageGroup = "io.nebulas"
+    stagingProfileId = "stagingNebulas"
 }
 
 //sourceSets {

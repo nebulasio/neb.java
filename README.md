@@ -40,9 +40,29 @@ Maven
 
 it is best to have the latest JDK and Gradle installed. The HEAD of the `master` branch contains the latest development code and various production releases are provided on feature branches.
 
+```
+./gradlew clean build
+```
+
 #### Building from an IDE
 
 Alternatively, just import the project using your IDE. [IntelliJ](http://www.jetbrains.com/idea/download/) has Gradle integration built-in and has a free Community Edition.
+
+### Release
+
+Please contact [Bill]<mailto:bill@nebulas.io> to get `secret-keys.gpg` and `settings.gradle` before release
+
+Upload
+
+```
+./gradlew uploadArchives
+```
+
+Release
+
+```
+./gradlew closeAndReleaseRepository
+```
 
 #### Example applications
 
