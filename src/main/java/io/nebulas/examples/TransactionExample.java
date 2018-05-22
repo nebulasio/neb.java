@@ -20,7 +20,8 @@ public class TransactionExample {
         // binary tx
         int chainID = 100; //1 mainet,1001 testnet, 100 default private
         Address from = manager.newAccount(passphrase);
-        Address to = manager.newAccount("topassphrase".getBytes());
+        //Address to = manager.newAccount("topassphrase".getBytes());
+        Address to = Address.ParseFromString("n1g6JZsQS1uRUySdwvuFJ7FYT4dFoyoSN5q");
         BigInteger value = new BigInteger("0");
         long nonce = 1; // nonce = from.nonce + 1
         Transaction.PayloadType payloadType = Transaction.PayloadType.BINARY;
@@ -50,7 +51,7 @@ public class TransactionExample {
         payload = new TransactionCallPayload("function", "").toBytes();
         // call to = contract address
         to = Address.ParseFromString("n1g6JZsQS1uRUySdwvuFJ7FYT4dFoyoSN5q");
-        tx = new Transaction(chainID, from, from, value, nonce, payloadType, payload, gasPrice, gasLimit);
+        tx = new Transaction(chainID, from, to, value, nonce, payloadType, payload, gasPrice, gasLimit);
         manager.signTransaction(tx,passphrase);
         rawData = tx.toProto();
         // senrawTransaction with @rawData
