@@ -1,7 +1,8 @@
 package io.nebulas.client.admin.request;
 
-import com.nebulasio.client.api.request.Contract;
-import com.nebulasio.client.enums.TransactionType;
+
+import io.nebulas.client.api.request.Contract;
+import io.nebulas.client.enums.TransactionType;
 
 import java.io.Serializable;
 
