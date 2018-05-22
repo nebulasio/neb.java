@@ -2,6 +2,52 @@
 
 The nebulasj library is a Java implementation of the Nebulas protocol, which allows it to maintain a wallet and send/receive transactions without needing a local copy of go-nebulas.
 
+## Add as dependency
+
+Gradle
+
+```
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile "io.nebulas:nebulas:0.1"
+}
+```
+
+Maven
+
+```
+<dependency>
+    <groupId>io.nebulas</groupId>
+    <artifactId>nebulas</artifactId>
+    <version>0.1</version>
+</dependency>
+```
+
+## Building from source
+
+### Prerequisites
+
+| Components | Version | Description |
+|----------|:-------------:|-------------:|
+|[Java](http://www.oracle.com/technetwork/java/javase/overview/java8-2100321.html) | >= 1.8.0_171| Java8 |
+[Gradle](https://gradle.org/) | >= 4.6 | Gradle is a dependency management tool for Java. |
+
+
+### Build
+
+it is best to have the latest JDK and Gradle installed. The HEAD of the `master` branch contains the latest development code and various production releases are provided on feature branches.
+
+```
+./gradlew clean build
+```
+
+#### Building from an IDE
+
+Alternatively, just import the project using your IDE. [IntelliJ](http://www.jetbrains.com/idea/download/) has Gradle integration built-in and has a free Community Edition.
+
 ## nebulasio-client
 
 http client for nebulasio  https://github.com/nebulasio 
@@ -92,51 +138,6 @@ https://github.com/nebulasio/wiki/blob/master/rpc_admin.md
 ```
 
 
-## Add as dependency
-
-Gradle
-
-```
-repositories {
-    mavenCentral()
-}
-
-dependencies {
-    compile "io.nebulas:nebulas:0.1"
-}
-```
-
-Maven
-
-```
-<dependency>
-    <groupId>io.nebulas</groupId>
-    <artifactId>nebulas</artifactId>
-    <version>0.1</version>
-</dependency>
-```
-
-## Building from source
-
-### Prerequisites
-
-| Components | Version | Description |
-|----------|:-------------:|-------------:|
-|[Java](http://www.oracle.com/technetwork/java/javase/overview/java8-2100321.html) | >= 1.8.0_171| Java8 |
-[Gradle](https://gradle.org/) | >= 4.6 | Gradle is a dependency management tool for Java. |
-
-
-### Build
-
-it is best to have the latest JDK and Gradle installed. The HEAD of the `master` branch contains the latest development code and various production releases are provided on feature branches.
-
-```
-./gradlew clean build
-```
-
-#### Building from an IDE
-
-Alternatively, just import the project using your IDE. [IntelliJ](http://www.jetbrains.com/idea/download/) has Gradle integration built-in and has a free Community Edition.
 
 ### Release
 
