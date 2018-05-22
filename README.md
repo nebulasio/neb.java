@@ -48,20 +48,12 @@ it is best to have the latest JDK and Gradle installed. The HEAD of the `master`
 
 Alternatively, just import the project using your IDE. [IntelliJ](http://www.jetbrains.com/idea/download/) has Gradle integration built-in and has a free Community Edition.
 
-## nebulasio-client
-
-http client for nebulasio  https://github.com/nebulasio 
-
-api : 
-
-https://github.com/nebulasio/wiki/blob/master/rpc.md
-
-https://github.com/nebulasio/wiki/blob/master/rpc_admin.md
+### http nebulasio-client
 
 ### example : 
 
 ```
-    private NebulasClient nebulasClient = NebulasClient.create("https://testnet.nebulas.io");
+    private NebulasClient nebulasClient = HttpNebulasClient.create("https://testnet.nebulas.io");
 
     @Test
     public void testGetNebState() {
