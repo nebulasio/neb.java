@@ -57,7 +57,7 @@ Documents of NebulasJ is here: [Public API documentation](https://nebulasio.gith
 
  Http client is used to access the RPC API of Nebulas, such as mainnet and testnet.
 
- We haven't written examples for http-client now, please refer to the [test cases]((/src/test/java/io/nebulas/client/TestNebulasClient.java)) to learn how to use it.
+ We haven't written examples for http-client now, please refer to the [test cases](/src/test/java/io/nebulas/client/TestNebulasClient.java) to learn how to use it.
 
 ```java
     private NebulasClient nebulasClient = HttpNebulasClient.create("https://testnet.nebulas.io");
