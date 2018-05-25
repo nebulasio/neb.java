@@ -29,7 +29,29 @@ public class SendTransactionRequest implements Serializable {
 
     public SendTransactionRequest() {
     }
-
+    
+    
+     /**
+     * Method wrap transaction sending functionality.
+     * @see {@link https://github.com/nebulasio/wiki/blob/master/rpc_admin.md#sendtransaction}
+     *
+     * @param {TransactionOptions} options
+     *
+     * @return [Transcation hash and contract address]{@link https://github.com/nebulasio/wiki/blob/master/rpc_admin.md#sendtransaction}
+     *
+     * @example
+     * var admin = new Neb().admin;
+     * admin.sendTransaction({
+     *    from: "n1QZMXSZtW7BUerroSms4axNfyBGyFGkrh5",
+     *    to: "n1SAeQRVn33bamxN4ehWUT7JGdxipwn8b17",
+     *    value: 10,
+     *    nonce: 12,
+     *    gasPrice: 1000000,
+     *    gasLimit: 2000000
+     * }).then(function(tx) {
+     * //code
+     * });
+     */
     public SendTransactionRequest(String from, String to, String value, Long nonce, String gasPrice, String gasLimit, TransactionType type) {
         this.from = from;
         this.to = to;
