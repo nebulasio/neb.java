@@ -16,6 +16,28 @@ public class UnLockAccountRequest implements Serializable {
     public UnLockAccountRequest() {
     }
 
+     /**
+     * Method unlock account with provided passphrase.
+     * After the default unlock time, the account will be locked.
+     * @see {@link https://github.com/nebulasio/wiki/blob/master/rpc_admin.md#unlockaccount}
+     *
+     * @param {Object} options
+     * @param {HexString} options.address
+     * @param {Password} options.passphrase
+     * @param {Number} options.duration
+     *
+     * @return [isUnLocked]{@link https://github.com/nebulasio/wiki/blob/master/rpc_admin.md#unlockaccount}
+     *
+     * @example
+     * var admin = new Neb().admin;
+     * admin.unlockAccount({
+     *     address: "n1cYKNHTeVW9v1NQRWuhZZn9ETbqAYozckh",
+     *     passphrase: "passphrase",
+     *     duration: 1000000000
+     * }).then(function(isUnLocked) {
+     * //code
+     * });
+     */
     public UnLockAccountRequest(String address, String passphrase, String duration) {
         this.address = address;
         this.passphrase = passphrase;
