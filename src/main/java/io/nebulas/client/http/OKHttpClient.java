@@ -44,7 +44,7 @@ public class OKHttpClient implements HttpClient {
     }
 
     /**
-    * method 
+    * method get result of response
     */
     @Override
     public <T> T post(String uri, TypeToken<T> typeToken) {
@@ -65,6 +65,16 @@ public class OKHttpClient implements HttpClient {
         return call("get", uri, parameter, typeToken);
     }
 
+    /**
+    * method response the request
+    *
+    * @param {String} method 
+    * @param {String} uri
+    * @param {Object} parameter
+    * @param {TypeToken<T>} typeToken
+    *
+    * @return return the result of response
+    */
     public <T> T call(String method, String uri, Object parameter, TypeToken<T> typeToken) {
         try {
             Request.Builder builder = new Request.Builder();
