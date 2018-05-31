@@ -28,19 +28,31 @@ public class SendTransactionWithPassphraseRequest implements Serializable {
         this.passphrase = passphrase;
     }
 
+    /**
+    * method get the transaction
+    */
     public SendTransactionRequest getTransaction() {
         return transaction;
     }
 
+    /**
+    * method set the transaction and get the object
+    */
     public SendTransactionWithPassphraseRequest setTransaction(SendTransactionRequest transaction) {
         this.transaction = transaction;
         return this;
     }
 
+    /**
+    * method get the passphrase
+    */
     public String getPassphrase() {
         return passphrase;
     }
 
+    /**
+    * method set the passphrase and get the object
+    */
     public SendTransactionWithPassphraseRequest setPassphrase(String passphrase) {
         this.passphrase = passphrase;
         return this;
