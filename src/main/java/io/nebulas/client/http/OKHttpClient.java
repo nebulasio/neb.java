@@ -37,7 +37,7 @@ public class OKHttpClient implements HttpClient {
     * @param {OkHttpClient} client - Instance of OkHttpClient.
     *
     * @example
-    * var httpClient = new OKHttpClient(new OkHttpClient());
+    * OkHttpClient httpClient = new OKHttpClient(new OkHttpClient());
     */
     public OKHttpClient(OkHttpClient client) {
         this.client = client;
