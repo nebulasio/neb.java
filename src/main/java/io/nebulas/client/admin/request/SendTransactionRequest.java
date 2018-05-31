@@ -27,6 +27,9 @@ public class SendTransactionRequest implements Serializable {
 
     private Contract contract;
 
+    /**
+    * SendTransactionRequest constructor
+    */
     public SendTransactionRequest() {
     }
 
