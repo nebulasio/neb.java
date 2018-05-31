@@ -25,13 +25,27 @@ public class OKHttpClient implements HttpClient {
 
     private Joiner joiner = Joiner.on("&");
 
+    /**
+    * OKHttpClient constructor
+    */
     public OKHttpClient() {
     }
 
+    /**
+    * OKHttpClient constructor with parameter client
+    *
+    * @param {OkHttpClient} client - Instance of OkHttpClient.
+    *
+    * @example
+    * var httpClient = new OKHttpClient(new OkHttpClient());
+    */
     public OKHttpClient(OkHttpClient client) {
         this.client = client;
     }
 
+    /**
+    * method 
+    */
     @Override
     public <T> T post(String uri, TypeToken<T> typeToken) {
         return post(uri,null , typeToken);
@@ -71,6 +85,18 @@ public class OKHttpClient implements HttpClient {
             throw Throwables.propagate(e);
         }
     }
+    
+    /**
+    * method get the string of url with parameter
+    *
+    * @param {String} uri
+    * @param {Object} parameter
+    *
+    * @example
+    * var url = uriWithParameter(uri,parameter);
+    * 
+    * @return [String]
+    */
     private String uriWithParameter(String uri , Object parameter){
         if (parameter != null){
             return uri + "?" + toQueryString(parameter);
@@ -78,6 +104,16 @@ public class OKHttpClient implements HttpClient {
         return uri;
     }
 
+    /**
+    * method get the former string of parameters in a url  
+    *
+    * @param {Object} parameter
+    *
+    * @example
+    * var parameters = toQueryString(parameter);
+    * 
+    * @return [String]
+    */
     private String toQueryString(Object parameter) {
         return joiner.join(gson.toJsonTree(parameter).getAsJsonObject().entrySet().parallelStream().map(entry -> entry.getKey() + "=" + entry.getValue()).collect(Collectors.toList()));
     }
