@@ -9,20 +9,29 @@ public class CreateAccountRequest implements Serializable {
 
     private String passphrase;
 
+    /**
+    * CreateAccountRequest constructor
+    */
     public CreateAccountRequest() {
     }
 
     public CreateAccountRequest(String passphrase) {
         this.passphrase = passphrase;
     }
-
-    public String getPassphrase() {
-        return passphrase;
-    }
-
+    
+    /**
+    * method set passphrase
+    */
     public CreateAccountRequest setPassphrase(String passphrase) {
         this.passphrase = passphrase;
         return this;
+    }
+
+    /**
+    * method get passphrase
+    */
+    public String getPassphrase() {
+        return passphrase;
     }
 
     @Override
