@@ -7,19 +7,36 @@ import java.io.Serializable;
  **/
 public class LockAccountRequest implements Serializable {
 
+    /**
+    * @property {String} address
+    */
     private String address;
 
+    /**
+    * LockAccountRequest constructor
+    */
     public LockAccountRequest() {
     }
 
+    /**
+    * LockAccountRequest constructor with parameter address
+    *
+    * @parameter {String} address
+    */
     public LockAccountRequest(String address) {
         this.address = address;
     }
 
+    /**
+    * method get the address
+    */
     public String getAddress() {
         return address;
     }
 
+    /**
+    * method set the address and get the object
+    */
     public LockAccountRequest setAddress(String address) {
         this.address = address;
         return this;
