@@ -58,6 +58,12 @@ public class AccountManagerTest {
         byte[] out = manager.export(address, passphrase);
         Address got = manager.load(out, passphrase);
         Assert.assertEquals(address.string(), got.string());
+        /**
+         * test keyStore file Version=3
+         */
+        byte[] keyV3 = "{\"version\":3,\"id\":\"ccdea027-bea5-4626-b5e4-53b987091b8d\",\"address\":\"n1X1N4Jq7mhm3tK74AqE29Rdp97kdTWftzS\",\"crypto\":{\"ciphertext\":\"0535aac6d78ad8ddfa2274b05c7a6fcfdb3b9fcff91ed59b1531ec8cd3671715\",\"cipherparams\":{\"iv\":\"03e09e5994ad41df77b9c94ffa1ecd9e\"},\"cipher\":\"aes-128-ctr\",\"kdf\":\"scrypt\",\"kdfparams\":{\"dklen\":32,\"salt\":\"7237d1a9e755adbf7e6b1364b6c7a1c8101043b693e671357895684aa5c3e7f1\",\"n\":4096,\"r\":8,\"p\":1},\"mac\":\"288ae2984d7d40d25f7261342ef5ec4f1b576dce3f2e324fa0483f710fb42fd3\",\"machash\":\"sha3256\"}}".getBytes();
+        Address addV3 = manager.load(keyV3,"passphrase".getBytes());
+        Assert.assertEquals(addV3.string() , "n1X1N4Jq7mhm3tK74AqE29Rdp97kdTWftzS");
     }
 
     @Test

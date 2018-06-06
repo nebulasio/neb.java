@@ -190,6 +190,7 @@ public class AccountManager {
     public Address load(byte[] keyData, byte[] passphrase) throws Exception {
         String keyStr = new String(keyData);
         KeyJSON keyJSON = JSONUtils.Parse(keyStr, KeyJSON.class);
+        keyJSON.crypto.setVersion(keyJSON.version);
 
         Cipher cipher = new Cipher(this.encryptAlg);
         byte[] key = cipher.decrypt(keyJSON.crypto, passphrase);

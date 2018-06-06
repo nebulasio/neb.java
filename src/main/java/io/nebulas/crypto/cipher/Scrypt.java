@@ -73,7 +73,12 @@ public class Scrypt implements Encrypt {
 
         byte[] derivedKey = SCrypt.scrypt(passphrase, salt, n, r, p, dklen);
         byte[] macDerivedKey = ByteUtils.SubBytes(derivedKey, 16, 16);
-        byte[] calMac = Hash.Sha3256(macDerivedKey, cipherText, iv, cryptoJSON.getCipher().getBytes());
+        byte[] calMac;
+        if(cryptoJSON.getVersion() == 4) {
+            calMac = Hash.Sha3256(macDerivedKey, cipherText, iv, cryptoJSON.getCipher().getBytes());
+        } else {
+            calMac = Hash.Sha3256(macDerivedKey, cipherText);
+        }
 
         if (!ByteUtils.Equal(mac, calMac)) {
             throw new Exception("could not decrypt key with given passphrase");

@@ -22,6 +22,7 @@ public class CryptoJSON {
     // mac calculate hash type
     public static final String MACHASH = "sha3256";
 
+    int version = VERSION;
     String cipher;
     String ciphertext;
     CipherParams cipherparams;
@@ -90,6 +91,12 @@ public class CryptoJSON {
         }
     }
 
+    public int getVersion(){
+        return version;
+    }
+    public void setVersion(int ver){
+        version = ver;
+    }
     public String getCipher() {
         return cipher;
     }
