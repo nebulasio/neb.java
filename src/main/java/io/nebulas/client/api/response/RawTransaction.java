@@ -13,7 +13,8 @@ import java.io.Serializable;
 @ToString
 public class RawTransaction implements Serializable {
 
-    private String txhash;
+    @SerializedName("txhash")
+    private String txHash;
 
     @SerializedName("contract_address")
     private String contractAddress;
