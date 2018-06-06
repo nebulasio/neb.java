@@ -23,7 +23,7 @@ public class SendTransactionWithPassphraseRequest implements Serializable {
     * String passphrase = "passphrase";
     * SendTransactionWithPassphraseRequest sendTransactionWithPassphraseRequest = new SendTransactionWithPassphraseRequest(transaction,transaction);
     */
-    public SendTransactionWithPassphraseRequest(SendTransactionRequest transaction, String transaction) {
+    public SendTransactionWithPassphraseRequest(SendTransactionRequest transaction, String passphrase) {
         this.transaction = transaction;
         this.passphrase = passphrase;
     }
