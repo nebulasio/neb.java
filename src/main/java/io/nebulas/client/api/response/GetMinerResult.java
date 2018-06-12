@@ -16,4 +16,11 @@ public class GetMinerResult implements Serializable {
 
     private List<String> miners = Lists.newArrayList();
 
+    public List<String> getMiners() {
+        return miners;
+    }
+
+    public void setMiners(List<String> miners) {
+        this.miners = miners;
+    }
 }

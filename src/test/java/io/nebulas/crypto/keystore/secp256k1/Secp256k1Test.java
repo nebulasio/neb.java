@@ -7,7 +7,7 @@ import org.junit.Test;
 
 public class Secp256k1Test {
 
-    private static int count = 10;
+    private static int count = 5;
 
     private byte[] privateKey = ByteUtils.HexToBytes("e07c7b293b2907474d7a9d431eea0138c2734b2865804dc2ebb6e8f9a40ac0e0");
     private byte[] publicKey = ByteUtils.HexToBytes("04be110ae3154924b93881cba7ea9cfcb6d4866d2becac5ccb79bab5d7e22309796ed60effbe6990320e7d8a0cc19e6e8b235aa17fe467c4c6ae7f469dcbf65609");

@@ -2,6 +2,7 @@ package io.nebulas.client;
 
 import io.nebulas.client.api.request.*;
 import io.nebulas.client.api.response.*;
+import io.nebulas.client.http.HttpClientListener;
 
 /**
  * Create by liuyang89 on 2018/05/05
@@ -30,8 +31,8 @@ public interface NebulasClient {
 
     Response<GetEventsByHashResult> getEventsByHash(GetEventByHashRequest request);
 
-    Response<Event> subscribe(SubscribeRequest request);
-
     Response<GetMinerResult> getDynasty(GetMinerRequest request);
+
+    void subscribe(SubscribeRequest request, HttpClientListener listener);
 
 }

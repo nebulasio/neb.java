@@ -23,4 +23,20 @@ public class Response<T> implements Serializable {
         this.error = error;
         this.result = result;
     }
+
+    public String getError() {
+        return error;
+    }
+
+    public void setError(String error) {
+        this.error = error;
+    }
+
+    public T getResult() {
+        return result;
+    }
+
+    public void setResult(T result) {
+        this.result = result;
+    }
 }

@@ -19,4 +19,28 @@ public class AccountState implements Serializable {
     private Long nonce;
 
     private Integer type;
+
+    public BigDecimal getBalance() {
+        return balance;
+    }
+
+    public void setBalance(BigDecimal balance) {
+        this.balance = balance;
+    }
+
+    public Long getNonce() {
+        return nonce;
+    }
+
+    public void setNonce(Long nonce) {
+        this.nonce = nonce;
+    }
+
+    public Integer getType() {
+        return type;
+    }
+
+    public void setType(Integer type) {
+        this.type = type;
+    }
 }

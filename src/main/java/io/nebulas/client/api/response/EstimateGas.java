@@ -16,4 +16,19 @@ public class EstimateGas implements Serializable {
 
     private String err;
 
+    public String getGas() {
+        return gas;
+    }
+
+    public void setGas(String gas) {
+        this.gas = gas;
+    }
+
+    public String getErr() {
+        return err;
+    }
+
+    public void setErr(String err) {
+        this.err = err;
+    }
 }

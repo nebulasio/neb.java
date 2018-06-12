@@ -15,4 +15,6 @@ public interface HttpClient {
 
     <T> T get(String uri, Object parameter, TypeToken<T> typeToken);
 
+    <T> void URLConnectionPost(String uri, Object parameter, HttpClientListener listener, TypeToken<T> typeToken);
+
 }

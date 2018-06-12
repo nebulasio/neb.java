@@ -30,4 +30,27 @@ public class CallResult implements Serializable {
         this.estimateGas = estimateGas;
     }
 
+    public String getResult() {
+        return result;
+    }
+
+    public void setResult(String result) {
+        this.result = result;
+    }
+
+    public String getExecuteErr() {
+        return executeErr;
+    }
+
+    public void setExecuteErr(String executeErr) {
+        this.executeErr = executeErr;
+    }
+
+    public String getEstimateGas() {
+        return estimateGas;
+    }
+
+    public void setEstimateGas(String estimateGas) {
+        this.estimateGas = estimateGas;
+    }
 }

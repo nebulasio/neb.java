@@ -5,6 +5,7 @@ import io.nebulas.client.NebulasClient;
 import io.nebulas.client.api.request.*;
 import io.nebulas.client.api.response.*;
 import io.nebulas.client.http.HttpClient;
+import io.nebulas.client.http.HttpClientListener;
 import io.nebulas.client.http.OKHttpClient;
 import okhttp3.OkHttpClient;
 
@@ -108,12 +109,6 @@ public class HttpNebulasClient implements NebulasClient {
         return client.post(host + "/v1/user/getTransactionReceipt", request , new TypeToken<Response<TransactionReceipt>>(){});
     }
 
-    
-    @Override
-    public Response<Event> subscribe(SubscribeRequest request) {
-        return client.post(host + "/v1/user/subscribe", request , new TypeToken<Response<Event>>(){});
-    }
-
     /**
     * method get the gas price
     */
@@ -143,4 +138,8 @@ public class HttpNebulasClient implements NebulasClient {
         return client.post(host + "/v1/user/dynasty" , request , new TypeToken<Response<GetMinerResult>>(){});
     }
 
+    @Override
+    public void subscribe(SubscribeRequest request, HttpClientListener listener) {
+        client.URLConnectionPost(host + "/v1/user/subscribe", request, listener, new TypeToken<Response<Event>>(){});
+    }
 }

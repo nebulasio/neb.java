@@ -82,11 +82,16 @@ public class TestNebulasClient {
         System.out.println(response);
     }
 
-    @Test
-    public void testSubscribe(){
-        Response<Event> response = nebulasClient.subscribe(new SubscribeRequest("chain.linkBlock", "chain.pendingTransaction"));
-        System.out.println(response);
-    }
+//    @Test
+//    public void testSubscribe() throws Exception {
+//        nebulasClient.subscribe(new SubscribeRequest("chain.linkBlock", "chain.pendingTransaction"), new HttpClientListener<Event>() {
+//            @Override
+//            public void onMessage(Response<Event> event) {
+//                System.out.println(event.getResult().getTopic());
+//                System.out.println(event.getResult().getData());
+//            }
+//        });
+//    }
 
     @Test
     public void testGetDynasty(){

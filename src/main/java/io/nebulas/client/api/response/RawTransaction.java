@@ -19,4 +19,19 @@ public class RawTransaction implements Serializable {
     @SerializedName("contract_address")
     private String contractAddress;
 
+    public String getTxHash() {
+        return txHash;
+    }
+
+    public void setTxHash(String txHash) {
+        this.txHash = txHash;
+    }
+
+    public String getContractAddress() {
+        return contractAddress;
+    }
+
+    public void setContractAddress(String contractAddress) {
+        this.contractAddress = contractAddress;
+    }
 }

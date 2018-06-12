@@ -20,4 +20,27 @@ public class ConsensusRoot implements Serializable {
     @SerializedName("dynasty_root")
     private String dynastyRoot;
 
+    public Long getTimestamp() {
+        return timestamp;
+    }
+
+    public void setTimestamp(Long timestamp) {
+        this.timestamp = timestamp;
+    }
+
+    public String getProposer() {
+        return proposer;
+    }
+
+    public void setProposer(String proposer) {
+        this.proposer = proposer;
+    }
+
+    public String getDynastyRoot() {
+        return dynastyRoot;
+    }
+
+    public void setDynastyRoot(String dynastyRoot) {
+        this.dynastyRoot = dynastyRoot;
+    }
 }
