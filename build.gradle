@@ -8,7 +8,7 @@
 
 buildscript {
     ext {
-        projectVersion = '0.1'
+        projectVersion = '0.2'
         grpcVersion = '1.11.0'
         protobufVersion = '3.5.1-1'
         protobufGradlePluginVersion = '0.8.5'
@@ -38,7 +38,7 @@ apply plugin: 'com.bmuschko.nexus'
 
 archivesBaseName = 'nebulas'
 group = "io.nebulas"
-version = "0.1"
+version = "0.2"
 
 modifyPom {
     project {
@@ -76,7 +76,7 @@ modifyPom {
 extraArchive {
     sources = true
     tests = true
-    javadoc = false
+    javadoc = true
 }
 
 nexus {

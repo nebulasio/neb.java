@@ -120,7 +120,7 @@ public class Transaction {
      * @param payload     the payload content
      * @param gasPrice    the gas price
      * @param gasLimit    the gas limit
-     * @throws Exception
+     * @throws Exception  if the parameters is not appropriate
      */
     public Transaction(int chainID, Address from, Address to, BigInteger value, long nonce, PayloadType payloadType, byte[] payload, BigInteger gasPrice, BigInteger gasLimit) throws Exception {
         if (gasPrice.compareTo(TransactionMaxGasPrice) > 0) {

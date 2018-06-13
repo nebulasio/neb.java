@@ -32,7 +32,7 @@ public class HttpNebulasClient implements NebulasClient {
     /**
     * HttpNebulasClient constructor with parameter host
     *
-    * @param {String} host
+    * @param host
     */
     public HttpNebulasClient(String host) {
         this.host = host;
@@ -42,8 +42,8 @@ public class HttpNebulasClient implements NebulasClient {
     /**
     * HttpNebulasClient constructor with parameters host and client
     *
-    * @param {String} host
-    * @param {OkHttpClient} client - Instance of OkHttpClient
+    * @param host
+    * @param client - Instance of OkHttpClient
     */
     public HttpNebulasClient(String host, OkHttpClient client) {
         this.host = host;

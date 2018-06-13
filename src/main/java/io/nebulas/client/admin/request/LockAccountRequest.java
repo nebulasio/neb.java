@@ -7,9 +7,6 @@ import java.io.Serializable;
  **/
 public class LockAccountRequest implements Serializable {
 
-    /**
-    * @property {String} address
-    */
     private String address;
 
     /**
@@ -21,22 +18,16 @@ public class LockAccountRequest implements Serializable {
     /**
     * LockAccountRequest constructor with parameter address
     *
-    * @parameter {String} address
+    * @param address the account address to be locked
     */
     public LockAccountRequest(String address) {
         this.address = address;
     }
 
-    /**
-    * method get the address
-    */
     public String getAddress() {
         return address;
     }
 
-    /**
-    * method set the address and get the object
-    */
     public LockAccountRequest setAddress(String address) {
         this.address = address;
         return this;

@@ -40,10 +40,7 @@ public class OKHttpClient implements HttpClient {
     /**
     * OKHttpClient constructor with parameter client
     *
-    * @param {OkHttpClient} client - Instance of OkHttpClient.
-    *
-    * @example
-    * OkHttpClient httpClient = new OKHttpClient(new OkHttpClient());
+    * @param  client - Instance of OkHttpClient.    *
     */
     public OKHttpClient(OkHttpClient client) {
         this.client = client;
@@ -74,10 +71,10 @@ public class OKHttpClient implements HttpClient {
     /**
     * method response the request
     *
-    * @param {String} method 
-    * @param {String} uri
-    * @param {Object} parameter
-    * @param {TypeToken<T>} typeToken
+    * @param method     the method for http request, should be "POST" or "GET"
+    * @param uri        the url
+    * @param parameter  the data
+    * @param typeToken  the return data type
     *
     * @return return the result of response
     */
@@ -93,18 +90,7 @@ public class OKHttpClient implements HttpClient {
             throw Throwables.propagate(e);
         }
     }
-    
-    /**
-    * method get the string of url with parameter
-    *
-    * @param {String} uri
-    * @param {Object} parameter
-    *
-    * @example
-    * var url = uriWithParameter(uri,parameter);
-    * 
-    * @return [String]
-    */
+
     private String uriWithParameter(String uri , Object parameter){
         if (parameter != null){
             return uri + "?" + toQueryString(parameter);
@@ -130,15 +116,11 @@ public class OKHttpClient implements HttpClient {
     }
 
     /**
-    * method get the former string of parameters in a url  
-    *
-    * @param {Object} parameter
-    *
-    * @example
-    * var parameters = toQueryString(parameter);
-    * 
-    * @return [String]
-    */
+     * method get the former string of parameters in a url
+     *
+     * @param parameter
+     * @return
+     */
     private String toQueryString(Object parameter) {
         return joiner.join(gson.toJsonTree(parameter).getAsJsonObject().entrySet().parallelStream().map(entry -> entry.getKey() + "=" + entry.getValue()).collect(Collectors.toList()));
     }

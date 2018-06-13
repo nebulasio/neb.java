@@ -6,11 +6,7 @@ import java.io.Serializable;
  * Create by liuyang89 on 2018/05/10
  **/
 public class UnLockAccountRequest implements Serializable {
-    /**
-    * @property {String} address
-    * @property {String} passphrase
-    * @property {String} duration
-    */
+
     private String address;
 
     private String passphrase;
@@ -23,22 +19,22 @@ public class UnLockAccountRequest implements Serializable {
     public UnLockAccountRequest() {
     }
 
+    /**
+     * <a href="https://github.com/nebulasio/wiki/blob/master/rpc_admin.md#unlockaccount">unlock account</a>
+     * @param address account address to be unlocked
+     * @param passphrase account passphrase.
+     * @param duration unlock duration. The unit is ns (10e-9 s).
+     */
     public UnLockAccountRequest(String address, String passphrase, String duration) {
         this.address = address;
         this.passphrase = passphrase;
         this.duration = duration;
     }
 
-    /**
-    * method get the address
-    */
     public String getAddress() {
         return address;
     }
 
-    /**
-    * method set the address and get the object
-    */
     public UnLockAccountRequest setAddress(String address) {
         this.address = address;
         return this;

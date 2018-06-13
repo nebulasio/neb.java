@@ -12,47 +12,28 @@ public class SendTransactionWithPassphraseRequest implements Serializable {
     private String passphrase;
 
     /**
-    * SendTransactionWithPassphraseRequest constructor
-    *
-    * @param {SendTransactionRequest} transaction
-    *
-    * @param {String} passphrase
-    *
-    * @example
-    * SendTransactionRequest transaction = new SendTransactionRequest();
-    * String passphrase = "passphrase";
-    * SendTransactionWithPassphraseRequest sendTransactionWithPassphraseRequest = new SendTransactionWithPassphraseRequest(transaction,transaction);
-    */
+     * <a href="https://github.com/nebulasio/wiki/blob/master/rpc_admin.md#sendtransactionwithpassphrase">send transaction with passphrase</a>
+     * @param transaction the transaction to be send, this is the same as the SendTransaction parameters
+     * @param passphrase the passphrase of sender account
+     */
     public SendTransactionWithPassphraseRequest(SendTransactionRequest transaction, String passphrase) {
         this.transaction = transaction;
         this.passphrase = passphrase;
     }
 
-    /**
-    * method get the transaction
-    */
     public SendTransactionRequest getTransaction() {
         return transaction;
     }
 
-    /**
-    * method set the transaction and get the object
-    */
     public SendTransactionWithPassphraseRequest setTransaction(SendTransactionRequest transaction) {
         this.transaction = transaction;
         return this;
     }
 
-    /**
-    * method get the passphrase
-    */
     public String getPassphrase() {
         return passphrase;
     }
 
-    /**
-    * method set the passphrase and get the object
-    */
     public SendTransactionWithPassphraseRequest setPassphrase(String passphrase) {
         this.passphrase = passphrase;
         return this;

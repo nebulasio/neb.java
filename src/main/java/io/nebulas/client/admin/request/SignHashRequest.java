@@ -6,11 +6,7 @@ import java.io.Serializable;
  * Create by liuyang89 on 2018/05/10
  **/
 public class SignHashRequest implements Serializable {
-    /**
-    * @property {String} address
-    * @property {String} hash
-    * @property {Integer} alg
-    */
+
     private String address;
 
     private String hash;
@@ -23,52 +19,41 @@ public class SignHashRequest implements Serializable {
     public SignHashRequest() {
     }
 
+    /**
+     * <a href="https://github.com/nebulasio/wiki/blob/master/rpc_admin.md#signhash">sign hash</a>
+     *
+     * @param address account address
+     * @param hash the hash date to be signed
+     * @param alg the signature algorithm to be used, which should be 1 (SECP256K1)
+     */
     public SignHashRequest(String address, String hash, Integer alg) {
         this.address = address;
         this.hash = hash;
         this.alg = alg;
     }
 
-    /**
-    * method get the address
-    */
     public String getAddress() {
         return address;
     }
 
-    /**
-    * method set the address and get the object
-    */
     public SignHashRequest setAddress(String address) {
         this.address = address;
         return this;
     }
 
-    /**
-    * method get the hash 
-    */
     public String getHash() {
         return hash;
     }
 
-    /**
-    * method set the hash and get the object
-    */
     public SignHashRequest setHash(String hash) {
         this.hash = hash;
         return this;
     }
 
-    /**
-    * method get the alg
-    */
     public Integer getAlg() {
         return alg;
     }
 
-    /**
-    * method set the alg and get the object
-    */
     public SignHashRequest setAlg(Integer alg) {
         this.alg = alg;
         return this;

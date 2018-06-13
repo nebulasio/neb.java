@@ -10,26 +10,21 @@ public class CreateAccountRequest implements Serializable {
     private String passphrase;
 
     /**
-    * CreateAccountRequest constructor
-    */
+     * CreateAccountRequest constructor
+     * <a href="https://github.com/nebulasio/wiki/blob/master/rpc_admin.md#newaccount">new account</a>
+     */
     public CreateAccountRequest() {
     }
 
     public CreateAccountRequest(String passphrase) {
         this.passphrase = passphrase;
     }
-    
-    /**
-    * method set passphrase
-    */
+
     public CreateAccountRequest setPassphrase(String passphrase) {
         this.passphrase = passphrase;
         return this;
     }
 
-    /**
-    * method get passphrase
-    */
     public String getPassphrase() {
         return passphrase;
     }
