@@ -12,7 +12,7 @@ repositories {
 }
 
 dependencies {
-    compile "io.nebulas:nebulas:0.1"
+    compile "io.nebulas:nebulas:0.2"
 }
 ```
 
@@ -22,7 +22,7 @@ Maven
 <dependency>
     <groupId>io.nebulas</groupId>
     <artifactId>nebulas</artifactId>
-    <version>0.1</version>
+    <version>0.2</version>
 </dependency>
 ```
 
