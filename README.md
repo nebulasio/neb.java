@@ -50,7 +50,7 @@ Alternatively, just import the project using your IDE. [IntelliJ](http://www.jet
 
 ## Documentation
 
-Documents of NebulasJ is here: [Public API documentation](https://nebulasio.github.io/nebulasj/)
+Documents of NebulasJ is here: [Public API documentation](https://nebulasio.github.io/neb.java/)
 
 
 #### http nebulasio-client
