@@ -13,6 +13,8 @@ import io.nebulas.util.JSONUtils;
 import java.util.List;
 import java.util.Map;
 
+import javax.xml.bind.DatatypeConverter;
+
 /**
  * The Account manager class.
  * <p>Account manager handles account related tasks. Such as
@@ -111,6 +113,17 @@ public class AccountManager {
      */
     public Address newAccount(byte[] passphrase) throws Exception {
         PrivateKey privateKey = Crypto.NewPrivateKey(this.signatureAlg, null);
+        return updateAccount(privateKey, passphrase);
+    }
+
+    public Address newAccount(byte[] passphrase, byte[] privKey) throws Exception {
+        PrivateKey privateKey = Crypto.NewPrivateKey(this.signatureAlg, privKey);
+        return updateAccount(privateKey, passphrase);
+    }
+
+    public Address newAccount(byte[] passphrase, String privKey) throws Exception {
+        byte[] bytePrivKey = DatatypeConverter.parseHexBinary(privKey);
+        PrivateKey privateKey = Crypto.NewPrivateKey(this.signatureAlg, bytePrivKey);
         return updateAccount(privateKey, passphrase);
     }
 

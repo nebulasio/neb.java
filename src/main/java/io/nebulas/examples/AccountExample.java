@@ -18,7 +18,13 @@ public class AccountExample {
         System.out.println("encrypt algorithm is: " + manager.getEncryptAlg());
         System.out.println("signature algorithm is: " + manager.getSignatureAlg());
 
+        String privKey = "6c41a31b4e689e1441c930ce4c34b74cc037bd5e68bbd6878adb2facf62aa7f3";
+        Address newaddress = manager.newAccount(passphrase, privKey);   //generate a new account with given private key
+        System.out.println("generate a new account with given private key: " + newaddress.string());
+        printAccounts(manager);
+
         Address address = manager.newAccount(passphrase);   //generate a new account
+        System.out.println("generate a new account: " + address.string());
         printAccounts(manager);
 
         byte[] walletFile = manager.export(address,passphrase); //Dont't forget to export the generated new account
