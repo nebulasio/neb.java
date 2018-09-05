@@ -33,7 +33,7 @@ public class TransactionExample {
         byte[] rawData = tx.toProto();
         // senrawTransaction with @rawData
         // https://github.com/nebulasio/wiki/blob/master/rpc.md#sendrawtransaction
-        SendRawTransaction(rawData);
+        SendRawTransaction(rawData); //send transaction to local node by gRPC
 
         // deploy tx
         payloadType = Transaction.PayloadType.DEPLOY;
@@ -59,6 +59,7 @@ public class TransactionExample {
         SendRawTransaction(rawData);
     }
 
+    //send transaction to local node by gRPC, you need to run local node first.
     private static void SendRawTransaction(byte[] data) throws Exception {
         // Channels are secure by default (via SSL/TLS). For the example we disable TLS to avoid
         // needing certificates.
