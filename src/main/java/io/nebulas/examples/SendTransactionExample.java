@@ -23,7 +23,7 @@ public class SendTransactionExample {
         AccountManager manager = new AccountManager();
         NebulasClient nebulasClient = HttpNebulasClient.create("https://testnet.nebulas.io");
 
-        // it copy/read the keyJson string from your KeyStore file.
+        // copy/read the keyJson string from your KeyStore file.
         String keyJson = "{\"version\":4,\"id\":\"72dd1261-96dc-4463-ad97-dd212795e1a0\",\"address\":\"n1H2Yb5Q6ZfKvs61htVSV4b1U2gr2GA9vo6\",\"crypto\":{\"ciphertext\":\"40352b32f39392b38022c2a778cf8424ab823b2288c85a25f6097c1455837b74\",\"cipherparams\":{\"iv\":\"0f0fb4b21e0727c16aabf339540b80f8\"},\"cipher\":\"aes-128-ctr\",\"kdf\":\"scrypt\",\"kdfparams\":{\"dklen\":32,\"salt\":\"405dfabee17917c4f4f7b818e387200fc83452d57b00d9ea329a5687d07aca01\",\"n\":4096,\"r\":8,\"p\":1},\"mac\":\"59d9d7a36726ce3da1bf2d20d7469800376b0975e7110afbd578cf3401666557\",\"machash\":\"sha3256\"}}";
         byte[] passphrase = "passphrase".getBytes();
 
