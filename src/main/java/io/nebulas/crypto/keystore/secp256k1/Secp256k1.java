@@ -354,8 +354,8 @@ public class Secp256k1 {
                     :this.v;
 
             return ByteUtils.Append(
-                    ByteUtils.BigIntegerToBytes(this.r),
-                    ByteUtils.BigIntegerToBytes(this.s),
+                    ByteUtils.BigIntegerToBytes(this.r, 32),
+                    ByteUtils.BigIntegerToBytes(this.s, 32),
                     new byte[]{fixedV});
         }
 
