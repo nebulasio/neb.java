@@ -8,7 +8,7 @@
 
 buildscript {
     ext {
-        projectVersion = '0.3'  //version for nebulas-0.X.jar
+        projectVersion = '0.4'  //version for nebulas-0.X.jar
         grpcVersion = '1.11.0'
         protobufVersion = '3.5.1-1'
         protobufGradlePluginVersion = '0.8.5'
@@ -38,11 +38,11 @@ apply plugin: 'com.bmuschko.nexus'
 
 archivesBaseName = 'nebulas'
 group = "io.nebulas"
-version = "0.3" //version for javadoc,source,tests. such as nebulas-0.x-javadoc.jar
+version = "0.4" //version for javadoc,source,tests. such as nebulas-0.x-javadoc.jar
 
 modifyPom {
     project {
-        name 'nebulasj'
+        name 'neb.java'
         description 'The nebulasj library is a Java implementation of the Nebulas protocol, which allows it to maintain a wallet and send/receive transactions without needing a local copy of go-nebulas.'
         url 'https://nebulas.io'
         inceptionYear '2018'
