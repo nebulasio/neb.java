@@ -56,7 +56,7 @@ public class HttpNebulasAdminClient implements NebulasAdminClient {
     */
     @Override
     public Response<NodeInfo> nodeInfo() {
-        return client.get(host + "/v1/user/nodeinfo" , new TypeToken<Response<NodeInfo>>(){});
+        return client.get(host + "/v1/admin/nodeinfo" , new TypeToken<Response<NodeInfo>>(){});
     }
 
     /**
